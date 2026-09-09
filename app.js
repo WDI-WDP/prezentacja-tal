@@ -30,6 +30,7 @@
         closeHelpButton: document.querySelector("#close-help-button"),
         fullscreenButton: document.querySelector("#fullscreen-button"),
         printButton: document.querySelector("#print-button"),
+        courseSummary: document.querySelector("#course-summary"),
         toast: document.querySelector("#toast")
     };
 
@@ -329,10 +330,7 @@
                     <span><kbd>M</kbd> spis lekcji</span>
                     <span><kbd>F</kbd> pełny ekran</span>
                 </div>
-                <div class="download-links">
-                    <a class="secondary-button" href="kurs-python.zip" download>Pobierz cały kurs · ZIP</a>
-                    <span>12 kart · 96 zadań na lekcji + 24 po lekcji</span>
-                </div>
+                <p class="lesson-summary">${course.meta.lessonCount} kart · ${course.meta.classTaskCount} zadań na lekcji + ${course.meta.homeworkTaskCount} do samodzielnego wykonania</p>
             </div>`;
     }
 
@@ -341,21 +339,12 @@
         const topics = lesson.sections.map((section, index) => ({ ...section, vertical: index + 1 }))
             .filter(section => ["recall", "theory", "matura", "organization"].includes(section.kind))
             .map(section => `<li><a href="${routeFor(horizontal, section.vertical)}">${inlineMarkdown(section.title)}</a></li>`).join("");
-        const downloadLabel = lesson.kind === "organization"
-            ? "Pobierz zasady zajęć" : "Pobierz lekcję z danymi · ZIP";
-        const notebookLink = lesson.notebook
-            ? `<a href="${escapeHtml(lesson.notebook)}" download>Sam notatnik Jupyter</a>` : "";
 
         return `
             <div class="slide-inner">
                 <span class="lesson-number">Lekcja ${lesson.number}</span>
                 <h1 class="lesson-title">${escapeHtml(lesson.title)}</h1>
                 <p class="lesson-summary">Użyj strzałki w dół, aby przechodzić przez kolejne elementy tej lekcji.</p>
-                <div class="download-links">
-                    <a class="secondary-button" href="${escapeHtml(lesson.download)}" download>${downloadLabel}</a>
-                    ${notebookLink}
-                    <a href="kurs-python.zip" download>Cały kurs z danymi</a>
-                </div>
                 <ol class="topic-cloud">${topics}</ol>
             </div>`;
     }
@@ -830,6 +819,7 @@
     });
     window.addEventListener("afterprint", () => document.querySelector(".print-deck")?.remove());
 
+    elements.courseSummary.textContent = `Lekcja 0: zasady zajęć. Następnie ${course.meta.lessonCount} lekcji: powtórzenie Pythona, ${course.meta.classTaskCount} zadań na lekcji i ${course.meta.homeworkTaskCount} zadania samodzielne. Karty pracy przekazuje prowadzący. Prezentacja nie zawiera rozwiązań ani zestawów kartkówek.`;
     buildLessonList();
     Object.assign(state, readRoute());
     render();

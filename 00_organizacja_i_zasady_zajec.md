@@ -70,7 +70,7 @@ Każda lekcja ma osobny katalog. W zadaniach plikowych dane leżą obok notatnik
 
 Przed oddaniem pracy uczeń restartuje jądro, uruchamia własny notatnik od początku i zapisuje go. Program nie może polegać na zmiennych utworzonych w innej karcie ani na gotowym kodzie uruchomionym wcześniej. Plików wejściowych nie wolno nadpisywać wynikami.
 
-Przy ocenie zadania uwzględniamy zgodność z poleceniem, samodzielność, poprawność algorytmu, obsługę wskazanego formatu danych, przypadki brzegowe, testy oraz wymagany plik odpowiedzi. Test podany w karcie jest pomocą, a nie gwarancją poprawności dla wszystkich danych.
+Przy ocenie zadania uwzględniamy zgodność z poleceniem, samodzielność, poprawność algorytmu, obsługę wskazanego formatu danych, przypadki brzegowe oraz wymagany plik odpowiedzi.
 
 Każda praca może zostać zweryfikowana ustnie. Uczeń może zostać poproszony o wyjaśnienie fragmentu kodu, przewidzenie wyniku dla innych danych, wskazanie błędu, uzasadnienie kosztu obliczeń lub wprowadzenie niewielkiej zmiany. Odpowiedzi dotyczące zadań również podlegają ocenie. Nieumiejętność wyjaśnienia przedstawionego rozwiązania traktujemy jak brak samodzielnie wykonanego rozwiązania.
 

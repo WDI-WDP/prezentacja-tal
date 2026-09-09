@@ -560,30 +560,6 @@ kbd {
     text-decoration: underline;
 }
 
-.download-links {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 14px 24px;
-    margin-top: 28px;
-    color: var(--muted);
-    font-size: 0.95rem;
-}
-
-.download-links a {
-    color: var(--accent);
-}
-
-a.secondary-button {
-    display: inline-block;
-    width: auto;
-    text-decoration: none;
-}
-
-.drawer-footer a.secondary-button {
-    margin-top: 10px;
-}
-
 .lesson-link[hidden] {
     display: none !important;
 }
