@@ -76,20 +76,20 @@ Każda praca może zostać zweryfikowana ustnie. Uczeń może zostać poproszony
 
 ## 6. Kartkówki i aktywność
 
-Kartkówkę wykonujemy na kartce, bez komputera, notatek i korzystania z cudzej pomocy. Za każde z trzech pytań można otrzymać jeden plus albo minus. Plus oznacza poprawną, kompletną odpowiedź zgodną z poleceniem. Maksimum z jednej kartkówki to trzy plusy.
+Kartkówkę wykonujemy na kartce, bez komputera, notatek i korzystania z cudzej pomocy. Za każde z trzech pytań uczeń otrzymuje plus (1 pkt) za poprawną, kompletną odpowiedź zgodną z poleceniem albo minus (0 pkt) w pozostałych przypadkach. Z jednej kartkówki można uzyskać maksymalnie 3 pkt.
 
-Wyniki dwóch kolejnych kartkówek łączą się w ocenę z pracy na lekcji lub aktywności:
+Sumujemy punkty z czterech kolejnych kartkówek i wystawiamy jedną ocenę z pracy na lekcji lub aktywności. Maksymalny wynik to 12 pkt. Obowiązuje następująca skala:
 
-| Liczba plusów | Ocena |
+| Suma punktów z czterech kartkówek | Ocena |
 |---:|---:|
-| 6 | 6 |
-| 5 | 5 |
-| 4 | 4 |
-| 3 | 3 |
-| 2 | 2 |
-| 1 lub 0 | 1 |
+| 0–4 | 1 |
+| 5–6 | 2 |
+| 7–8 | 3 |
+| 9–10 | 4 |
+| 11 | 5 |
+| 12 | 6 |
 
-Po wystawieniu oceny rozpoczyna się zbieranie znaków do następnej pary kartkówek. Pytania odwołują się do zrealizowanego materiału; nie wymagają poznania nowych algorytmów przewidzianych dopiero na bieżącą lekcję.
+Po wystawieniu oceny rozpoczynamy zbieranie punktów z kolejnego zestawu czterech kartkówek. Pytania odwołują się do zrealizowanego materiału; nie wymagają poznania nowych algorytmów przewidzianych dopiero na bieżącą lekcję.
 
 ## 7. Nieobecność
 

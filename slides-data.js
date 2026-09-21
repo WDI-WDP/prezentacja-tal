@@ -67,7 +67,7 @@ window.PYTHON_COURSE = {
      "title": "6. Kartkówki i aktywność",
      "kind": "organization",
      "context": "",
-     "markdown": "## 6. Kartkówki i aktywność\n\nKartkówkę wykonujemy na kartce, bez komputera, notatek i korzystania z cudzej pomocy. Za każde z trzech pytań można otrzymać jeden plus albo minus. Plus oznacza poprawną, kompletną odpowiedź zgodną z poleceniem. Maksimum z jednej kartkówki to trzy plusy.\n\nWyniki dwóch kolejnych kartkówek łączą się w ocenę z pracy na lekcji lub aktywności:\n\n| Liczba plusów | Ocena |\n|---:|---:|\n| 6 | 6 |\n| 5 | 5 |\n| 4 | 4 |\n| 3 | 3 |\n| 2 | 2 |\n| 1 lub 0 | 1 |\n\nPo wystawieniu oceny rozpoczyna się zbieranie znaków do następnej pary kartkówek. Pytania odwołują się do zrealizowanego materiału; nie wymagają poznania nowych algorytmów przewidzianych dopiero na bieżącą lekcję."
+     "markdown": "## 6. Kartkówki i aktywność\n\nKartkówkę wykonujemy na kartce, bez komputera, notatek i korzystania z cudzej pomocy. Za każde z trzech pytań uczeń otrzymuje plus (1 pkt) za poprawną, kompletną odpowiedź zgodną z poleceniem albo minus (0 pkt) w pozostałych przypadkach. Z jednej kartkówki można uzyskać maksymalnie 3 pkt.\n\nSumujemy punkty z czterech kolejnych kartkówek i wystawiamy jedną ocenę z pracy na lekcji lub aktywności. Maksymalny wynik to 12 pkt. Obowiązuje następująca skala:\n\n| Suma punktów z czterech kartkówek | Ocena |\n|---:|---:|\n| 0–4 | 1 |\n| 5–6 | 2 |\n| 7–8 | 3 |\n| 9–10 | 4 |\n| 11 | 5 |\n| 12 | 6 |\n\nPo wystawieniu oceny rozpoczynamy zbieranie punktów z kolejnego zestawu czterech kartkówek. Pytania odwołują się do zrealizowanego materiału; nie wymagają poznania nowych algorytmów przewidzianych dopiero na bieżącą lekcję."
     },
     {
      "id": "org-7",
