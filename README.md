@@ -4,6 +4,10 @@ Prowadzący: por. Jakub GRĄTKIEWICZ · jakub.gratkiewicz@wat.edu.pl.
 
 Lekcja 0 opisuje zasady zajęć i zawiera tabelę terminów TAL. Lekcje 1–12 odpowiadają kartom Jupyter: powtórzenie Pythona, samodzielna praca z plikami, algorytmy oraz zadania programistyczne z arkuszy maturalnych 2024 i 2025. Łącznie 120 zadań na lekcji i 24 zadania do samodzielnego wykonania.
 
+Między lekcją 0 a lekcją 1 znajduje się **Konfiguracja środowiska**: ten sam zakres przygotowania co w prezentacji C++, z przykładami dopasowanymi do Pythona i Jupyter. Blok obejmuje instalację Git i GitHub Desktop przez Portal Firmy, PowerShell (`cd`, `ls`, `cat`), klucze SSH i GitHub, klonowanie oraz codzienną pracę z Git. Numeracja lekcji i 12 kart pracy pozostaje bez zmian.
+
+Bezpośredni adres bloku po otwarciu strony to `#/konfiguracja/0`. W spisie lekcji oznaczono go jako **CFG**. Strzałki ←/→ prowadzą kolejno przez lekcję 0, konfigurację i lekcję 1; ↑/↓ zmieniają elementy bloku. Tekst instrukcji znajduje się także w [content/konfiguracja-srodowiska.md](content/konfiguracja-srodowiska.md). Strona pokazuje polecenia, ale ich nie wykonuje.
+
 ## Otwieranie i sterowanie
 
 Otwórz `index.html` w przeglądarce. Strona działa lokalnie i na GitHub Pages. Nie wymaga serwera aplikacji ani bibliotek z CDN; po pobraniu całego repozytorium prezentacja działa bez internetu. Zewnętrzne odnośniki wymagają połączenia.
@@ -33,6 +37,8 @@ Nie dołączaj prywatnych materiałów prowadzącego, zestawów kartkówek, źr�
 ## Aktualizacja i odtwarzanie
 
 Źródła treści są w sąsiednim lokalnym projekcie `karty-pracy-python`, a źródła interfejsu w jego `scripts/presentation`. Nie edytuj ręcznie wygenerowanych kopii w tym repozytorium.
+
+Źródło konfiguracji środowiska zapisano w `karty-pracy-python/scripts/presentation/content/konfiguracja-srodowiska.md`. Każdy nagłówek drugiego poziomu tworzy osobny slajd. Polecenie `--presentation-only` odświeża również ten blok i jego kopię tekstową, bez zmiany kart pracy.
 
 Z katalogu `karty-pracy-python` odtworzysz stronę i paczki z istniejących czystych kart ucznia, nie zmieniając kart ani materiałów prowadzącego:
 

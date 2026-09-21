@@ -203,7 +203,10 @@
                 }
 
                 const rawCode = code.join("\n");
-                const label = language === "python" ? "Python 3" : language === "text" ? "Dane / wynik" : language || "Kod";
+                const label = language === "python" ? "Python 3"
+                    : language === "powershell" ? "PowerShell"
+                    : language === "cmd" ? "Wiersz polecenia · cmd"
+                    : language === "text" ? "Dane / wynik" : language || "Kod";
                 const highlighted = language === "python" ? highlightPython(rawCode) : escapeHtml(rawCode);
 
                 html.push(
@@ -308,6 +311,14 @@
         return horizontal > 0 ? course.lessons[horizontal - 1] : null;
     }
 
+    function lessonRouteKey(lesson) {
+        return lesson.route ?? String(lesson.number);
+    }
+
+    function lessonLabel(lesson) {
+        return lesson.kind === "setup" ? "Konfiguracja środowiska" : `Lekcja ${lesson.number}`;
+    }
+
     function maximumVertical(horizontal) {
         const lesson = lessonAt(horizontal);
         return lesson ? lesson.sections.length : 0;
@@ -337,12 +348,12 @@
     function lessonOverviewMarkup(lesson) {
         const horizontal = course.lessons.indexOf(lesson) + 1;
         const topics = lesson.sections.map((section, index) => ({ ...section, vertical: index + 1 }))
-            .filter(section => ["recall", "theory", "matura", "organization"].includes(section.kind))
+            .filter(section => ["recall", "theory", "matura", "organization", "setup"].includes(section.kind))
             .map(section => `<li><a href="${routeFor(horizontal, section.vertical)}">${inlineMarkdown(section.title)}</a></li>`).join("");
 
         return `
             <div class="slide-inner">
-                <span class="lesson-number">Lekcja ${lesson.number}</span>
+                <span class="lesson-number">${lesson.kind === "setup" ? "Przed lekcją 1" : lessonLabel(lesson)}</span>
                 <h1 class="lesson-title">${escapeHtml(lesson.title)}</h1>
                 <p class="lesson-summary">Użyj strzałki w dół, aby przechodzić przez kolejne elementy tej lekcji.</p>
                 <ol class="topic-cloud">${topics}</ol>
@@ -358,7 +369,7 @@
                     ? "Organizacja pracy"
                 : section.kind === "matura"
                     ? "Oryginalne zadanie maturalne"
-                : `Lekcja ${lesson.number}`;
+                : lessonLabel(lesson);
         const context = section.context
             ? `<p class="slide-context">Do tematu: ${inlineMarkdown(section.context)}</p>`
             : "";
@@ -388,7 +399,7 @@
 
         if (vertical === 0) {
             return {
-                className: lesson.kind === "organization"
+                className: lesson.kind === "organization" || lesson.kind === "setup"
                     ? "slide lesson-overview organization-overview"
                     : "slide lesson-overview",
                 html: lessonOverviewMarkup(lesson)
@@ -400,7 +411,7 @@
             ? " task-slide"
             : section.kind === "homework"
                 ? " homework-slide"
-                : section.kind === "organization"
+                : section.kind === "organization" || section.kind === "setup"
                     ? " organization-slide"
                 : "";
 
@@ -412,7 +423,7 @@
 
     function routeFor(horizontal, vertical) {
         const lesson = lessonAt(horizontal);
-        return lesson ? `#/${lesson.number}/${vertical}` : "#/start";
+        return lesson ? `#/${lessonRouteKey(lesson)}/${vertical}` : "#/start";
     }
 
     function readRoute() {
@@ -424,7 +435,8 @@
 
         const [lessonPart, sectionPart = "0"] = route.split("/");
         const lessonNumber = Number(lessonPart);
-        const horizontal = course.lessons.findIndex(lesson => lesson.number === lessonNumber) + 1;
+        const horizontal = course.lessons.findIndex(lesson => lessonRouteKey(lesson) === lessonPart
+            || (lesson.number !== null && lesson.number === lessonNumber)) + 1;
 
         if (horizontal <= 0) {
             return { horizontal: 0, vertical: 0 };
@@ -493,7 +505,7 @@
             else if (section?.kind === "homework") {
                 button.classList.add("homework-dot");
             }
-            else if (section?.kind === "organization") {
+            else if (section?.kind === "organization" || section?.kind === "setup") {
                 button.classList.add("organization-dot");
             }
 
@@ -521,10 +533,11 @@
             document.title = course.meta.title;
         }
         else {
-            const locationLabel = "Lekcja";
-            elements.headerLocation.textContent = `${locationLabel} ${lesson.number} · ${lesson.title}`;
-            elements.slideCounter.textContent = `Lekcja ${lesson.number} · ${state.vertical + 1}/${maximum + 1}`;
-            document.title = `${locationLabel} ${lesson.number}: ${lesson.title}`;
+            const locationLabel = lessonLabel(lesson);
+            elements.headerLocation.textContent = lesson.kind === "setup"
+                ? lesson.title : `${locationLabel} · ${lesson.title}`;
+            elements.slideCounter.textContent = `${lesson.kind === "setup" ? "Konfiguracja" : locationLabel} · ${state.vertical + 1}/${maximum + 1}`;
+            document.title = lesson.kind === "setup" ? lesson.title : `${locationLabel}: ${lesson.title}`;
         }
 
         updateLessonList();
@@ -606,11 +619,11 @@
         course.lessons.forEach((lesson, index) => {
             const button = document.createElement("button");
             button.type = "button";
-            button.className = lesson.kind === "organization"
+            button.className = lesson.kind === "organization" || lesson.kind === "setup"
                 ? "lesson-link organization-link" : "lesson-link";
             button.dataset.horizontal = String(index + 1);
-            button.dataset.search = `${lesson.number} ${lesson.title}`.toLocaleLowerCase("pl");
-            button.innerHTML = `<span class="lesson-link-number">${String(lesson.number).padStart(2, "0")}</span>`
+            button.dataset.search = `${lesson.number ?? ""} ${lesson.title}`.toLocaleLowerCase("pl");
+            button.innerHTML = `<span class="lesson-link-number">${String(lesson.number ?? "CFG").padStart(2, "0")}</span>`
                 + `<span class="lesson-link-title">${escapeHtml(lesson.title)}</span>`;
             button.addEventListener("click", () => {
                 const direction = index + 1 >= state.horizontal ? "enter-right" : "enter-left";
@@ -819,7 +832,7 @@
     });
     window.addEventListener("afterprint", () => document.querySelector(".print-deck")?.remove());
 
-    elements.courseSummary.textContent = `Lekcja 0: zasady zajęć. Następnie ${course.meta.lessonCount} lekcji: powtórzenie Pythona, ${course.meta.classTaskCount} zadań na lekcji i ${course.meta.homeworkTaskCount} zadania samodzielne. Karty pracy przekazuje prowadzący. Prezentacja nie zawiera rozwiązań ani zestawów kartkówek.`;
+    elements.courseSummary.textContent = `Lekcja 0: zasady zajęć. Przed lekcją 1: Konfiguracja środowiska — Windows, PowerShell, Git i SSH. Następnie ${course.meta.lessonCount} lekcji: powtórzenie Pythona, ${course.meta.classTaskCount} zadań na lekcji i ${course.meta.homeworkTaskCount} zadania samodzielne. Karty pracy przekazuje prowadzący. Prezentacja nie zawiera rozwiązań ani zestawów kartkówek.`;
     buildLessonList();
     Object.assign(state, readRoute());
     render();
