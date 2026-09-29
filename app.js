@@ -316,7 +316,7 @@
     }
 
     function lessonLabel(lesson) {
-        return lesson.kind === "setup" ? "Konfiguracja środowiska" : `Lekcja ${lesson.number}`;
+        return lesson.kind === "setup" ? (lesson.shortTitle ?? lesson.title) : `Lekcja ${lesson.number}`;
     }
 
     function maximumVertical(horizontal) {
@@ -353,7 +353,7 @@
 
         return `
             <div class="slide-inner">
-                <span class="lesson-number">${lesson.kind === "setup" ? "Przed lekcją 1" : lessonLabel(lesson)}</span>
+                <span class="lesson-number">${escapeHtml(lesson.kind === "setup" ? (lesson.badge ?? "Przed lekcją 1") : lessonLabel(lesson))}</span>
                 <h1 class="lesson-title">${escapeHtml(lesson.title)}</h1>
                 <p class="lesson-summary">Użyj strzałki w dół, aby przechodzić przez kolejne elementy tej lekcji.</p>
                 <ol class="topic-cloud">${topics}</ol>
@@ -379,7 +379,7 @@
         return `
             <div class="slide-inner">
                 <header class="slide-heading">
-                    <span class="slide-type">${typeLabel}</span>
+                    <span class="slide-type">${escapeHtml(typeLabel)}</span>
                     <h1>${inlineMarkdown(section.title)}</h1>
                     ${context}
                 </header>
@@ -536,7 +536,7 @@
             const locationLabel = lessonLabel(lesson);
             elements.headerLocation.textContent = lesson.kind === "setup"
                 ? lesson.title : `${locationLabel} · ${lesson.title}`;
-            elements.slideCounter.textContent = `${lesson.kind === "setup" ? "Konfiguracja" : locationLabel} · ${state.vertical + 1}/${maximum + 1}`;
+            elements.slideCounter.textContent = `${lesson.counterLabel ?? locationLabel} · ${state.vertical + 1}/${maximum + 1}`;
             document.title = lesson.kind === "setup" ? lesson.title : `${locationLabel}: ${lesson.title}`;
         }
 
@@ -623,7 +623,7 @@
                 ? "lesson-link organization-link" : "lesson-link";
             button.dataset.horizontal = String(index + 1);
             button.dataset.search = `${lesson.number ?? ""} ${lesson.title}`.toLocaleLowerCase("pl");
-            button.innerHTML = `<span class="lesson-link-number">${String(lesson.number ?? "CFG").padStart(2, "0")}</span>`
+            button.innerHTML = `<span class="lesson-link-number">${escapeHtml(String(lesson.number ?? lesson.menuLabel ?? "CFG").padStart(2, "0"))}</span>`
                 + `<span class="lesson-link-title">${escapeHtml(lesson.title)}</span>`;
             button.addEventListener("click", () => {
                 const direction = index + 1 >= state.horizontal ? "enter-right" : "enter-left";
@@ -832,7 +832,7 @@
     });
     window.addEventListener("afterprint", () => document.querySelector(".print-deck")?.remove());
 
-    elements.courseSummary.textContent = `Lekcja 0: zasady zajęć. Przed lekcją 1: Konfiguracja środowiska — Windows, PowerShell, Git i SSH. Następnie ${course.meta.lessonCount} lekcji: powtórzenie Pythona, ${course.meta.classTaskCount} zadań na lekcji i ${course.meta.homeworkTaskCount} zadania samodzielne. Karty pracy przekazuje prowadzący. Prezentacja nie zawiera rozwiązań ani zestawów kartkówek.`;
+    elements.courseSummary.textContent = `Lekcja 0: zasady zajęć. Bloki dodatkowe: Konfiguracja środowiska oraz Aktualizacja zadań w repozytorium — synchronizacja własnego forka z WDI-WDP. Następnie ${course.meta.lessonCount} lekcji: powtórzenie Pythona, ${course.meta.classTaskCount} zadań na lekcji i ${course.meta.homeworkTaskCount} zadania samodzielne. Karty pracy przekazuje prowadzący. Prezentacja nie zawiera rozwiązań ani zestawów kartkówek.`;
     buildLessonList();
     Object.assign(state, readRoute());
     render();

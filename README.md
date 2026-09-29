@@ -6,7 +6,13 @@ Lekcja 0 opisuje zasady zajęć i zawiera tabelę terminów TAL. Lekcje 1–12 o
 
 Między lekcją 0 a lekcją 1 znajduje się **Konfiguracja środowiska**: ten sam zakres przygotowania co w prezentacji C++, z przykładami dopasowanymi do Pythona i Jupyter. Blok obejmuje instalację Git i GitHub Desktop przez Portal Firmy, PowerShell (`cd`, `ls`, `cat`), klucze SSH i GitHub, klonowanie oraz codzienną pracę z Git. Numeracja lekcji i 12 kart pracy pozostaje bez zmian.
 
-Bezpośredni adres bloku po otwarciu strony to `#/konfiguracja/0`. W spisie lekcji oznaczono go jako **CFG**. Strzałki ←/→ prowadzą kolejno przez lekcję 0, konfigurację i lekcję 1; ↑/↓ zmieniają elementy bloku. Tekst instrukcji znajduje się także w [content/konfiguracja-srodowiska.md](content/konfiguracja-srodowiska.md). Strona pokazuje polecenia, ale ich nie wykonuje.
+Bezpośredni adres bloku po otwarciu strony to `#/konfiguracja/0`. W spisie lekcji oznaczono go jako **CFG**. Tekst instrukcji znajduje się także w [content/konfiguracja-srodowiska.md](content/konfiguracja-srodowiska.md). Strona pokazuje polecenia, ale ich nie wykonuje.
+
+Po konfiguracji znajduje się rozdział **Aktualizacja zadań w repozytorium**, oznaczony **GIT**, pod adresem `#/aktualizacja-zadan/0`. Opisuje zabezpieczenie rozwiązań, synchronizację własnego forka z [WDI-WDP/tal-repo-na-zadania](https://github.com/WDI-WDP/tal-repo-na-zadania) przez **Sync fork** albo `fetch` i `merge`, aktualizację kopii na komputerze oraz konflikty w notatnikach. Treść: [content/aktualizacja-zadan.md](content/aktualizacja-zadan.md).
+
+Strzałki ←/→ prowadzą kolejno przez lekcję 0, konfigurację, aktualizację zadań i lekcję 1; ↑/↓ zmieniają elementy bloku. Dodatkowe rozdziały nie zmieniają numeracji kart.
+
+Ćwiczenia w lekcjach 02–12 mają układ **Dane / Do wykonania / Wynik / Przykład wyjaśniający**. Opisy objaśniają sytuację, znaczenie danych i postać odpowiedzi, a małe przykłady pomagają odczytać wymagania. Prezentacja zawiera te same polecenia co karty, bez kodu rozwiązań i podpowiedzi prowadzących przez implementację. Oryginalne treści CKE pozostają wydzielone i niezmienione.
 
 ## Otwieranie i sterowanie
 
@@ -38,7 +44,7 @@ Nie dołączaj prywatnych materiałów prowadzącego, zestawów kartkówek, źr�
 
 Źródła treści są w sąsiednim lokalnym projekcie `karty-pracy-python`, a źródła interfejsu w jego `scripts/presentation`. Nie edytuj ręcznie wygenerowanych kopii w tym repozytorium.
 
-Źródło konfiguracji środowiska zapisano w `karty-pracy-python/scripts/presentation/content/konfiguracja-srodowiska.md`. Każdy nagłówek drugiego poziomu tworzy osobny slajd. Polecenie `--presentation-only` odświeża również ten blok i jego kopię tekstową, bez zmiany kart pracy.
+Źródła dodatkowych bloków zapisano w `karty-pracy-python/scripts/presentation/content/konfiguracja-srodowiska.md` oraz `aktualizacja-zadan.md` w tym samym katalogu. Każdy nagłówek drugiego poziomu tworzy osobny slajd. Polecenie `--presentation-only` odświeża również te bloki i ich kopie tekstowe, bez zmiany kart pracy.
 
 Z katalogu `karty-pracy-python` odtworzysz stronę i paczki z istniejących czystych kart ucznia, nie zmieniając kart ani materiałów prowadzącego:
 

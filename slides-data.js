@@ -6,9 +6,9 @@ window.PYTHON_COURSE = {
   "teacher": "por. Jakub GRĄTKIEWICZ",
   "email": "jakub.gratkiewicz@wat.edu.pl",
   "lessonCount": 12,
-  "sectionCount": 299,
-  "setupCount": 1,
-  "setupSectionCount": 17,
+  "sectionCount": 309,
+  "setupCount": 2,
+  "setupSectionCount": 27,
   "taskCount": 144,
   "classTaskCount": 120,
   "homeworkTaskCount": 24
@@ -85,6 +85,10 @@ window.PYTHON_COURSE = {
    "id": "konfiguracja-srodowiska",
    "route": "konfiguracja",
    "kind": "setup",
+   "shortTitle": "Konfiguracja środowiska",
+   "counterLabel": "Konfiguracja",
+   "menuLabel": "CFG",
+   "badge": "Przed lekcją 1",
    "title": "Konfiguracja środowiska",
    "sourceFile": "content/konfiguracja-srodowiska.md",
    "assetBase": "",
@@ -208,6 +212,92 @@ window.PYTHON_COURSE = {
      "kind": "setup",
      "context": "",
      "markdown": "- **`git` nie jest rozpoznawany:** sprawdź zakończenie instalacji Git w Portalu Firmy i uruchom nowe okno PowerShell.\n- **`not a git repository`:** sprawdź lokalizację przez `pwd`; wejdź przez `cd` do właściwego sklonowanego repozytorium.\n- **`Permission denied (publickey)`:** sprawdź, czy dodałeś plik `.pub` do właściwego konta GitHub i czy powitanie po `ssh -T git@github.com` zawiera Twój login. Poproś prowadzącego o pomoc; nie wysyłaj mu klucza prywatnego.\n- **`nothing to commit`:** sprawdź, czy zapisałeś plik i przygotowałeś jego zmianę przez `git add .`.\n- **Odrzucony `push` lub konflikt przy `pull`:** nie używaj `--force` i nie usuwaj repozytorium. Zatrzymaj się, sprawdź komunikat oraz `git status` i poproś o pomoc w połączeniu zmian.\n\nPrzed następną lekcją potrafisz otworzyć PowerShell, wskazać repozytorium, wyświetlić plik oraz przejść pełny cykl od zmiany pliku do jej udostępnienia na GitHub."
+    }
+   ]
+  },
+  {
+   "number": null,
+   "id": "aktualizacja-zadan",
+   "route": "aktualizacja-zadan",
+   "kind": "setup",
+   "shortTitle": "Aktualizacja zadań w repozytorium",
+   "counterLabel": "Aktualizacja",
+   "menuLabel": "GIT",
+   "badge": "Przed kolejnymi lekcjami",
+   "title": "Aktualizacja zadań w repozytorium",
+   "sourceFile": "content/aktualizacja-zadan.md",
+   "assetBase": "",
+   "checksum": "944953f3a91ae3bad58354b5b889bde4d2b6966e9a258d26def75042683af4f4",
+   "sections": [
+    {
+     "id": "setup-01",
+     "title": "Oryginał, własny fork i kopia na komputerze",
+     "kind": "setup",
+     "context": "",
+     "markdown": "Prowadzący publikuje nowe lub poprawione zadania w [WDI-WDP/tal-repo-na-zadania](https://github.com/WDI-WDP/tal-repo-na-zadania). Repozytorium korzysta z gałęzi **main**.\n\n| Miejsce | Co zawiera? | Nazwa w poleceniach Git |\n|---|---|---|\n| Repozytorium WDI-WDP | Oryginalne materiały prowadzącego | `upstream`, po dodaniu tego adresu |\n| Twój fork na GitHub | Materiały i Twoje zapisane rozwiązania | `origin`, jeśli sklonowałeś własny fork |\n| Folder na komputerze | Pliki, które otwierasz i zmieniasz w Jupyter | Lokalna kopia repozytorium |\n\nAktualizacja ma **dołączyć zmiany prowadzącego do Twojej pracy**. Nie wymaga tworzenia nowego forka ani ponownego klonowania.\n\nSamo `git pull` z własnego `origin` nie pobierze nowych zadań z WDI-WDP, jeśli Twój fork nie zawiera jeszcze tych zmian. Potrzebne jest także połączenie historii z oryginałem, czyli **merge**."
+    },
+    {
+     "id": "setup-02",
+     "title": "Zabezpieczenie własnych rozwiązań",
+     "kind": "setup",
+     "context": "",
+     "markdown": "Przed synchronizacją zapisz otwarte notatniki i zamknij je w Jupyter, aby otwarty edytor nie zapisał później starej wersji. Ważne rozwiązania możesz dodatkowo skopiować do folderu poza repozytorium.\n\nW PowerShell przejdź do istniejącej lokalnej kopii swojego forka. Przykładowa ścieżka:\n\n```powershell\ncd C:\\Repo\\tal-repo-na-zadania\ngit remote -v\ngit branch --show-current\ngit status\n```\n\nSprawdź, czy **origin prowadzi do Twojego konta**, np. `git@github.com:TWOJ-LOGIN/tal-repo-na-zadania.git`, a nie do WDI-WDP. Jeśli sklonowałeś oryginał lub pracujesz na innej gałęzi niż `main`, ustal z prowadzącym, którą kopię i gałąź należy aktualizować.\n\nJeżeli masz własne zmiany, przejrzyj listę, a następnie zapisz je w commicie i wyślij do swojego forka:\n\n```powershell\ngit add .\ngit commit -m \"Zapis rozwiazan przed aktualizacja zadan\"\ngit push origin main\ngit status\n```\n\nTen przykład zakłada pracę na `main`. Nie dodawaj haseł, kluczy ani przypadkowych plików. Jeśli nie ma zmian, pomiń `add` i `commit`. Przed scalaniem stan powinien być czysty, a własne commity zapisane na GitHub. Przy błędzie zatrzymaj się, zamiast wykonywać kolejne polecenia."
+    },
+    {
+     "id": "setup-03",
+     "title": "Wariant A: Sync fork na GitHub",
+     "kind": "setup",
+     "context": "",
+     "markdown": "1. Zaloguj się na GitHub i otwórz **swój fork**, czyli `TWOJ-LOGIN/tal-repo-na-zadania`. Sprawdź właściciela nad listą plików.\n2. Wybierz gałąź **main**. Informacja pod nazwą repozytorium powinna wskazywać, że fork pochodzi z WDI-WDP.\n3. Kliknij **Sync fork** nad listą plików.\n4. Przeczytaj informację o zmianach i wybierz **Update branch**.\n5. Po zakończeniu sprawdź nowe zadania lub ostatnie commity w swoim forku.\n\nKomunikat, że gałąź jest aktualna, oznacza, że nie ma nowych zmian do pobrania. Nie trzeba tworzyć pustego commita.\n\n**Nie wybieraj opcji odrzucania własnych commitów**, np. **Discard commits**, aby wymusić zgodność. Jeśli GitHub zgłasza konflikt lub proponuje pull request do jego rozwiązania, przerwij prostą synchronizację i skorzystaj z pomocy prowadzącego.\n\nTen krok aktualizuje fork **na GitHub**, ale jeszcze nie folder na komputerze.\n\nPomoc: [synchronizacja forka w przeglądarce](https://docs.github.com/en/pull-requests/how-tos/work-with-forks/syncing-a-fork)."
+    },
+    {
+     "id": "setup-04",
+     "title": "Wariant A: pobranie zmian na komputer",
+     "kind": "setup",
+     "context": "",
+     "markdown": "Po udanym **Sync fork → Update branch**, w lokalnym folderze własnego forka wykonaj:\n\n```powershell\ngit status\ngit switch main\ngit pull --ff-only origin main\ngit status\n```\n\nRozpocznij przy czystym stanie pracy. `git switch main` wybiera gałąź, którą aktualizujesz. `git pull --ff-only origin main` pobiera jej aktualną wersję z Twojego forka i dopuszcza tylko aktualizację bez tworzenia dodatkowego scalenia lokalnych, rozbieżnych historii.\n\nJeśli polecenie zgłosi, że **fast-forward nie jest możliwy**, lokalna gałąź i fork mają rozbieżne commity. Nie oznacza to, że należy skasować własne pliki. Pokaż prowadzącemu komunikat i `git status`.\n\nOtwórz kartę ponownie z dysku w Jupyter. Sprawdź, czy widzisz nowe polecenia i czy pozostały Twoje rozwiązania. Samo odświeżenie strony forka nie zmienia lokalnego notatnika.\n\nPomoc: [git pull i opcja ff-only](https://git-scm.com/docs/git-pull)."
+    },
+    {
+     "id": "setup-05",
+     "title": "Wariant B: jednorazowe dodanie upstream",
+     "kind": "setup",
+     "context": "",
+     "markdown": "Ten wariant wykonuje synchronizację poleceniami Git. Jest alternatywą dla przycisku **Sync fork**, nie obowiązkowym drugim sposobem aktualizacji.\n\nW lokalnej kopii własnego forka sprawdź adresy:\n\n```powershell\ngit remote -v\n```\n\nJeśli nie ma nazwy `upstream`, dodaj oryginalne repozytorium prowadzącego:\n\n```powershell\ngit remote add upstream https://github.com/WDI-WDP/tal-repo-na-zadania.git\ngit remote -v\n```\n\n**origin** ma nadal wskazywać Twój fork, a **upstream** repozytorium WDI-WDP. Dodanie adresu nie kopiuje plików ani nie wykonuje scalenia.\n\nTę konfigurację robisz raz dla danej lokalnej kopii. Jeśli `upstream` już istnieje, sprawdź adres zamiast dodawać go ponownie. Przy błędnym adresie skonsultuj zmianę; nie zastępuj przypadkowo `origin` oryginalnym repozytorium.\n\nPomoc: [konfiguracja upstream dla forka](https://docs.github.com/en/pull-requests/how-tos/work-with-forks/configuring-a-remote-repository-for-a-fork), [git remote](https://git-scm.com/docs/git-remote)."
+    },
+    {
+     "id": "setup-06",
+     "title": "Wariant B: pobranie nowych commitów",
+     "kind": "setup",
+     "context": "",
+     "markdown": "Zapisz własną pracę zgodnie z wcześniejszym slajdem. Przy czystym stanie i prawidłowych adresach wykonaj:\n\n```powershell\ngit switch main\ngit pull --ff-only origin main\ngit fetch upstream\ngit log --oneline HEAD..upstream/main\n```\n\nPo każdym poleceniu sprawdź wynik. Jeśli pojawi się błąd, nie przechodź dalej automatycznie.\n\n`git fetch upstream` pobiera informacje i commity z repozytorium prowadzącego. **Nie zmienia jeszcze Twoich plików roboczych.** Lokalna nazwa `upstream/main` wskazuje pobraną wersję gałęzi prowadzącego.\n\nOstatnie polecenie pokazuje commity z `upstream/main`, których nie ma w bieżącej gałęzi. Przejrzyj ich opisy. Brak wpisów oznacza, że te zmiany są już uwzględnione.\n\nPomoc: [pobieranie commitów przez git fetch](https://git-scm.com/docs/git-fetch)."
+    },
+    {
+     "id": "setup-07",
+     "title": "Wariant B: scalenie i wysłanie do forka",
+     "kind": "setup",
+     "context": "",
+     "markdown": "Jeśli pobieranie zakończyło się poprawnie, dołącz zmiany do lokalnej gałęzi `main`:\n\n```powershell\ngit merge --no-edit upstream/main\ngit status\n```\n\n`merge` łączy zmiany prowadzącego z Twoją historią. Może wykonać prostą aktualizację **fast-forward** albo utworzyć commit scalający. `--no-edit` akceptuje domyślny opis tego commita. Ta opcja **nie rozwiązuje konfliktów** i nie wybiera za Ciebie wersji plików.\n\nJeśli scalenie zakończyło się poprawnie, przejrzyj zaktualizowane karty. Dopiero wtedy wyślij wynik do własnego forka:\n\n```powershell\ngit push origin main\ngit status\n```\n\nOtwórz swój fork na GitHub i sprawdź pliki oraz ostatni commit. **Nie wykonuj `git push upstream main`**: rozwiązania i połączone zmiany wysyłasz do swojego repozytorium, nie do repozytorium prowadzącego.\n\nPomoc: [scalanie zmian przez git merge](https://git-scm.com/docs/git-merge)."
+    },
+    {
+     "id": "setup-08",
+     "title": "Konflikt w karcie Jupyter",
+     "kind": "setup",
+     "context": "",
+     "markdown": "Konflikt może wystąpić, gdy prowadzący zmieni treść karty, a Ty uzupełnisz ten sam notatnik. Git nie zawsze potrafi automatycznie połączyć obie wersje pliku `.ipynb`.\n\n1. Zatrzymaj się po komunikacie **CONFLICT**. Nie wykonuj `push` i nie uruchamiaj nierozwiązanego notatnika.\n2. Sprawdź `git status` i pokaż prowadzącemu nazwy konfliktujących plików.\n3. Podczas łączenia trzeba zachować nowe polecenia **i** Twój kod. Nie wybieraj bez sprawdzenia całej wersji „naszej” lub „ich”. Plik `.ipynb` ma strukturę JSON, dlatego przypadkowe usuwanie fragmentów może go uszkodzić.\n\nJeśli chcesz wycofać niedokończone scalenie rozpoczęte przy czystym stanie, a nie wprowadziłeś jeszcze poprawek rozwiązywania konfliktu:\n\n```powershell\ngit merge --abort\ngit status\n```\n\nJeżeli zacząłeś już ręcznie poprawiać konflikt, najpierw zachowaj tę pracę i poproś o pomoc. `--abort` wycofuje bieżącą próbę scalenia, nie jest sposobem na usunięcie pojedynczego błędu w kodzie.\n\nNie używaj `reset --hard`, wymuszonego `push` ani usuwania repozytorium jako sposobu aktualizacji. Nie musisz tracić rozwiązań, aby otrzymać nowe zadania.\n\nPomoc: [konflikty i przerwanie scalenia](https://git-scm.com/docs/git-merge)."
+    },
+    {
+     "id": "setup-09",
+     "title": "Podsumowanie dwóch sposobów aktualizacji",
+     "kind": "setup",
+     "context": "",
+     "markdown": "| Etap | Wariant A: GitHub i PowerShell | Wariant B: PowerShell |\n|---|---|---|\n| Własna praca | Zapisane notatniki, commit, push do własnego forka | Tak samo |\n| Zmiany prowadzącego | Na swoim forku: **Sync fork → Update branch** | `git fetch upstream`, potem `git merge --no-edit upstream/main` |\n| Kopia lokalna | `git pull --ff-only origin main` | Aktualizuje się podczas udanego merge |\n| Kopia na GitHub | Aktualizuje się podczas Sync fork | `git push origin main` po udanym merge |\n\nW obu wariantach sprawdzasz stan przed rozpoczęciem i po zakończeniu. Wariant B wymaga wcześniejszego dodania `upstream` i uzgodnienia lokalnej gałęzi z `origin/main`.\n\n**Nie klonuj repozytorium ponownie przed każdą lekcją.** Aktualizuj istniejącą kopię, otwórz kartę z dysku i sprawdź, czy masz aktualne zadania oraz dotychczasowe rozwiązania."
+    },
+    {
+     "id": "setup-10",
+     "title": "Zadanie: aktualna karta we własnym forku",
+     "kind": "setup",
+     "context": "",
+     "markdown": "Zaktualizuj swojego forka na podstawie [repozytorium WDI-WDP](https://github.com/WDI-WDP/tal-repo-na-zadania) jednym z opisanych sposobów.\n\n- Pokaż, że `origin` wskazuje Twoje konto, a nie repozytorium prowadzącego.\n- Znajdź aktualną kartę w swoim forku na GitHub oraz w folderze na komputerze.\n- Otwórz ją w Jupyter i upewnij się, że Twoje dotychczasowe rozwiązania pozostały dostępne.\n- Wyjaśnij, dlaczego samo `fetch` nie aktualizuje otwartego notatnika i czym różni się pobranie commitów od ich scalenia.\n\nJeżeli nie ma nowych zmian, pokaż informację o aktualności i `git status`. Nie twórz sztucznej zmiany tylko po to, by powstał commit. W razie konfliktu pokaż komunikat prowadzącemu zamiast wymuszać aktualizację."
     }
    ]
   },
@@ -392,7 +482,7 @@ window.PYTHON_COURSE = {
    "notebook": "lekcje/02_kolekcje_napisy_i_funkcje/karta_pracy.ipynb",
    "download": "pobierz/02_kolekcje_napisy_i_funkcje.zip",
    "assetBase": "lekcje/02_kolekcje_napisy_i_funkcje/",
-   "checksum": "e76af0620a2994402a520cdba57a0b014d4bce90bf2062063e78834a6fdc32b0",
+   "checksum": "f193ba08e2bec6fb7c9db570523a38d2b3dd8388714770a215d8d8a07c5fd0ca",
    "sections": [
     {
      "id": "intro",
@@ -420,7 +510,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -434,14 +524,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 1: Indeksy i wycinki",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: Indeksy i wycinki\n\nDla s='matura' utwórz krotkę wycinki: pierwszy znak, ostatni znak, znaki o indeksach 1–3 i odwrócony napis.\n\n**Wskazówka:** Koniec wycinka jest wyłączony."
+     "markdown": "## Zadanie 1: Indeksy i wycinki\n\n**Dane:** Napis `s = \"matura\"`. Indeksy znaków liczymy od 0.\n\n**Do wykonania:** Za pomocą indeksowania i wycinków odczytaj pierwszy znak, ostatni znak, znaki o indeksach od 1 do 3 włącznie oraz napis zapisany od końca. Nie wpisuj gotowych fragmentów ręcznie.\n\n**Wynik:** Zapisz cztery uzyskane napisy w jednej krotce o nazwie `wycinki`. Kolejność elementów krotki ma odpowiadać kolejności próśb w poleceniu. Wyświetl ją i wyjaśnij, jakie znaki obejmuje Twój wycinek.\n\n**Przykład wyjaśniający:** W napisie `\"komputer\"` znak o indeksie 0 to `\"k\"`, a znaki o indeksach 1, 2 i 3 tworzą `\"omp\"`. Indeks oznacza pozycję znaku, nie liczbę znaków do pobrania. W zadaniu wykonaj wszystkie cztery odczyty dla `\"matura\"`."
     },
     {
      "id": "s006",
      "title": "Zadanie 2: Kopia danych",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: Kopia danych\n\nUtwórz lista_a=[3,1,3] i jej kopię lista_b. Dopisz 9 tylko do lista_b. Zapisz, co stałoby się po lista_b=lista_a.\n\n**Wskazówka:** Użyj copy, a nie samego przypisania."
+     "markdown": "## Zadanie 2: Kopia danych\n\n**Dane:** Lista `lista_a = [3, 1, 3]`.\n\n**Do wykonania:** Przygotuj niezależną listę `lista_b` o tej samej zawartości. Dodaj do niej liczbę 9 tak, aby `lista_a` pozostała niezmieniona.\n\n**Wynik:** Wyświetl obie listy. W krótkiej odpowiedzi wyjaśnij, czy samo `lista_b = lista_a` spełniłoby wymaganie i dlaczego.\n\n**Przykład wyjaśniający:** Gdy oryginał zawiera `[4, 6]`, dopisanie 9 do jego niezależnej kopii daje `[4, 6, 9]`, ale oryginał nadal zawiera `[4, 6]`. To właśnie znaczy tutaj „niezależna lista”: zmiana jednej nie może zmienić drugiej."
     },
     {
      "id": "s007",
@@ -455,28 +545,28 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 3: Filtr jako funkcja",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: Filtr jako funkcja\n\nNapisz dodatnie(liczby), zwracającą nową listę elementów >0 w kolejności wejścia. Nie zmieniaj argumentu.\n\n**Wskazówka:** Potrzebujesz listy wynikowej i return po pętli."
+     "markdown": "## Zadanie 3: Filtr jako funkcja\n\n**Dane:** Lista liczb całkowitych, która może być pusta i może zawierać powtórzenia.\n\n**Do wykonania:** Napisz funkcję `dodatnie(liczby)` wybierającą wyłącznie wartości większe od zera. Zachowaj ich kolejność i wszystkie wystąpienia. Nie zmieniaj przekazanej listy.\n\n**Wynik:** Funkcja ma zwrócić nową listę dodatnich liczb, a nie ich sumę ani liczbę wystąpień. Wyświetl zwróconą listę dla `[-2, 0, 5, 5]` oraz pustej listy.\n\n**Przykład wyjaśniający:** Dla `[4, -1, 4, 0, 2]` wynikiem jest `[4, 4, 2]`. Obie czwórki pozostają w wyniku, zero nie jest dodatnie, a dwójka nadal znajduje się za czwórkami."
     },
     {
      "id": "s009",
      "title": "Zadanie 4: Wiadomość z przesuniętym alfabetem",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: Wiadomość z przesuniętym alfabetem\n\nNapisz szyfruj(wiadomosc,k), przesuwającą każdą wielką literę A–Z o k pozycji w alfabecie. Po Z wracamy do A. Spacje pozostaw bez zmian; innych znaków w danych nie ma. Załóż 0<=k<=25. Wyświetl zaszyfrowaną wiadomość \"TAJNA BAZA\" dla k=3 i wyjaśnij, co stanie się z literą Z.\n\n**Wskazówka:** Metoda alfabet.index(znak) podaje pozycję litery; reszta z dzielenia pozwala zawijać alfabet."
+     "markdown": "## Zadanie 4: Wiadomość z przesuniętym alfabetem\n\n**Dane:** Wiadomość z wielkich liter A–Z i spacji oraz całkowite przesunięcie `k` od 0 do 25.\n\n**Do wykonania:** Napisz funkcję `szyfruj(wiadomosc, k)`. Każda litera ma zostać zastąpiona literą oddaloną o `k` pozycji. Alfabet jest cykliczny: po Z następuje A. Spacje pozostają na swoich miejscach.\n\n**Wynik:** Funkcja zwraca zaszyfrowany napis o takiej samej długości jak wiadomość. Wyświetl wynik dla `\"TAJNA BAZA\"` i `k = 3`. Wyjaśnij na własnym przykładzie zachowanie na końcu alfabetu.\n\n**Przykład wyjaśniający:** Przesunięcie o 2 zmienia A na C, B na D, Y na A, a Z na B. Wiadomość `\"AZ BY\"` zmieni się więc w `\"CB DA\"`. Przesuwamy litery w alfabecie, a nie ich miejsca w wiadomości."
     },
     {
      "id": "s010",
-     "title": "Zadanie 5: Palindrom dwoma wskaźnikami",
+     "title": "Zadanie 5: Rozpoznawanie palindromu",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: Palindrom dwoma wskaźnikami\n\nNapisz palindrom(s) bez odwracania napisu. Porównuj znaki symetryczne. Pusty napis i pojedynczy znak uznaj za palindromy.\n\n**Wskazówka:** Dla i=0 drugim indeksem jest len(s)-1."
+     "markdown": "## Zadanie 5: Rozpoznawanie palindromu\n\n**Dane:** Dowolny napis `s`. Wielkość liter i wszystkie znaki mają znaczenie.\n\n**Do wykonania:** Napisz funkcję `palindrom(s)`, która rozstrzyga, czy napis czytany w obu kierunkach jest taki sam. Nie odwracaj napisu ani nie twórz jego odwróconej kopii. Pusty napis i pojedynczy znak uznaj za palindromy.\n\n**Wynik:** Funkcja zwraca `True`, jeśli napis jest palindromem, i `False` w przeciwnym przypadku. Wywołaj ją dla `\"kajak\"`, `\"ab\"`, `\"x\"` i `\"\"`. Uzasadnij jedną odpowiedź.\n\n**Przykład wyjaśniający:** `\"anna\"` jest palindromem, ponieważ czytane od lewej i od prawej daje ten sam napis. `\"Anna\"` nim nie jest: wielka litera A i mała litera a to różne znaki. Nie usuwaj spacji ani nie poprawiaj wielkości liter."
     },
     {
      "id": "s011",
      "title": "Zadanie 6: Wynik i numer wiersza",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: Wynik i numer wiersza\n\nNapisz pierwsze_max(liczby), zwracającą parę (maksimum, numer od 1). Przy remisie zachowaj pierwszy wiersz; dla pustej listy zwróć None.\n\n**Wskazówka:** Przy równości nie aktualizuj zapamiętanego indeksu."
+     "markdown": "## Zadanie 6: Wynik i numer wiersza\n\n**Dane:** Lista liczb. Pozycje w wyniku numerujemy od 1, chociaż indeksy Pythona zaczynają się od 0.\n\n**Do wykonania:** Napisz funkcję `pierwsze_max(liczby)`, która znajduje największą wartość i numer jej pierwszego wystąpienia. Lista może być pusta.\n\n**Wynik:** Zwróć parę `(maksimum, numer)`: największą liczbę oraz numer miejsca, na którym pojawia się ona po raz pierwszy. Dla pustej listy zwróć `None`. Zaprezentuj działanie dla `[3, 8, 8, 2]`.\n\n**Przykład wyjaśniający:** Dla `[1, 9, 4, 9]` odpowiedź to `(9, 2)`. Największą wartością jest 9; jej pierwsze wystąpienie jest drugim elementem listy. Późniejsza dziewiątka nie zmienia odpowiedzi. Numer 2 odpowiada indeksowi 1 w Pythonie."
     },
     {
      "id": "s012",
@@ -490,42 +580,42 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 7: Histogram znaków",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Histogram znaków\n\nNapisz histogram(s), zwracającą słownik liczności znaków bez Counter. Wielkość liter ma znaczenie.\n\n**Wskazówka:** Brakujący znak ma dotychczasową liczność zero."
+     "markdown": "## Zadanie 7: Histogram znaków\n\n**Dane:** Napis, w którym mogą powtarzać się litery i inne znaki. Wielkie i małe litery traktujemy oddzielnie.\n\n**Do wykonania:** Napisz funkcję `histogram(s)` zliczającą wystąpienia każdego znaku. Nie korzystaj z `Counter`.\n\n**Wynik:** Zwróć słownik, w którym każdy napotkany znak ma przypisaną liczbę swoich wystąpień. Pokaż wyniki dla `\"o+o*o\"`, `\"AaA\"` i pustego napisu.\n\n**Przykład wyjaśniający:** Dla `\"aba!\"` wynik to `{\"a\": 2, \"b\": 1, \"!\": 1}`. Znak a występuje dwa razy, a pozostałe znaki po jednym. To zestawienie liczności, nie lista kolejnych znaków. Dla pustego napisu zwróć pusty słownik."
     },
     {
      "id": "s014",
      "title": "Zadanie 8: Punkty w grze słownej",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: Punkty w grze słownej\n\nW naszej grze litery A,E,I,O,U dają po 1 punkcie, pozostałe litery A–Z po 2. Słowo o długości co najmniej 6 dostaje dodatkowo 5 punktów. Napisz punkty_slowa(slowo) i wyświetl punkty słów KOT, PYTHON i ALA. Załóż, że słowa zawierają tylko wielkie litery A–Z. Powtórzenia liter liczą się osobno.\n\n**Wskazówka:** Dodawaj punkty za każde wystąpienie litery, a premię dopiero po przejściu całego słowa."
+     "markdown": "## Zadanie 8: Punkty w grze słownej\n\n**Dane:** Słowo z wielkich liter A–Z. Litery A, E, I, O, U są warte po 1 punkcie, pozostałe po 2. Słowo długości co najmniej 6 otrzymuje jednorazową premię 5 punktów.\n\n**Do wykonania:** Napisz funkcję `punkty_slowa(slowo)` obliczającą punktację w grze słownej. Każde wystąpienie litery liczy się osobno.\n\n**Wynik:** Zwróć jedną liczbę — łączną punktację słowa. Wyświetl słowa `KOT`, `PYTHON`, `ALA` wraz z ich punktacją.\n\n**Przykład wyjaśniający:** `DOM` jest wart 5 punktów: D daje 2, O daje 1, M daje 2. Za `AAAAAA` przyznajemy 6 punktów za litery i jedną premię 5 punktów, czyli 11. Premia dotyczy całego słowa, a nie każdej jego litery."
     },
     {
      "id": "s015",
      "title": "Zadanie 9: Usuwanie duplikatów z zachowaniem kolejności",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 9: Usuwanie duplikatów z zachowaniem kolejności\n\nNapisz unikalne(dane). [4,2,4,7,2] ma dać [4,2,7]. Użyj listy wynikowej i zbioru wartości już napotkanych.\n\n**Wskazówka:** Sam set nie przechowuje kolejności potrzebnej do tego zadania."
+     "markdown": "## Zadanie 9: Usuwanie duplikatów z zachowaniem kolejności\n\n**Dane:** Lista liczb, w której mogą wystąpić duplikaty.\n\n**Do wykonania:** Napisz funkcję `unikalne(dane)`, która pozostawia tylko pierwsze wystąpienie każdej wartości. Zachowaj kolejność tych wystąpień. Sam zdecyduj, jakich kolekcji potrzebujesz.\n\n**Wynik:** Zwróć nową listę, w której każda wartość występuje tylko raz. Dla `[4, 2, 4, 7, 2]` kolejność wyniku to `[4, 2, 7]`. Dla pustej listy zwróć `[]`.\n\n**Przykład wyjaśniający:** „Zachowaj kolejność” oznacza kolejność pierwszego pojawienia się wartości, nie kolejność od najmniejszej do największej. Dla `[8, 3, 8, 1, 3]` odpowiedź to `[8, 3, 1]`, a nie `[1, 3, 8]`."
     },
     {
      "id": "s016",
      "title": "Zadanie 10: Dwie podpowiedzi do sejfu",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 10: Dwie podpowiedzi do sejfu\n\nSejf ma czteroznakowy kod z cyfr, które się nie powtarzają; zero może być pierwsze. Próba otwarcia także zawiera cztery różne cyfry. Napisz podpowiedz(kod,proba), zwracającą (cyfry na właściwym miejscu, poprawne cyfry na innym miejscu). Każdą cyfrę uwzględnij tylko w jednej grupie. Wyświetl podpowiedź dla kodu \"5072\" i próby \"5209\".\n\n**Wskazówka:** Kod przechowuj jako napis. Najpierw porównaj pozycje, dopiero potem sprawdzaj obecność cyfry."
+     "markdown": "## Zadanie 10: Dwie podpowiedzi do sejfu\n\n**Dane:** Kod sejfu i próba otwarcia to napisy z czterech różnych cyfr. Zero może znajdować się na początku.\n\n**Do wykonania:** Napisz funkcję `podpowiedz(kod, proba)`. Określ, ile cyfr próby jest poprawnych i stoi na właściwej pozycji, a ile występuje w kodzie, lecz na innej pozycji. Jednej cyfry nie licz w obu grupach.\n\n**Wynik:** Zwróć parę `(na_wlasciwym_miejscu, na_innym_miejscu)` zawierającą dwie liczby cyfr. Wyświetl odpowiedź dla kodu `\"5072\"` i próby `\"5209\"`. Uzasadnij obie liczby.\n\n**Przykład wyjaśniający:** Dla kodu `\"1234\"` i próby `\"1428\"` wynik to `(1, 2)`: cyfra 1 stoi we właściwym miejscu, cyfry 4 i 2 są w kodzie, lecz w innych miejscach, a cyfry 8 w kodzie nie ma. Nie zwracaj samych cyfr."
     },
     {
      "id": "s017",
      "title": "Zadanie 11: Raport o napisach",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 11: Raport o napisach\n\nNapisz raport_napisow(napisy): zwróć parę (lista palindromów, słownik liczności długości). Zachowaj kolejność i powtarzające się palindromy. Połącz wcześniejsze funkcje.\n\n**Wskazówka:** Nie zastępuj listy znalezionych napisów zbiorem."
+     "markdown": "## Zadanie 11: Raport o napisach\n\n**Dane:** Lista napisów, także z powtarzającymi się elementami.\n\n**Do wykonania:** Napisz funkcję `raport_napisow(napisy)`. Raport ma wskazywać wszystkie palindromy oraz informować, ile napisów ma każdą z występujących długości. W części z palindromami zachowaj kolejność i powtórzenia.\n\n**Wynik:** Zwróć parę `(lista_palindromow, slownik_licznosci_dlugosci)`. Słownik ma opisywać długości wszystkich napisów wejściowych, nie tylko palindromów. Zaprezentuj raport dla `[\"aa\", \"ab\", \"x\", \"aa\"]`. Możesz wykorzystać własne wcześniejsze funkcje.\n\n**Przykład wyjaśniający:** Dla `[\"ala\", \"kot\", \"xx\"]` raport to `([\"ala\", \"xx\"], {3: 2, 2: 1})`. Są dwa palindromy, ale napisy o długości 3 liczymy oba, także niebędący palindromem `\"kot\"`."
     },
     {
      "id": "s018",
      "title": "Zadanie 12: Kompresja sygnału",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 12: Kompresja sygnału\n\nNadajnik zapisuje sygnał jako ciąg liter A–Z. Napisz spakuj(sygnal), zastępującą każdą serię jednakowych sąsiednich liter parą (litera, długość serii). Zwróć listę takich par, a dla pustego napisu pustą listę. Wyświetl zapis \"AAABBCA\". Dwa bloki tej samej litery rozdzielone innym znakiem mają pozostać osobnymi parami.\n\n**Wskazówka:** Zamknij serię po zmianie litery. Ostatnią serię dopisz już po zakończeniu pętli."
+     "markdown": "## Zadanie 12: Kompresja sygnału\n\n**Dane:** Sygnał zapisany jako napis z liter A–Z. Seria to maksymalny spójny fragment jednakowych liter.\n\n**Do wykonania:** Napisz funkcję `spakuj(sygnal)`, która opisuje każdą serię parą: litera i jej liczba wystąpień w tej serii. Oddzielnych serii tej samej litery nie wolno łączyć.\n\n**Wynik:** Zwróć listę par `(litera, dlugosc_serii)` w kolejności sygnału, a dla pustego napisu `[]`. Wyświetl zapis `\"AAABBCA\"` i wyjaśnij, dlaczego litera A tworzy dwa osobne wpisy.\n\n**Przykład wyjaśniający:** Dla `\"CCDC\"` wynik to `[(\"C\", 2), (\"D\", 1), (\"C\", 1)]`. Pierwsze dwa C tworzą jedną serię, litera D ją przerywa, a ostatnie C rozpoczyna nową. Nie chodzi o łączną liczbę wszystkich liter C w sygnale."
     },
     {
      "id": "s019",
@@ -546,14 +636,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 13: anagramy",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 13: anagramy\n\nNapisz anagramy(a,b). Porównuj dokładnie znaki, bez ignorowania spacji i wielkości liter. Wykorzystaj histogramy.\n\n**Wskazówka:** Kolejność nie jest ważna, liczności są."
+     "markdown": "## Zadanie 13: anagramy\n\n**Dane:** Dwa napisy `a` i `b`. Nie pomijamy spacji ani nie zmieniamy wielkości liter.\n\n**Do wykonania:** Napisz funkcję `anagramy(a, b)`, która rozstrzyga, czy napisy składają się z dokładnie tych samych znaków użytych tyle samo razy, choć niekoniecznie w tej samej kolejności.\n\n**Wynik:** Zwróć `True`, jeśli można przestawić znaki pierwszego napisu, aby otrzymać drugi, i `False` w przeciwnym przypadku. Pokaż wynik dla par `(\"kot\", \"tok\")` i `(\"aa\", \"ab\")`.\n\n**Przykład wyjaśniający:** `\"aab\"` i `\"aba\"` są anagramami: oba mają dwa a i jedno b. Natomiast `\"aab\"` i `\"abb\"` nie są, chociaż używają tych samych dwóch liter. Wyjaśnij na tym przykładzie, dlaczego sam zbiór znaków nie wystarcza."
     },
     {
      "id": "s022",
      "title": "Zadanie 14: najdłuższy napis",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 14: najdłuższy napis\n\nNapisz najdluzszy(napisy), zwracającą pierwszy najdłuższy napis; dla pustej listy None. Nie sortuj całej listy.\n\n**Wskazówka:** Jedno przejście po liście wystarczy."
+     "markdown": "## Zadanie 14: najdłuższy napis\n\n**Dane:** Lista napisów, która może być pusta.\n\n**Do wykonania:** Napisz funkcję `najdluzszy(napisy)`, która wybiera najdłuższy napis. Jeśli kilka ma tę samą największą długość, wybierz pierwszy z nich. Nie sortuj całej listy.\n\n**Wynik:** Zwróć wybrany napis w całości, a nie jego długość ani pozycję. Jeśli lista jest pusta, zwróć `None`. Pokaż działanie dla `[\"ab\", \"cd\", \"x\"]` i pustej listy.\n\n**Przykład wyjaśniający:** Dla `[\"lis\", \"ryba\", \"sowa\"]` wybieramy `\"ryba\"`. Zarówno `\"ryba\"`, jak i `\"sowa\"` mają cztery znaki, ale `\"ryba\"` pojawiła się wcześniej. Kolejność alfabetyczna nie rozstrzyga tego remisu."
     }
    ]
   },
@@ -565,7 +655,7 @@ window.PYTHON_COURSE = {
    "notebook": "lekcje/03_pliki_tekstowe_i_wyniki/karta_pracy.ipynb",
    "download": "pobierz/03_pliki_tekstowe_i_wyniki.zip",
    "assetBase": "lekcje/03_pliki_tekstowe_i_wyniki/",
-   "checksum": "c12a4adf2ca3b5bfb093fa139df4bc3b1e5bb5a668464d31a06104f2b122d44c",
+   "checksum": "b7b8e45d4eb64af8bfac83ddb600002c2e18d98f63a188ce558bf641c6f4c42b",
    "sections": [
     {
      "id": "intro",
@@ -593,7 +683,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -604,24 +694,24 @@ window.PYTHON_COURSE = {
     },
     {
      "id": "s005",
-     "title": "Zadanie 1: Białe znaki",
+     "title": "Zadanie 1: Zamiana wiersza tekstu na listę liczb",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: Białe znaki\n\nNapisz pola(wiersz), zwracającą listę liczb całkowitych. Obsłuż wielokrotne spacje, tabulatory i pusty wiersz.\n\n**Wskazówka:** Przypomnij sobie różnicę między split() i split(' ')."
+     "markdown": "## Zadanie 1: Zamiana wiersza tekstu na listę liczb\n\n**Dane:** Otrzymujesz jeden napis, np. tekst przepisany z wiersza pliku. W tym napisie są liczby całkowite, także ujemne. Oddzielają je spacje lub tabulatory. Przed liczbami i za nimi także mogą występować odstępy.\n\n**Do wykonania:** Napisz funkcję `pola(wiersz)`, która zamieni taki tekst na listę liczb. Argument `wiersz` jest napisem, nie nazwą pliku — w tym zadaniu nie otwierasz jeszcze żadnego pliku. Liczba odstępów między liczbami nie powinna wpływać na odpowiedź.\n\n**Wynik:** Zwróć listę liczb typu `int` w takiej kolejności, w jakiej występują w tekście. Jeśli tekst nie zawiera liczb, bo jest pusty lub składa się z samych odstępów, zwróć `[]`. Wyświetl wyniki dla `\"  7   -2\\t5  \"`, `\"\"` i `\"   \"`; zapis `\\t` wewnątrz napisu w Pythonie oznacza tabulator.\n\n**Przykład wyjaśniający:** Z napisu `\"  12    -3  0 \"` powinna powstać lista `[12, -3, 0]`. Jej elementy są liczbami, więc można je dodawać. Lista `[\"12\", \"-3\", \"0\"]` byłaby niepoprawna, ponieważ nadal zawiera tekst."
     },
     {
      "id": "s006",
-     "title": "Zadanie 2: Samodzielne wczytanie jednej kolumny",
+     "title": "Zadanie 2: Odczyt wszystkich liczb z pliku",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: Samodzielne wczytanie jednej kolumny\n\nPlik skrot_przyklad.txt zawiera jedną liczbę w każdym wierszu. Napisz czytaj_liczby(nazwa): sam otwórz plik i wczytaj liczby. Wywołaj ją dla tego pliku, zapisz listę w a. Sprawdź liczbę rekordów oraz pierwszy i ostatni element. Nie przepisuj danych do kodu.\n\n**Wskazówka:** Odczyt zwraca tekst; konwersja jest częścią Twojego rozwiązania."
+     "markdown": "## Zadanie 2: Odczyt wszystkich liczb z pliku\n\n**Dane:** W folderze lekcji znajduje się plik `skrot_przyklad.txt`. Każdy jego wiersz zawiera jedną liczbę całkowitą. Plik ma 20 wierszy; w tym zadaniu nie obliczasz jeszcze żadnego „skrótu” tych liczb.\n\n**Do wykonania:** Napisz funkcję `czytaj_liczby(nazwa)`. Argument `nazwa` ma być nazwą pliku, który funkcja sama otworzy i odczyta. Zadaniem funkcji jest przygotowanie listy wszystkich liczb zapisanych w tym pliku. Zachowaj kolejność wierszy i powtarzające się liczby. Nie przepisuj zawartości pliku do kodu.\n\n**Wynik:** Wywołaj funkcję dla `skrot_przyklad.txt` i zapisz zwróconą listę w zmiennej `a`. Wyświetl z podpisami: ile liczb odczytano, jaka jest pierwsza i jaka ostatnia. Wskaż typ elementów listy. Liczba odczytanych elementów powinna odpowiadać liczbie wierszy pliku.\n\n**Przykład wyjaśniający:** Gdyby osobny plik zawierał trzy wiersze: `8`, potem `-2`, potem ponownie `8`, funkcja powinna zwrócić `[8, -2, 8]`. To trzy odczytane liczby, mimo że tylko dwie wartości są różne."
     },
     {
      "id": "s007",
-     "title": "Zadanie 3: Sygnał z radioteleskopu",
+     "title": "Zadanie 3: Radioteleskop: ile razy sygnał wzrósł?",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: Sygnał z radioteleskopu\n\nPlik sygnal.txt zawiera po jednym całkowitym pomiarze w wierszu. Sam otwórz plik i wczytaj dane. Policz, ile razy pomiar jest większy od poprzedniego; pierwszy pomiar nie ma poprzednika, a równe wartości nie są wzrostem. Wyświetl wynik i zapisz go jako jedną liczbę do wyniki-sygnal.txt. Kolejność wierszy ma znaczenie.\n\n**Wskazówka:** Porównuj sąsiednie pomiary. Zliczanie samych różnych wartości nie da odpowiedzi."
+     "markdown": "## Zadanie 3: Radioteleskop: ile razy sygnał wzrósł?\n\n**Dane:** Radioteleskop wykonuje kolejne pomiary siły sygnału. W pliku `sygnal.txt` zapisano ich wyniki: jedna liczba całkowita w każdym wierszu. Pierwszy wiersz oznacza najwcześniejszy pomiar, a każdy następny — pomiar wykonany chwilę później.\n\n**Do wykonania:** Napisz program, który sam wczyta plik i policzy, ile razy siła sygnału wzrosła w porównaniu z pomiarem wykonanym bezpośrednio wcześniej. Porównujemy wyłącznie sąsiadujące pomiary. Równe wartości nie oznaczają wzrostu. Pierwszego pomiaru nie uwzględniamy w zliczaniu, ponieważ nie ma wcześniejszego pomiaru do porównania.\n\n**Wynik:** Wyświetl jedną liczbę: liczbę zauważonych wzrostów. Tę samą liczbę zapisz w jednym wierszu pliku `wyniki-sygnal.txt`. Nie sortuj pomiarów. Nie obliczaj sumy pomiarów ani wielkości wzrostów — interesuje nas liczba sytuacji, w których nastąpił wzrost.\n\n**Przykład wyjaśniający:** Dla pomiarów `10, 13, 13, 8, 12` odpowiedź wynosi `2`. Wzrost nastąpił z 10 do 13 oraz z 8 do 12. Przejście z 13 do 13 nic nie dodaje, a z 13 do 8 jest spadkiem. To tylko przykład zasady; właściwą odpowiedź oblicz z pliku `sygnal.txt`."
     },
     {
      "id": "s008",
@@ -632,31 +722,31 @@ window.PYTHON_COURSE = {
     },
     {
      "id": "s009",
-     "title": "Zadanie 4: Dwa wiersze, dwa znaczenia",
+     "title": "Zadanie 4: Dwa wiersze pliku jako dwie osobne listy",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: Dwa wiersze, dwa znaczenia\n\nNapisz dwa_wiersze(nazwa). Sam otwórz liczby_przyklad.txt, odczytaj dwa wiersze i zwróć dwie listy liczb. Zapisz je w a i b. Pierwszy wiersz to czynniki, drugi to liczby do zbadania. Potwierdź 200 i 20 elementów.\n\n**Wskazówka:** Nie spłaszczaj dwóch rekordów do jednej listy."
+     "markdown": "## Zadanie 4: Dwa wiersze pliku jako dwie osobne listy\n\n**Dane:** Plik `liczby_przyklad.txt` zawiera dokładnie dwa wiersze. W pierwszym znajduje się 200 liczb, w drugim 20. Liczby w każdym wierszu są oddzielone spacjami lub tabulatorami. Te dwa wiersze będą w dalszym kursie używane do różnych celów.\n\n**Do wykonania:** Napisz funkcję `dwa_wiersze(nazwa)`, która sama otworzy plik i zwróci dwie osobne listy: jedną z liczbami z pierwszego wiersza, drugą z liczbami z drugiego. Nie łącz ich w jedną listę. W tym zadaniu chodzi wyłącznie o poprawny odczyt, nie o badanie dzielników ani wykonywanie obliczeń na tych liczbach.\n\n**Wynik:** Zwróć parę `(lista_z_pierwszego_wiersza, lista_z_drugiego_wiersza)`. Po wywołaniu dla podanego pliku zapisz te listy odpowiednio w `a` i `b`. Wyświetl liczbę elementów każdej listy; oczekiwane długości to 200 i 20.\n\n**Przykład wyjaśniający:** Jeśli pierwszy wiersz ma treść `2 3 5`, a drugi `15 6`, wynik ma postać `([2, 3, 5], [15, 6])`. Lista `a` będzie więc zawierać trzy liczby, a lista `b` dwie. Niepoprawne byłoby połączenie ich w `[2, 3, 5, 15, 6]`."
     },
     {
      "id": "s010",
-     "title": "Zadanie 5: Pary przesunięć",
+     "title": "Zadanie 5: Odczyt ruchów drona jako par liczb",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: Pary przesunięć\n\nNapisz czytaj_pary(nazwa), samodzielnie otwierającą plik i wymagającą dwóch liczb w każdym wierszu. Wczytaj dron_przyklad.txt do r. Potwierdź 10 par, pierwszą (2000,1001) i ostatnią (2000,-1006).\n\n**Wskazówka:** Konwertuj i sprawdzaj osobno każdy wiersz."
+     "markdown": "## Zadanie 5: Odczyt ruchów drona jako par liczb\n\n**Dane:** Każdy wiersz pliku `dron_przyklad.txt` opisuje jeden ruch drona za pomocą dwóch liczb: `dx` i `dy`. `dx` oznacza zmianę położenia w poziomie, a `dy` w pionie. To przesunięcia względem poprzedniego miejsca, nie gotowe współrzędne nowego położenia.\n\n**Do wykonania:** Napisz funkcję `czytaj_pary(nazwa)`, która sama odczyta plik i zamieni każdy wiersz w parę liczb całkowitych `(dx, dy)`. Dwie liczby pochodzące z jednego wiersza muszą pozostać razem. Jeśli wiersz zawiera inną liczbę wartości niż dwie, przerwij odczyt z komunikatem wskazującym numer tego wiersza.\n\n**Wynik:** Zwróć listę par w kolejności pliku. Dla `dron_przyklad.txt` zapisz ją w zmiennej `r` i wyświetl liczbę ruchów, pierwszy ruch oraz ostatni ruch. Nie obliczaj jeszcze całej trasy.\n\n**Przykład wyjaśniający:** Dla dwóch wierszy `3 2` oraz `1 -4` wynikiem jest `[(3, 2), (1, -4)]`. Pierwszy ruch to 3 jednostki w prawo i 2 w górę, drugi: 1 w prawo i 4 w dół. Zapis `[3, 2, 1, -4]` gubi podział na ruchy."
     },
     {
      "id": "s011",
-     "title": "Zadanie 6: Paczki, które jeszcze jadą",
+     "title": "Zadanie 6: Które paczki nadal są w drodze?",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: Paczki, które jeszcze jadą\n\nPlik paczki.txt ma wiersze identyfikator;zdarzenie. START oznacza wysłanie paczki, KONIEC — dostarczenie. Zdarzenia zapisano chronologicznie; ten sam identyfikator może zostać wysłany ponownie po dostarczeniu. Sam odczytaj plik. Ustal, które paczki są nadal w drodze, i zapisz ich identyfikatory alfabetycznie, po jednym wierszu, do wyniki-paczki.txt. Paczka może mieć KONIEC tylko wtedy, gdy jest w drodze, a START tylko wtedy, gdy w drodze nie jest. Część wysłań nie ma jeszcze dostarczenia.\n\n**Wskazówka:** Zbiór może opisywać bieżący stan. split(\";\") rozdziela pola rekordu, a sorted porządkuje identyfikatory."
+     "markdown": "## Zadanie 6: Które paczki nadal są w drodze?\n\n**Dane:** Plik `paczki.txt` jest historią wysyłek. Wiersz, np. `A17;START`, zawiera nazwę paczki i zdarzenie, rozdzielone średnikiem. `START` oznacza wysłanie paczki, a `KONIEC` jej dostarczenie. Wiersze są ułożone od najwcześniejszego zdarzenia do najpóźniejszego. Na początku żadna paczka nie jest w drodze.\n\n**Do wykonania:** Napisz program, który sam odczyta plik i ustali, które paczki po wszystkich zapisanych zdarzeniach wciąż są w drodze. Ten sam identyfikator może pojawiać się wiele razy: dostarczoną paczkę wolno wysłać ponownie. Dane są poprawne — nie ma dostarczenia bez wcześniejszej wysyłki ani ponownego wysłania paczki będącej już w drodze.\n\n**Wynik:** Wyświetl identyfikatory paczek nadal będących w drodze, uporządkowane alfabetycznie. Zapisz je też w `wyniki-paczki.txt`, po jednym identyfikatorze w wierszu. Każda paczka ma pojawić się w odpowiedzi tylko raz.\n\n**Przykład wyjaśniający:** Po zdarzeniach `P1;START`, `P2;START`, `P1;KONIEC` w drodze pozostaje tylko P2. Jeśli następnym zdarzeniem jest `P1;START`, w drodze są już P1 i P2. Wcześniejsze dostarczenie P1 nie oznacza więc, że zawsze należy ją pomijać."
     },
     {
      "id": "s012",
-     "title": "Zadanie 7: Odczyt i kontrola alfabetu",
+     "title": "Zadanie 7: Wskazanie błędnych wierszy z symbolami",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Odczyt i kontrola alfabetu\n\nNapisz bledne_wiersze(napisy), zwracającą numery od 1 napisów o długości innej niż 12 lub ze znakiem spoza o,+,*. Następnie sam otwórz symbole_przyklad.txt, wczytaj napisy bez zakończeń wierszy do napisy i sprawdź cały plik.\n\n**Wskazówka:** Nie usuwaj ostatniego symbolu razem z końcem wiersza."
+     "markdown": "## Zadanie 7: Wskazanie błędnych wierszy z symbolami\n\n**Dane:** Plik `symbole_przyklad.txt` zawiera po jednym napisie w każdym wierszu. Poprawny napis ma dokładnie 12 znaków, a każdy z nich musi być jednym z symboli `o`, `+`, `*`. Znak `o` jest małą literą o, nie cyfrą zero. Zakończenie wiersza nie jest częścią napisu.\n\n**Do wykonania:** Napisz funkcję `bledne_wiersze(napisy)`, która otrzyma listę napisów i wskaże wszystkie pozycje niespełniające tych wymagań. Wystarczy zła długość albo choć jeden niedozwolony znak, aby wiersz uznać za błędny. Samodzielnie odczytaj plik do listy `napisy` i użyj na niej swojej funkcji. Nie usuwaj symboli ani nie naprawiaj błędnych danych.\n\n**Wynik:** Zwróć listę numerów błędnych wierszy, licząc od 1. Nie zwracaj ich treści ani samej liczby błędów. Jeśli wszystkie są poprawne, zwróć `[]`. Wyświetl wynik dla pliku oraz dla listy `[\"o\" * 12, \"+x\" + \"o\" * 10, \"*\"]`.\n\n**Przykład wyjaśniający:** W dodatkowej liście pierwszy napis ma 12 dozwolonych znaków. Drugi także ma długość 12, ale zawiera niedozwolone x. Trzeci jest za krótki. Odpowiedzią dla tej listy jest `[2, 3]`: numery dwóch błędnych wierszy."
     },
     {
      "id": "s013",
@@ -667,38 +757,38 @@ window.PYTHON_COURSE = {
     },
     {
      "id": "s014",
-     "title": "Zadanie 8: Raport o parach",
+     "title": "Zadanie 8: Liczba ruchów i łączne przesunięcie drona",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: Raport o parach\n\nNapisz bilans(ruchy), zwracającą (liczba_ruchow, suma_dx, suma_dy). Korzystając z własnego czytaj_pary, wczytaj ponownie dron_przyklad.txt i oblicz bilans_przykladu.\n\n**Wskazówka:** Do obliczeń przekazuj dane, nie nazwę pliku."
+     "markdown": "## Zadanie 8: Liczba ruchów i łączne przesunięcie drona\n\n**Dane:** Masz listę ruchów drona, takich jak w zadaniu 5. Każdy ruch jest parą `(dx, dy)`. Dodatnia wartość oznacza przesunięcie w prawo lub w górę, ujemna — w przeciwną stronę. Dane do właściwego obliczenia znajdują się w `dron_przyklad.txt`.\n\n**Do wykonania:** Napisz funkcję `bilans(ruchy)`, która podsumuje wszystkie ruchy. Ustal, ile ruchów wykonano, o ile łącznie zmieniło się położenie w poziomie oraz o ile w pionie. Przesunięcia w przeciwnych kierunkach mogą się znosić. Nie obliczasz długości przebytej drogi.\n\n**Wynik:** Zwróć trzy liczby w krotce `(liczba_ruchow, suma_dx, suma_dy)`. Sam odczytaj plik własnym kodem, np. swoją funkcją z zadania 5. Wynik obliczeń zapisz w `bilans_przykladu` i wyświetl z opisem znaczenia każdej liczby.\n\n**Przykład wyjaśniający:** Dla ruchów `[(3, 2), (1, -4)]` bilans wynosi `(2, 4, -2)`: wykonano dwa ruchy, łącznie 4 jednostki w prawo i 2 w dół. Liczba -2 opisuje zmianę położenia w pionie, nie ujemną długość drogi."
     },
     {
      "id": "s015",
-     "title": "Zadanie 9: Rachunek w kawiarni graczy",
+     "title": "Zadanie 9: Łączna liczba produktów i rachunek w kawiarni",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 9: Rachunek w kawiarni graczy\n\nSam wczytaj zamowienia.txt. Każdy wiersz ma format produkt;liczba_sztuk;cena_jednostkowa_w_groszach. Jeden produkt może występować w kilku wierszach — uwzględnij wszystkie. Oblicz liczbę zamówionych sztuk i łączny koszt. Zapisz wyniki-kawiarnia.txt: w pierwszym wierszu liczbę sztuk, w drugim kwotę w złotych z dwiema cyframi po kropce. Obliczenia wykonuj na całkowitej liczbie groszy.\n\n**Wskazówka:** Cena dotyczy jednej sztuki. Oddziel obliczenie kwoty od sposobu jej wyświetlenia."
+     "markdown": "## Zadanie 9: Łączna liczba produktów i rachunek w kawiarni\n\n**Dane:** Plik `zamowienia.txt` opisuje zakupy w kawiarni. Każdy wiersz zawiera trzy pola oddzielone średnikami: nazwę produktu, liczbę zamówionych sztuk i cenę jednej sztuki w groszach. Przykładowy wiersz `sok;3;450` oznacza trzy soki po 4,50 zł za sztukę.\n\n**Do wykonania:** Napisz program, który sam odczyta plik i obliczy łączną liczbę wszystkich zamówionych sztuk oraz kwotę do zapłaty za całe zamówienie. Ten sam produkt może występować w kilku wierszach — każdy wiersz opisuje kolejną część zamówienia i trzeba go uwzględnić. Nie chodzi o liczbę różnych nazw produktów. Obliczenia pieniężne prowadź w całkowitej liczbie groszy.\n\n**Wynik:** Zapisz plik `wyniki-kawiarnia.txt` z dwoma wierszami: w pierwszym łączną liczbę sztuk, w drugim całkowitą kwotę w złotych. Kwotę zapisz z kropką i dokładnie dwiema cyframi po niej, np. `8.05`. Nie dodawaj symbolu waluty.\n\n**Przykład wyjaśniający:** Dla dwóch wierszy `sok;2;450` i `ciastko;1;300` zamówiono łącznie 3 sztuki za 12,00 zł. Plik wynikowy zawierałby `3` w pierwszym wierszu i `12.00` w drugim. Właściwy rachunek oblicz z dostarczonego pliku."
     },
     {
      "id": "s016",
-     "title": "Zadanie 10: Samodzielny zapis i odczyt",
+     "title": "Zadanie 10: Zapis listy liczb do pliku i ponowny odczyt",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 10: Samodzielny zapis i odczyt\n\nNapisz zapisz_liczby(nazwa, liczby): sam otwórz plik do zapisu i zapisz po jednej liczbie na wiersz. Zapisz [7,7,2] do zapis-liczb.txt, wczytaj go własną funkcją czytaj_liczby i wyświetl odczytane liczby. Następnie zapisz pustą listę do pusty-zapis.txt i opisz zawartość pliku. Nie nadpisuj plików wejściowych.\n\n**Wskazówka:** Dwa wystąpienia 7 muszą pozostać dwoma wierszami."
+     "markdown": "## Zadanie 10: Zapis listy liczb do pliku i ponowny odczyt\n\n**Dane:** W tym zadaniu to program tworzy pliki z danych zapisanych w kodzie. Masz dwie listy: `[7, 7, 2]` oraz `[]`. Nie korzystaj z żadnego pliku wejściowego jako miejsca zapisu wyników.\n\n**Do wykonania:** Napisz funkcję `zapisz_liczby(nazwa, liczby)`, która zapisze wskazaną listę do wskazanego pliku. Każda liczba ma znaleźć się w osobnym wierszu. Jeśli plik wynikowy już istnieje, zastąp jego poprzednią zawartość, nie dopisuj do niej kolejnych danych. Użyj funkcji do utworzenia `zapis-liczb.txt` dla pierwszej listy i `pusty-zapis.txt` dla drugiej.\n\n**Wynik:** Utwórz oba pliki. W tym samym rozwiązaniu odczytaj je ponownie własną funkcją `czytaj_liczby` i wyświetl odczytane listy. Mają być takie same jak listy przekazane do zapisu. Funkcja zapisująca nie musi zwracać wartości; jej wynikiem jest zawartość pliku.\n\n**Przykład wyjaśniający:** Z listy `[4, 4, 9]` mają powstać trzy wiersze: `4`, `4`, `9`, bez nawiasów i przecinków. Pusta lista oznacza pusty plik, nie plik zawierający tekst `[]` ani liczbę 0."
     },
     {
      "id": "s017",
-     "title": "Zadanie 11: Cały proces na pełnym pliku",
+     "title": "Zadanie 11: Raport z pełnego pliku lotu drona",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 11: Cały proces na pełnym pliku\n\nSam wczytaj dron.txt, używając własnego kodu, oblicz bilans i zapisz raport-dron.txt: trzy wiersze z podpisami ruchy, x, y. Odczytaj go ponownie do odczyt_raportu. Wartości muszą wynikać z danych, a nie z przepisania oczekiwanej odpowiedzi.\n\n**Wskazówka:** Kompletne rozwiązanie obejmuje odczyt, obliczenia i zapis."
+     "markdown": "## Zadanie 11: Raport z pełnego pliku lotu drona\n\n**Dane:** Plik `dron.txt` jest większym zestawem danych niż `dron_przyklad.txt`. Ma ten sam format: jeden ruch w wierszu, zapisany jako `dx dy`. W tym zadaniu użyj właśnie pełnego pliku `dron.txt`.\n\n**Do wykonania:** Przygotuj rozwiązanie obejmujące odczyt pliku, obliczenie liczby ruchów oraz łącznego przesunięcia w poziomie i pionie, a następnie zapis raportu. Możesz wywołać własne funkcje `czytaj_pary` i `bilans`. Wszystkie liczby w raporcie muszą wynikać z odczytanych danych.\n\n**Wynik:** Utwórz `raport-dron.txt` z dokładnie trzema wierszami: `ruchy LICZBA`, `x SUMA_DX`, `y SUMA_DY`. Wielkie napisy są miejscem na obliczone liczby, nie tekstem do skopiowania. Odczytaj zapisany raport do zmiennej `odczyt_raportu` i wyświetl ją.\n\n**Przykład wyjaśniający:** Dla lotu złożonego z ruchów `[(3, 2), (1, -4)]` wiersze raportu brzmiałyby: `ruchy 2`, `x 4`, `y -2`. Etykiety `ruchy`, `x`, `y` zostają w pliku, natomiast wartości zależą od danych lotu."
     },
     {
      "id": "s018",
-     "title": "Zadanie 12: Punktacja ligi robotów",
+     "title": "Zadanie 12: Łączna punktacja drużyn w lidze",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 12: Punktacja ligi robotów\n\nPlik mecze.txt zawiera wiersze druzyna_A;druzyna_B;gole_A;gole_B. Za wygraną przyznaj 3 punkty, za remis każdej drużynie po 1, za przegraną 0. Sam wczytaj wyniki i zsumuj punkty drużyn. Zapisz wyniki-liga.txt w formacie nazwa;punkty, zachowując kolejność pierwszego pojawienia się drużyny w pliku. Uwzględnij również drużynę, która nie zdobyła żadnego punktu.\n\n**Wskazówka:** W słowniku zapamiętaj obie drużyny, zanim przyznasz punkty. Nie twórz osobnej pozycji za każdy mecz."
+     "markdown": "## Zadanie 12: Łączna punktacja drużyn w lidze\n\n**Dane:** Plik `mecze.txt` zawiera wyniki spotkań. Wiersz ma postać `druzyna_A;druzyna_B;gole_A;gole_B`, np. `Smoki;Sowy;2;0` oznacza wygraną Smoków 2:0. Za wygraną drużyna otrzymuje 3 punkty, za remis 1, a za przegraną 0.\n\n**Do wykonania:** Napisz program, który sam odczyta wszystkie mecze i obliczy sumę punktów każdej drużyny w całej lidze. Nie sumuj bramek — wynik meczu służy do ustalenia, komu przyznać punkty. Uwzględnij także drużyny, które przegrały wszystkie spotkania.\n\n**Wynik:** Zapisz `wyniki-liga.txt`: jeden wiersz `nazwa;punkty` dla każdej drużyny. Zachowaj kolejność pierwszego pojawienia się nazw w pliku, czytając w każdym wierszu najpierw drużynę A, potem B. Nie sortuj tabeli według punktów. Każda nazwa ma wystąpić raz.\n\n**Przykład wyjaśniający:** Po meczach `Smoki;Sowy;2;0` i `Sowy;Smoki;1;1` Smoki mają 4 punkty, a Sowy 1. Raport zawierałby wiersze `Smoki;4` oraz `Sowy;1` w tej kolejności. Remis dodaje punkt obu drużynom."
     },
     {
      "id": "s019",
@@ -716,17 +806,17 @@ window.PYTHON_COURSE = {
     },
     {
      "id": "s021",
-     "title": "Zadanie 13: pierwszy błędny rekord",
+     "title": "Zadanie 13: Numer pierwszego niepoprawnego wiersza",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 13: pierwszy błędny rekord\n\nNapisz pierwszy_blad(wiersze), zwracającą numer pierwszego wiersza niebędącego parą liczb całkowitych. Obsłuż ValueError. Dla poprawnych danych zwróć None.\n\n**Wskazówka:** Zła liczba pól i tekst zamiast liczby to różne błędy."
+     "markdown": "## Zadanie 13: Numer pierwszego niepoprawnego wiersza\n\n**Dane:** Funkcja otrzyma listę napisów, z których każdy reprezentuje jeden wiersz tekstu. Poprawny wiersz zawiera dokładnie dwie liczby całkowite oddzielone spacjami lub tabulatorami. Dodatkowe odstępy są dozwolone, ale pusty wiersz jest błędny.\n\n**Do wykonania:** Napisz funkcję `pierwszy_blad(wiersze)`, która wskaże najwcześniejszy niepoprawny wiersz. Błędem jest zarówno nieprawidłowa liczba wartości, jak i tekst, którego nie da się zamienić na liczbę całkowitą. Obsłuż `ValueError`, aby taki tekst nie kończył działania programu nieobsłużonym wyjątkiem. Tutaj pracujesz na przekazanej liście — nie musisz otwierać pliku.\n\n**Wynik:** Zwróć numer pierwszego błędnego wiersza, licząc od 1. Gdy wszystkie wiersze są poprawne albo lista jest pusta, zwróć `None`. Pokaż osobno przypadek błędnej liczby pól oraz przypadek tekstu zamiast liczby.\n\n**Przykład wyjaśniający:** Dla `[\"4 5\", \"6 7 8\", \"x 2\"]` odpowiedź to `2`: już drugi wiersz ma trzy liczby zamiast dwóch. Nie zwracamy `[2, 3]`, ponieważ szukamy tylko pierwszego błędu. Dla `[\"4 5\", \"x 2\"]` odpowiedź też wynosi 2, lecz z innego powodu."
     },
     {
      "id": "s022",
-     "title": "Zadanie 14: od pliku do indeksów palindromów",
+     "title": "Zadanie 14: Numery wierszy zawierających palindromy",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 14: od pliku do indeksów palindromów\n\nW nowej komórce sam otwórz symbole_przyklad.txt i wczytaj napisy. Zapisz w numery_palindromow numery wierszy będących palindromami, licząc od 1. Nie polegaj na liście utworzonej wcześniej.\n\n**Wskazówka:** Numer wiersza i indeks listy nie są tym samym."
+     "markdown": "## Zadanie 14: Numery wierszy zawierających palindromy\n\n**Dane:** Plik `symbole_przyklad.txt` zawiera po jednym napisie w wierszu. Szukamy palindromów, czyli napisów, które czytane od lewej i od prawej są identyczne. Znak zakończenia wiersza nie należy do napisu.\n\n**Do wykonania:** W nowej komórce napisz rozwiązanie, które samo otworzy plik, odczyta napisy i ustali, które z nich są palindromami. Nie korzystaj z listy danych pozostawionej przez wcześniejsze zadanie. Możesz użyć własnej funkcji rozpoznającej palindrom.\n\n**Wynik:** Zapisz odpowiedź w liście `numery_palindromow` i wyświetl ją. Lista ma zawierać numery odpowiednich wierszy od 1, w kolejności pliku, a nie treści tych wierszy. Gdy palindromów nie ma, odpowiedzią jest pusta lista.\n\n**Przykład wyjaśniający:** Gdyby kolejne trzy wiersze zawierały `o+o`, `o+*`, `***`, odpowiedź miałaby postać `[1, 3]`. Są to numery wierszy dla człowieka. Odpowiadają im indeksy 0 i 2 w pythonowej liście — tych indeksów nie wpisujemy do wyniku."
     }
    ]
   },
@@ -738,7 +828,7 @@ window.PYTHON_COURSE = {
    "notebook": "lekcje/04_cyfry_skroty_i_nwd/karta_pracy.ipynb",
    "download": "pobierz/04_cyfry_skroty_i_nwd.zip",
    "assetBase": "lekcje/04_cyfry_skroty_i_nwd/",
-   "checksum": "02ed1608dc3c3143ab07dfbff1f26c3abadf6f06cddd63d80bef277edf9d4a8e",
+   "checksum": "faed66c62d50e42b94566dae0b7fb09094090605c910c7a2d6d0f5eae7b2fcd0",
    "sections": [
     {
      "id": "intro",
@@ -766,7 +856,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -780,21 +870,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 1: Ostatnia cyfra",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: Ostatnia cyfra\n\nNapisz rozdziel(n,p), zwracającą (iloraz, reszta). Załóż n>=0 i 2<=p<=16. Sprawdź 45 dla podstawy 2 oraz 255 dla 16.\n\n**Wskazówka:** Reszta nie musi być pojedynczą cyfrą dziesiętną."
+     "markdown": "## Zadanie 1: Ostatnia cyfra\n\n**Dane:** Liczba całkowita `n >= 0` i podstawa systemu `2 <= p <= 16`.\n\n**Do wykonania:** Napisz funkcję `rozdziel(n, p)` określającą iloraz całkowity i resztę z dzielenia `n` przez `p`. Wyjaśnij, która z tych wartości opisuje ostatnią cyfrę zapisu w podstawie `p`.\n\n**Wynik:** Zwróć parę `(iloraz, reszta)`: liczbę pełnych grup po `p` oraz to, co pozostaje poza tymi grupami. Wyświetl wyniki dla `(45, 2)` i `(255, 16)`.\n\n**Przykład wyjaśniający:** Przy dzieleniu 23 przez 5 mieszczą się cztery pełne piątki i pozostają 3, więc wynik to `(4, 3)`. Reszta jest wartością ostatniej cyfry liczby w systemie o podstawie 5. Dla podstawy 16 wartość cyfry może być większa od 9."
     },
     {
      "id": "s006",
      "title": "Zadanie 2: Suma i liczba cyfr",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: Suma i liczba cyfr\n\nNapisz statystyka_cyfr(n), bez str, zwracającą (suma cyfr, liczba cyfr) dla n>=0. Dla 0: (0,1), dla 407: (11,3).\n\n**Wskazówka:** Obsłuż zero przed pętlą."
+     "markdown": "## Zadanie 2: Suma i liczba cyfr\n\n**Dane:** Nieujemna liczba całkowita `n` w zapisie dziesiętnym. Zero ma jedną cyfrę.\n\n**Do wykonania:** Napisz funkcję `statystyka_cyfr(n)` obliczającą sumę cyfr i ich liczbę. Nie zamieniaj liczby na napis.\n\n**Wynik:** Zwróć parę `(suma_cyfr, liczba_cyfr)`. Obie informacje dotyczą zwykłego zapisu dziesiętnego. Przed uruchomieniem oblicz ręcznie odpowiedzi dla 0 i 407, a potem porównaj je z działaniem funkcji.\n\n**Przykład wyjaśniający:** Liczba 502 ma trzy cyfry: 5, 0 i 2. Ich suma wynosi 7, zatem odpowiedź to `(7, 3)`. Zero wewnątrz liczby nie zwiększa sumy, ale nadal zajmuje jedną pozycję i jest uwzględniane w liczbie cyfr."
     },
     {
      "id": "s007",
      "title": "Zadanie 3: Cyfra kontrolna kapsuły",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: Cyfra kontrolna kapsuły\n\nKapsuła ma pięciocyfrowy numer. Pomnóż jego cyfry, czytane od lewej, kolejno przez 1,2,3,4,5 i dodaj iloczyny. Cyfra kontrolna to najmniejsza liczba od 0 do 9, która dodana do tej sumy daje wielokrotność 10. Napisz numer_kapsuly(n), dopisującą tę cyfrę z prawej strony numeru. Załóż 10000<=n<=99999; nie używaj str. Wyświetl numer dla 31415.\n\n**Wskazówka:** Jeśli pobierasz cyfry od prawej przez %, zacznij od wagi 5."
+     "markdown": "## Zadanie 3: Cyfra kontrolna kapsuły\n\n**Dane:** Pięciocyfrowy numer kapsuły `10000 <= n <= 99999`. Cyfry od lewej mają wagi 1, 2, 3, 4, 5. Suma kontrolna to suma iloczynów cyfr i ich wag.\n\n**Do wykonania:** Napisz funkcję `numer_kapsuly(n)` dopisującą z prawej cyfrę od 0 do 9, która dodana do sumy kontrolnej daje wielokrotność 10. Nie używaj `str`.\n\n**Wynik:** Zwróć nowy, sześciocyfrowy numer kapsuły: pięć pierwotnych cyfr i dopisaną cyfrę kontrolną. Nie zwracaj samej cyfry kontrolnej. Wyświetl wynik dla 31415 i pokaż rachunek uzasadniający dopisaną cyfrę.\n\n**Przykład wyjaśniający:** Dla numeru 12345 suma ważona to `1·1 + 2·2 + 3·3 + 4·4 + 5·5 = 55`. Dopisujemy 5, bo 55 + 5 = 60 jest podzielne przez 10. Nowy numer to 123455. Jeśli suma już jest wielokrotnością 10, dopisujemy cyfrę 0."
     },
     {
      "id": "s008",
@@ -808,28 +898,28 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 4: Horner dla dowolnej podstawy",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: Horner dla dowolnej podstawy\n\nNapisz horner(cyfry,p), przyjmującą listę cyfr od lewej, 2<=p<=16. Załóż, że każda cyfra należy do zakresu od 0 do p-1. [1,0,1,1] w bazie 2 daje 11, [15,15] w bazie 16 daje 255. Wyświetl obie wartości.\n\n**Wskazówka:** Nie obliczaj za każdym razem całej potęgi; rozszerz dotychczasowy prefiks."
+     "markdown": "## Zadanie 4: Horner dla dowolnej podstawy\n\n**Dane:** Lista cyfr od najbardziej znaczącej do najmniej znaczącej oraz podstawa `2 <= p <= 16`. Każda cyfra ma wartość od 0 do `p - 1`.\n\n**Do wykonania:** Napisz funkcję `horner(cyfry, p)`, która oblicza wartość liczby metodą Hornera.\n\n**Wynik:** Zwróć wartość liczby jako `int`, a nie napis z jej cyframi. Pokaż działanie dla cyfr `[1, 0, 1, 1]` w podstawie 2 i `[15, 15]` w podstawie 16. Porównaj jeden wynik z rachunkiem na kartce.\n\n**Przykład wyjaśniający:** Lista `[1, 2, 0]` przy podstawie 3 oznacza zapis 120 w systemie trójkowym. Jego wartość to `1·9 + 2·3 + 0 = 15`. Lista opisuje więc jedną liczbę, a nie trzy niezależne liczby do zsumowania."
     },
     {
      "id": "s010",
      "title": "Zadanie 5: Panel czterech lampek",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: Panel czterech lampek\n\nNa panelu lampki zasilanie, radio, kamera i alarm mają wagi 1,2,4,8. Liczba kod od 0 do 15 jest sumą wag włączonych lampek. Napisz lampki(kod), zwracającą cztery wartości 0 lub 1 w podanej kolejności. Użyj // i %, bez operatorów bitowych. Wyświetl stan panelu dla kodów 0, 5, 13 i 15.\n\n**Wskazówka:** Każda lampka odpowiada jednej cyfrze zapisu dwójkowego; zacznij od cyfry jedności."
+     "markdown": "## Zadanie 5: Panel czterech lampek\n\n**Dane:** Lampki: zasilanie, radio, kamera, alarm mają kolejno wagi 1, 2, 4, 8. Kod od 0 do 15 jest sumą wag zapalonych lampek.\n\n**Do wykonania:** Napisz funkcję `lampki(kod)` odtwarzającą stan panelu. Używaj działań całkowitoliczbowych `//` i `%`, bez operatorów bitowych.\n\n**Wynik:** Zwróć krotkę czterech wartości 0 lub 1 w kolejności: zasilanie, radio, kamera, alarm. Jedynka oznacza włączoną lampkę, zero wyłączoną. Wyświetl stany dla kodów 0, 5, 13, 15.\n\n**Przykład wyjaśniający:** Kod 6 powstaje z wag 2 + 4, więc świecą radio i kamera, a odpowiedź to `(0, 1, 1, 0)`. Nie chodzi o zapalenie sześciu lampek ani o szóstą lampkę — na panelu są tylko cztery."
     },
     {
      "id": "s011",
      "title": "Zadanie 6: Liczba na cyfry",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: Liczba na cyfry\n\nNapisz cyfry_w_bazie(n,p), zwracającą listę cyfr od lewej dla n>=0 i p>=2. Dla zera zwróć [0]. Wyświetl zapisy liczb 0, 11 i 50 w systemie trójkowym.\n\n**Wskazówka:** Kolejność reszt jest przeciwna do kolejności zapisu."
+     "markdown": "## Zadanie 6: Liczba na cyfry\n\n**Dane:** Liczba całkowita `n >= 0` i całkowita podstawa `p >= 2`.\n\n**Do wykonania:** Napisz funkcję `cyfry_w_bazie(n, p)` wyznaczającą cyfry zapisu liczby w danym systemie. Wynik ma zaczynać się od najbardziej znaczącej cyfry. Zapis zera to `[0]`.\n\n**Wynik:** Zwróć listę wartości cyfr w takiej kolejności, w jakiej człowiek czyta zapis liczby: od lewej do prawej. Wyświetl zapisy 0, 11 i 50 w systemie trójkowym. Wyjaśnij znaczenie kolejności cyfr.\n\n**Przykład wyjaśniający:** Liczba dziesiętna 13 ma w systemie dwójkowym zapis 1101, więc dla `n = 13`, `p = 2` oczekujemy `[1, 1, 0, 1]`. Odwrócona lista `[1, 0, 1, 1]` oznaczałaby inną liczbę: 11."
     },
     {
      "id": "s012",
      "title": "Zadanie 7: Nieparzysty skrót",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Nieparzysty skrót\n\nNapisz skrot(n) dla n>0. Zostaw tylko cyfry nieparzyste, zachowując kolejność. Zwróć 0, jeżeli skrót nie istnieje. Nie używaj napisów, list ani funkcji wbudowanych wewnątrz skrot.\n\n**Wskazówka:** Pozycję zwiększ tylko po zachowanej cyfrze."
+     "markdown": "## Zadanie 7: Nieparzysty skrót\n\n**Dane:** Dodatnia liczba całkowita `n`. Nieparzysty skrót powstaje przez usunięcie wszystkich parzystych cyfr dziesiętnych, bez zmiany kolejności pozostałych.\n\n**Do wykonania:** Napisz funkcję `skrot(n)`. Wewnątrz funkcji korzystaj wyłącznie z arytmetyki całkowitoliczbowej, warunków i pętli; bez napisów, list i wywołań funkcji.\n\n**Wynik:** Zwróć liczbę utworzoną z pozostawionych cyfr. Jeśli wszystkie cyfry zostały usunięte, zwróć umownie 0. Pokaż działanie dla liczby z samych cyfr parzystych i liczby zawierającej również cyfry nieparzyste.\n\n**Przykład wyjaśniający:** Z liczby 280735 usuwamy 2, 8 i 0, a pozostawiamy 7, 3 i 5. Skrót wynosi 735, nie sumę cyfr 15. Z liczby 246 nie pozostaje nic, dlatego w programie przyjmujemy wynik 0. Cyfra zero także jest parzysta."
     },
     {
      "id": "s013",
@@ -843,35 +933,35 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 8: Własne NWD",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: Własne NWD\n\nNapisz nwd(a,b) algorytmem Euklidesa. Obsłuż wartości ujemne i zero. Porównaj z ręcznym wynikiem dla (84,35).\n\n**Wskazówka:** Jednoczesne przypisanie korzysta ze starych wartości a i b."
+     "markdown": "## Zadanie 8: Własne NWD\n\n**Dane:** Dwie liczby całkowite `a` i `b`, także ujemne lub równe zeru. W tym kursie przyjmujemy `NWD(0, 0) = 0`.\n\n**Do wykonania:** Napisz własną funkcję `nwd(a, b)` stosującą algorytm Euklidesa. Wynik nie może być ujemny.\n\n**Wynik:** Zwróć jedną nieujemną liczbę — największy wspólny dzielnik obu argumentów. Przed wywołaniem dla `(84, 35)` wyznacz odpowiedź ręcznie. Pokaż też przykład z liczbą ujemną i z zerem.\n\n**Przykład wyjaśniający:** Wspólne dodatnie dzielniki 18 i 24 to 1, 2, 3 i 6. Największy z nich to 6, więc odpowiedź to 6, a nie lista dzielników. Dla -18 i 24 wynik jest taki sam. Dla 0 i 24 przyjmujemy wynik 24."
     },
     {
      "id": "s015",
      "title": "Zadanie 9: Identyczne paczki ratunkowe",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 9: Identyczne paczki ratunkowe\n\nMasz 12 butelek wody i 18 batonów. Trzeba wykorzystać wszystko, tworząc jak najwięcej identycznych paczek. Napisz paczki_ratunkowe(woda,batony), zwracającą (liczba paczek, butelki w paczce, batony w paczce). Oba zapasy są dodatnie. Użyj własnej funkcji nwd i wyjaśnij, dlaczego sam mniejszy zapas nie musi być odpowiedzią.\n\n**Wskazówka:** Liczba paczek musi dzielić bez reszty oba zapasy."
+     "markdown": "## Zadanie 9: Identyczne paczki ratunkowe\n\n**Dane:** Dodatnie liczby butelek wody i batonów. Wszystkie zapasy mają trafić do jednakowych paczek, bez reszty.\n\n**Do wykonania:** Napisz funkcję `paczki_ratunkowe(woda, batony)` ustalającą największą możliwą liczbę paczek i zawartość jednej paczki. Wykorzystaj własne `nwd`.\n\n**Wynik:** Zwróć krotkę `(liczba_paczek, butelki_w_paczce, batony_w_paczce)`. Każda paczka ma zawierać tyle samo wody i tyle samo batonów co pozostałe. Pokaż wynik dla 12 butelek i 18 batonów i uzasadnij maksymalność liczby paczek.\n\n**Przykład wyjaśniający:** Z 8 butelek i 12 batonów można zrobić 4 jednakowe paczki, każdą po 2 butelki i 3 batony. Odpowiedź to `(4, 2, 3)`. Nie wolno zostawić zapasów poza paczkami ani tworzyć paczek o różnej zawartości."
     },
     {
      "id": "s016",
      "title": "Zadanie 10: Dwa warunki na jednym rekordzie",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 10: Dwa warunki na jednym rekordzie\n\nNapisz wybierz(dane), zachowującą liczby z istniejącym skrótem i NWD liczby oraz skrótu równym 7. Zachowaj kolejność. Dla [224,4872,23527,123] wynik: [4872,23527].\n\n**Wskazówka:** Wylicz skrót raz dla każdego rekordu."
+     "markdown": "## Zadanie 10: Dwa warunki na jednym rekordzie\n\n**Dane:** Lista dodatnich liczb całkowitych.\n\n**Do wykonania:** Napisz funkcję `wybierz(dane)` pozostawiającą liczby, które mają nieparzysty skrót, a ich NWD ze skrótem jest równy dokładnie 7. Zachowaj kolejność i powtórzenia.\n\n**Wynik:** Zwróć listę oryginalnych liczb, które spełniają oba warunki, a nie listę ich skrótów. Pokaż działanie dla `[224, 4872, 23527, 123]` i wyjaśnij przyczynę odrzucenia jednej z liczb.\n\n**Przykład wyjaśniający:** Liczba 70 ma skrót 7, a NWD(70, 7) = 7, więc do odpowiedzi trafia 70. Liczba 13 ma skrót 13, lecz NWD(13, 13) = 13, więc odpada. Samo istnienie skrótu nie wystarcza."
     },
     {
      "id": "s017",
      "title": "Zadanie 11: Dwa niezależne opisy liczby",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 11: Dwa niezależne opisy liczby\n\nNapisz raport_liczby(n), zwracającą (skrót, liczba jedynek w zapisie binarnym). Użyj funkcji z tej karty. Dla 13: (13,3), dla 224: (0,3). Wyjaśnij, czemu filtrowanie cyfr dziesiętnych nie jest filtrowaniem bitów.\n\nPlik liczby-trening.txt zawiera po jednej liczbie w wierszu. Sam go otwórz i wczytaj do lista_z_pliku. Dla każdej liczby oblicz raport; zapisz raporty_z_pliku oraz plik wyniki-trening.txt, po jednym wierszu: liczba, skrót, liczba jedynek.\n\n**Wskazówka:** Podstawa określa znaczenie pozycji i zbiór cyfr."
+     "markdown": "## Zadanie 11: Dwa niezależne opisy liczby\n\n**Dane:** Plik `liczby-trening.txt` zawiera po jednej dodatniej liczbie w wierszu.\n\n**Do wykonania:** Napisz funkcję `raport_liczby(n)` zwracającą nieparzysty skrót dziesiętny oraz liczbę jedynek w zapisie dwójkowym. Przygotuj własny odczyt pliku do `lista_z_pliku` i raport dla każdej liczby.\n\n**Wynik:** W `raporty_z_pliku` zapisz listę par `(skrot, liczba_jedynek)` w kolejności odczytanych liczb. Utwórz też `wyniki-trening.txt`: każdy wiersz ma zawierać liczbę wejściową, jej skrót i liczbę jedynek, oddzielone spacjami.\n\n**Przykład wyjaśniający:** Dla 19 nieparzysty skrót wynosi 19, a zapis dwójkowy to 10011, w którym są trzy jedynki. Funkcja zwraca `(19, 3)`, a odpowiadający tej liczbie wiersz pliku brzmiałby `19 19 3`. Są to dwa różne opisy tej samej liczby, nie dwa etapy skracania."
     },
     {
      "id": "s018",
      "title": "Zadanie 12: Rozkaz zapisany w pięciu bitach",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 12: Rozkaz zapisany w pięciu bitach\n\nRobot dostaje kod od 0 do 31. Cyfry dwójkowe o wagach 1,2,4,8 włączają kolejno akcje start, pomiar, zdjecie, powrot. Najpierw układa je w tej kolejności. Jeżeli cyfra o wadze 16 jest równa 1, odwraca kolejność całej listy. Napisz rozkaz(kod) i wyświetl akcje dla kodów 9 i 19. Kod 0 oznacza pustą listę. Użyj // i %.\n\n**Wskazówka:** Najwyższa cyfra nie oznacza dodatkowej akcji — zmienia kolejność pozostałych."
+     "markdown": "## Zadanie 12: Rozkaz zapisany w pięciu bitach\n\n**Dane:** Kod robota od 0 do 31. Bity o wagach 1, 2, 4, 8 oznaczają akcje `start`, `pomiar`, `zdjecie`, `powrot`. Bit o wadze 16 odwraca kolejność wybranych akcji.\n\n**Do wykonania:** Napisz funkcję `rozkaz(kod)`. Przy wyłączonym bicie 16 kolejność akcji jest taka jak w opisie. Użyj `//` i `%`, bez operatorów bitowych.\n\n**Wynik:** Zwróć listę nazw czynności do wykonania, w wymaganej kolejności. Kod 0 daje pustą listę. Waga 16 sama nie oznacza żadnej czynności: tylko zmienia ich kolejność. Wyświetl rozkazy dla 9 i 19.\n\n**Przykład wyjaśniający:** Kod 5 wybiera wagi 1 i 4, więc oznacza `[\"start\", \"zdjecie\"]`. Kod 21 zawiera te same wagi oraz 16, dlatego daje `[\"zdjecie\", \"start\"]`. Bit 16 nie dopisuje nowej nazwy do listy."
     },
     {
      "id": "s019",
@@ -892,33 +982,33 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 13: NWW",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 13: NWW\n\nNapisz nww(a,b) dla nieujemnych liczb. Jeśli choć jedna jest zerem, zwróć 0. Wykorzystaj NWD i dzielenie całkowite przed mnożeniem.\n\n**Wskazówka:** Iloczyn NWD i NWW jest iloczynem dodatnich argumentów."
+     "markdown": "## Zadanie 13: NWW\n\n**Dane:** Dwie nieujemne liczby całkowite `a` i `b`.\n\n**Do wykonania:** Napisz funkcję `nww(a, b)` wyznaczającą najmniejszą wspólną wielokrotność. Wykorzystaj NWD. Jeśli choć jeden argument to zero, przyjmij wynik 0. Nie stosuj liczb zmiennoprzecinkowych.\n\n**Wynik:** Zwróć najmniejszą dodatnią liczbę, która jest wielokrotnością obu dodatnich argumentów; wyjątek stanowi opisany przypadek z zerem. Pokaż działanie na parze dodatnich liczb oraz parze z zerem.\n\n**Przykład wyjaśniający:** Wielokrotności 4 to 4, 8, 12, 16, …, a wielokrotności 6 to 6, 12, 18, … . Pierwszą wspólną jest 12, więc NWW(4, 6) = 12. NWD tej samej pary wynosi 2 — nie pomyl tych dwóch pojęć."
     },
     {
      "id": "s022",
      "title": "Zadanie 14: zapis szesnastkowy",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 14: zapis szesnastkowy\n\nNapisz szesnastkowo(n) dla n>=0. Użyj cyfry_w_bazie i alfabetu 0123456789ABCDEF. Nie używaj hex w implementacji; użyj go do porównania wyników.\n\n**Wskazówka:** Cyfra o wartości 15 jest reprezentowana przez F."
+     "markdown": "## Zadanie 14: zapis szesnastkowy\n\n**Dane:** Liczba całkowita `n >= 0`. Alfabet cyfr szesnastkowych to `0123456789ABCDEF`.\n\n**Do wykonania:** Napisz funkcję `szesnastkowo(n)` zwracającą zapis szesnastkowy z wielkimi literami, bez prefiksu i zer wiodących. Wykorzystaj własną `cyfry_w_bazie`; nie używaj `hex` w implementacji.\n\n**Wynik:** Zwróć napis z cyframi szesnastkowymi, a dla zera `\"0\"`. „Bez prefiksu” oznacza bez początkowego `0x`. Wyświetl zapis kilku wybranych liczb. Wyniki możesz porównać z `hex`, pamiętając o różnicy formatu.\n\n**Przykład wyjaśniający:** Dziesiętna liczba 26 ma zapis szesnastkowy `\"1A\"`, ponieważ 1·16 + 10 = 26. Nie zwracaj `\"0x1a\"`, `\"1a\"` ani listy `[1, 10]`: w tym zadaniu wymagamy napisu `\"1A\"`."
     }
    ]
   },
   {
    "number": 5,
    "kind": "lesson",
-   "title": "Matura 2024: Nieparzysty skrót krok po kroku",
+   "title": "Matura 2024: Nieparzysty skrót",
    "sourceFile": "05_matura_2024_zadanie_3_nieparzysty_skrot/karta_pracy.ipynb",
    "notebook": "lekcje/05_matura_2024_zadanie_3_nieparzysty_skrot/karta_pracy.ipynb",
    "download": "pobierz/05_matura_2024_zadanie_3_nieparzysty_skrot.zip",
    "assetBase": "lekcje/05_matura_2024_zadanie_3_nieparzysty_skrot/",
-   "checksum": "363e73baa5e17cf6b71218416bcb80faa9882c75ca23ac9615643ac7755b3458",
+   "checksum": "6088344aa2f150dc412d0808aebb8e2d6bafa7f9e7345ebbe91fc5a5de23ccfc",
    "sections": [
     {
      "id": "intro",
      "title": "Cel i sposób pracy",
      "kind": "intro",
      "context": "",
-     "markdown": "# Karta pracy 05. Matura 2024: Nieparzysty skrót krok po kroku\n\n**Kurs:** Python — programowanie do matury rozszerzonej z informatyki\n\n**Prowadzący:** por. Jakub GRĄTKIEWICZ · jakub.gratkiewicz@wat.edu.pl\n\n**Cel:** Pełne rozwiązanie zadania 3.1–3.3 z arkusza MINP-R0-100-2405.\n\nZnasz podstawy Pythona. Przypominamy potrzebne narzędzia i stosujemy je w coraz bardziej złożonych zadaniach.\n\nOtwórz ten notatnik w folderze bieżącej lekcji. W zadaniu plikowym samodzielnie napisz otwarcie pliku, odczyt, konwersję, obliczenia i zapis odpowiedzi. Nie ma wspólnej komórki wczytującej dane ani gotowych list z plików zadaniowych.\n\nZadania 1–8 wykonujemy na lekcji, zadania 9–10 samodzielnie. Niedokończone zadania uzupełnij przed następnym spotkaniem.\n\nW pustych komórkach roboczych wpisz własny kod. Wyświetl wyniki obliczeń i przygotuj się do wyjaśnienia swojego rozwiązania.\n\nPrzed oddaniem zrestartuj jądro, uruchom własne komórki od początku i zapisz notatnik oraz wymagane pliki wynikowe."
+     "markdown": "# Karta pracy 05. Matura 2024: Nieparzysty skrót\n\n**Kurs:** Python — programowanie do matury rozszerzonej z informatyki\n\n**Prowadzący:** por. Jakub GRĄTKIEWICZ · jakub.gratkiewicz@wat.edu.pl\n\n**Cel:** Pełne rozwiązanie zadania 3.1–3.3 z arkusza MINP-R0-100-2405.\n\nZnasz podstawy Pythona. Przypominamy potrzebne narzędzia i stosujemy je w coraz bardziej złożonych zadaniach.\n\nOtwórz ten notatnik w folderze bieżącej lekcji. W zadaniu plikowym samodzielnie napisz otwarcie pliku, odczyt, konwersję, obliczenia i zapis odpowiedzi. Nie ma wspólnej komórki wczytującej dane ani gotowych list z plików zadaniowych.\n\nZadania 1–8 wykonujemy na lekcji, zadania 9–10 samodzielnie. Niedokończone zadania uzupełnij przed następnym spotkaniem.\n\nW pustych komórkach roboczych wpisz własny kod. Wyświetl wyniki obliczeń i przygotuj się do wyjaśnienia swojego rozwiązania.\n\nPrzed oddaniem zrestartuj jądro, uruchom własne komórki od początku i zapisz notatnik oraz wymagane pliki wynikowe."
     },
     {
      "id": "s001",
@@ -939,7 +1029,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -988,14 +1078,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 1: 3.1: funkcja zgodna z ograniczeniami",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: 3.1: funkcja zgodna z ograniczeniami\n\nNapisz skrot(n) arytmetycznie dla n>0. Zwracaj 0 przy braku skrótu. Przepisz funkcję tak, żeby można było zapisać ją na kartce bez biblioteki standardowej.\n\n**Wskazówka:** Każda używana zmienna wewnątrz funkcji przechowuje liczbę całkowitą."
+     "markdown": "## Zadanie 1: 3.1: funkcja zgodna z ograniczeniami\n\n**Dane:** Dodatnia liczba całkowita i definicja nieparzystego skrótu z zadania 3.1 matury 2024.\n\n**Do wykonania:** Opracuj funkcję `skrot(n)` zgodną z ograniczeniami oryginalnego polecenia CKE. Używaj wyłącznie zmiennych całkowitych, dozwolonej arytmetyki, porównań, warunków i pętli. Nie korzystaj z napisów, kolekcji ani wywołań funkcji.\n\n**Wynik:** Zwróć skrót jako liczbę całkowitą; umownie 0, gdy skrót nie istnieje. Zapisz również na kartce własny algorytm i wyjaśnij, jak zachowuje kolejność cyfr. Ograniczenia dotyczą wnętrza funkcji, nie sposobu wyświetlania jej wyniku.\n\n**Przykład wyjaśniający:** Skrót tworzymy z nieparzystych cyfr liczby, pozostawiając ich kolejność. Dla 60391 otrzymujemy 391, a dla 820 nie pozostaje żadna cyfra. Wynik 0 oznacza w programie „brak skrótu”; nie dopisujemy go do cyfr, które zostały."
     },
     {
      "id": "s011",
      "title": "Zadanie 2: 3.1: skróty wybranych liczb",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: 3.1: skróty wybranych liczb\n\nOblicz skróty cyfr 1,2,9 oraz liczb 10101,20003,86420. Zapisz pary liczba–skrót w slownik_skrotow i wyświetl każdą parę w osobnym wierszu. Wyjaśnij, dlaczego zera znikają.\n\n**Wskazówka:** Zero jest cyfrą parzystą."
+     "markdown": "## Zadanie 2: 3.1: skróty wybranych liczb\n\n**Dane:** Liczby `1, 2, 9, 10101, 20003, 86420`.\n\n**Do wykonania:** Wyznacz nieparzysty skrót każdej liczby własną funkcją. Przed uruchomieniem wybierz dwie liczby i zapisz dla nich przewidywane wyniki.\n\n**Wynik:** Zapisz wyniki w słowniku `slownik_skrotow`: kluczem ma być liczba wejściowa, a wartością skrót obliczony Twoją funkcją. Wyświetl każdą liczbę i odpowiadający jej skrót w osobnym wierszu. Wyjaśnij rolę cyfry zero.\n\n**Przykład wyjaśniający:** Dla dodatkowych danych 31, 301 i 408 słownik miałby postać `{31: 31, 301: 31, 408: 0}`. Różne liczby mogą mieć ten sam skrót i nadal powinny mieć osobne wpisy. Właściwy słownik przygotuj dla sześciu liczb z polecenia."
     },
     {
      "id": "s012",
@@ -1009,21 +1099,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 3: Wczytanie obu przykładów",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: Wczytanie obu przykładów\n\nNapisz wczytaj(nazwa): sam otwórz plik, wczytaj każdą liczbę i zwróć listę. Wczytaj skrot_przyklad.txt do przyklad_1 oraz skrot2_przyklad.txt do przyklad_2. Oba pliki leżą obok notatnika. Potwierdź po 20 rekordów.\n\n**Wskazówka:** Nazwy skrot i skrot2 dotyczą innych podpunktów."
+     "markdown": "## Zadanie 3: Wczytanie obu przykładów\n\n**Dane:** Pliki `skrot_przyklad.txt` i `skrot2_przyklad.txt` leżą obok notatnika. Każdy zawiera po jednej dodatniej liczbie całkowitej w wierszu.\n\n**Do wykonania:** Napisz funkcję `wczytaj(nazwa)`, która samodzielnie odczytuje taki plik. Zachowaj kolejność i wszystkie wystąpienia liczb.\n\n**Wynik:** Zapisz dane z pierwszego pliku w `przyklad_1`, a z drugiego w `przyklad_2`. Każda zmienna ma przechowywać listę liczb typu `int`. Wyświetl liczbę elementów każdej listy; w obu plikach powinno być po 20 liczb.\n\n**Przykład wyjaśniający:** Jeśli plik ma wiersze `71`, `204`, `71`, wynikiem odczytu jest `[71, 204, 71]`. Nie usuwaj powtórzonego 71 i nie obliczaj skrótów podczas odczytu: dalsze zadania potrzebują oryginalnych liczb."
     },
     {
      "id": "s014",
      "title": "Zadanie 4: 3.2: liczność i największy element",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: 3.2: liczność i największy element\n\nNapisz bez_skrotu(liczby), zwracającą (liczba rekordów bez skrótu, maksimum). Gdy grupa jest pusta, zwróć (0,None). Potwierdź (2,2428) dla pierwszego przykładu.\n\n**Wskazówka:** Aktualizacja maksimum musi być wewnątrz warunku brakującego skrótu."
+     "markdown": "## Zadanie 4: 3.2: liczność i największy element\n\n**Dane:** Lista dodatnich liczb całkowitych oraz wymagania zadania 3.2 matury 2024.\n\n**Do wykonania:** Napisz funkcję `bez_skrotu(liczby)` ustalającą, ile liczb nie ma nieparzystego skrótu i która z nich jest największa. Każde wystąpienie liczby liczy się osobno.\n\n**Wynik:** Zwróć parę `(liczba_rekordow, maksimum)`: liczbę wystąpień bez skrótu oraz największą z tych liczb wejściowych. Jeśli żadna nie pasuje, zwróć `(0, None)`. Wyświetl wynik dla `przyklad_1` i porównaj z przykładem CKE.\n\n**Przykład wyjaśniający:** Dla `[246, 31, 80, 246]` wynik to `(3, 246)`. Liczby 246, 80 i drugie wystąpienie 246 składają się wyłącznie z parzystych cyfr. Trójka w odpowiedzi oznacza liczbę wystąpień, nie liczbę różnych wartości."
     },
     {
      "id": "s015",
      "title": "Zadanie 5: 3.3: funkcja NWD",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: 3.3: funkcja NWD\n\nNapisz nwd(a,b) dla nieujemnych argumentów. Potwierdź, że NWD liczby 4872 i jej skrótu wynosi 7.\n\n**Wskazówka:** Warunek maturalny dotyczy największego dzielnika."
+     "markdown": "## Zadanie 5: 3.3: funkcja NWD\n\n**Dane:** Dwie nieujemne liczby całkowite. Dla pary `(0, 0)` przyjmujemy NWD równe 0.\n\n**Do wykonania:** Napisz własne `nwd(a, b)`. Wyznacz nim NWD liczby 4872 i jej nieparzystego skrótu, obliczonego przez Twoją funkcję `skrot`.\n\n**Wynik:** Wyświetl liczbę 4872, jej obliczony skrót i ich NWD. Napisz, czy uzyskany NWD wynosi dokładnie 7 — tego wymaga zadanie 3.3. Wyjaśnij różnicę między wspólnym dzielnikiem a największym wspólnym dzielnikiem.\n\n**Przykład wyjaśniający:** Liczba 3 dzieli zarówno 18, jak i 24, ale nie jest ich NWD, ponieważ obie liczby dzielą się także przez 6. Podobnie w zadaniu nie wystarczy zauważyć, że liczba i jej skrót dzielą się przez 7: ich największy wspólny dzielnik ma wynosić 7."
     },
     {
      "id": "s016",
@@ -1037,21 +1127,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 6: 3.3: lista odpowiedzi",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: 3.3: lista odpowiedzi\n\nNapisz nwd_siedem(liczby). Zachowaj kolejność oraz wszystkie wystąpienia, nie używaj set. Sprawdź przykład CKE.\n\n**Wskazówka:** Lista wynikowa nie wymaga sortowania."
+     "markdown": "## Zadanie 6: 3.3: lista odpowiedzi\n\n**Dane:** Lista dodatnich liczb i warunek zadania 3.3: NWD liczby oraz jej nieparzystego skrótu wynosi 7.\n\n**Do wykonania:** Napisz funkcję `nwd_siedem(liczby)` wybierającą wszystkie liczby spełniające ten warunek. Liczby bez skrótu pomijamy. Zachowaj kolejność i każde wystąpienie.\n\n**Wynik:** Zwróć listę oryginalnych liczb, a nie ich skrótów ani wartości NWD. Wyświetl ją dla `przyklad_2` i porównaj z przykładem CKE. Jeśli żadna liczba nie pasuje, odpowiedzią jest `[]`.\n\n**Przykład wyjaśniający:** Dla `[70, 13, 70, 24]` wynikiem jest `[70, 70]`: każde 70 ma skrót 7 i NWD równe 7, liczba 13 ma NWD równe 13, a 24 nie ma skrótu. Zbiór usunąłby jedno poprawne wystąpienie 70."
     },
     {
      "id": "s018",
      "title": "Zadanie 7: Obliczenia na pełnych danych",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Obliczenia na pełnych danych\n\nWczytaj skrot.txt i skrot2.txt. Wyświetl liczbę rekordów. Zapisz odpowiedzi w odp_32 i odp_33, wypisz je i wyjaśnij znaczenie każdego wyniku.\n\n**Wskazówka:** Ostateczny przebieg musi korzystać z nazw bez dopisku przyklad."
+     "markdown": "## Zadanie 7: Obliczenia na pełnych danych\n\n**Dane:** Pełne dane maturalne: `skrot.txt` do zadania 3.2 i `skrot2.txt` do zadania 3.3, po 200 liczb w pliku.\n\n**Do wykonania:** Przygotuj obliczenie odpowiedzi obu podpunktów na podstawie samodzielnie wczytanych plików. Wyniki muszą powstać z obliczeń, a nie z ręcznie wpisanych odpowiedzi.\n\n**Wynik:** W `odp_32` zapisz parę `(ile_liczb_bez_skrotu, najwieksza_z_nich)` obliczoną z `skrot.txt`. W `odp_33` zapisz listę liczb spełniających warunek NWD = 7, obliczoną z `skrot2.txt`. Wyświetl rozmiary danych i odpowiedzi podpisane numerami podpunktów.\n\n**Przykład wyjaśniający:** Podpunkt 3.2 daje dwie informacje podsumowujące jeden plik. Podpunkt 3.3 daje listę wybranych liczb z drugiego pliku. Nie łącz obu wejść i nie używaj tutaj plików z dopiskiem `_przyklad` — służyły do wcześniejszego sprawdzenia działania."
     },
     {
      "id": "s019",
      "title": "Zadanie 8: Pliki odpowiedzi i kontrola po zapisie",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: Pliki odpowiedzi i kontrola po zapisie\n\nSam otwórz pliki wynikowe do zapisu. Zapisz odp_32 jako dwa wiersze do wyniki3_2.txt i odp_33 po jednej liczbie do wyniki3_3.txt. Pliki mają powstać obok notatnika. Wczytaj je ponownie własną funkcją i porównaj z obliczeniami.\n\n**Wskazówka:** Sprawdzaj plik, który oddajesz, nie tylko wcześniejszy print."
+     "markdown": "## Zadanie 8: Pliki odpowiedzi i kontrola po zapisie\n\n**Dane:** Obliczone odpowiedzi `odp_32` i `odp_33` dla pełnych danych.\n\n**Do wykonania:** Przygotuj kod zapisujący komplet odpowiedzi w folderze lekcji. Program ma również ponownie odczytać zapisane pliki.\n\n**Wynik:** W `wyniki3_2.txt` zapisz liczbę wystąpień bez skrótu w pierwszym wierszu, a największą z tych liczb w drugim. W `wyniki3_3.txt` zapisz każdą wybraną liczbę w osobnym wierszu. Wyświetl ponownie odczytaną zawartość obu plików.\n\n**Przykład wyjaśniający:** Gdyby `odp_32` wynosiło `(3, 246)`, pierwszy plik zawierałby wiersze `3` i `246`, nie tekst `(3, 246)`. Jeśli `odp_33` zawierałoby `[70, 707]`, drugi plik miałby osobne wiersze `70` i `707`. Użyj własnych obliczonych odpowiedzi, nie tych przykładowych wartości."
     },
     {
      "id": "s020",
@@ -1072,14 +1162,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 9: najczęstszy skrót",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 9: najczęstszy skrót\n\nNapisz najczestszy_skrot(liczby), zwracającą parę (skrót, liczba wystąpień). Pomiń liczby bez skrótu. Przy remisie wybierz mniejszy skrót, a gdy żaden nie istnieje, zwróć None. Wyświetl wynik dla [13,103,130,224,57,507]. Korzystaj z własnej arytmetycznej funkcji skrot.\n\n**Wskazówka:** Słownik przechowuje, ile razy pojawił się każdy skrót."
+     "markdown": "## Zadanie 9: najczęstszy skrót\n\n**Dane:** Lista dodatnich liczb, np. `[13, 103, 130, 224, 57, 507]`.\n\n**Do wykonania:** Napisz funkcję `najczestszy_skrot(liczby)` wskazującą najczęściej występujący nieparzysty skrót. Pomiń liczby bez skrótu. Przy remisie wybierz mniejszy skrót. Użyj własnej arytmetycznej funkcji `skrot`.\n\n**Wynik:** Zwróć parę `(skrot, liczba_wystapien)` opisującą najczęstszy skrót albo `None`, jeśli żadna liczba nie ma skrótu. Zliczaj wystąpienia skrótów, nie powtarzające się liczby wejściowe. Wyświetl wynik dla podanej listy.\n\n**Przykład wyjaśniający:** Dla `[13, 103, 57, 507]` skrót 13 występuje dwa razy i skrót 57 także dwa razy. Odpowiedź to `(13, 2)`, bo przy tej samej liczbie wystąpień wybieramy mniejszy skrót. Liczba 103 liczy się do skrótu 13."
     },
     {
      "id": "s023",
      "title": "Zadanie 10: liczby równe własnemu skrótowi",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 10: liczby równe własnemu skrótowi\n\nNapisz niezmienione(liczby), zwracającą dodatnie liczby równe własnemu skrótowi. Zachowaj kolejność i powtórzenia. Wyświetl wynik dla [13,103,57,224,135,13] i wyjaśnij, jakie cyfry mają wybrane liczby.\n\n**Wskazówka:** Usunięcie dowolnej cyfry zmniejsza liczbę cyfr dodatniej liczby."
+     "markdown": "## Zadanie 10: liczby równe własnemu skrótowi\n\n**Dane:** Lista dodatnich liczb, np. `[13, 103, 57, 224, 135, 13]`.\n\n**Do wykonania:** Napisz funkcję `niezmienione(liczby)` wybierającą liczby równe własnemu nieparzystemu skrótowi. Zachowaj kolejność i powtórzenia.\n\n**Wynik:** Zwróć listę tych liczb wejściowych, których wartość nie zmieniła się po utworzeniu skrótu. Wyświetl ją i opisz wspólną cechę cyfr wszystkich wybranych liczb.\n\n**Przykład wyjaśniający:** Dla `[35, 305, 79, 35]` odpowiedź to `[35, 79, 35]`. Skrót 305 wynosi 35, czyli różni się od 305, dlatego ta liczba odpada. Oba wystąpienia liczby 35 zachowujemy."
     }
    ]
   },
@@ -1091,7 +1181,7 @@ window.PYTHON_COURSE = {
    "notebook": "lekcje/06_sortowanie_zliczanie_i_czynniki/karta_pracy.ipynb",
    "download": "pobierz/06_sortowanie_zliczanie_i_czynniki.zip",
    "assetBase": "lekcje/06_sortowanie_zliczanie_i_czynniki/",
-   "checksum": "2075ebeeb0303dbaff81a796783d9657faca2346ef77de31009c519e7ac84a3a",
+   "checksum": "e9c3ed37b3533ce8078ea06cd1a4e63efad2e978cd4e7eda7614ea46479397d0",
    "sections": [
     {
      "id": "intro",
@@ -1119,7 +1209,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -1133,14 +1223,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 1: Ranking z powtórzeniami",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: Ranking z powtórzeniami\n\nNapisz kta(liczby,k), zwracającą k-tą liczbę od największej. Załóż 1<=k<=len(liczby). Nie zmieniaj argumentu.\n\n**Wskazówka:** sorted nie usuwa powtórzeń."
+     "markdown": "## Zadanie 1: Ranking z powtórzeniami\n\n**Dane:** Niepusta lista liczb oraz pozycja `1 <= k <= len(liczby)`. Powtórzenia zajmują osobne miejsca w rankingu.\n\n**Do wykonania:** Napisz funkcję `kta(liczby, k)` zwracającą k-tą największą wartość. Nie zmieniaj listy wejściowej.\n\n**Wynik:** Zwróć jedną liczbę — wartość, która zajmuje miejsce `k` w zestawieniu od największej do najmniejszej. Miejsca liczymy od 1. Pokaż działanie na liście z powtórzeniami.\n\n**Przykład wyjaśniający:** Dla `[8, 3, 8, 5]` kolejność od największej to 8, 8, 5, 3. Dla `k = 2` odpowiedź to 8, a dla `k = 3` to 5. Drugie wystąpienie ósemki zajmuje osobne miejsce; nie usuwamy powtórzeń."
     },
     {
      "id": "s006",
      "title": "Zadanie 2: Liczności bez biblioteki",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: Liczności bez biblioteki\n\nNapisz licznik(dane) budującą słownik wystąpień. Sprawdź [2,2,3,5,3].\n\n**Wskazówka:** Nowy klucz zaczyna od wartości 0."
+     "markdown": "## Zadanie 2: Liczności bez biblioteki\n\n**Dane:** Lista liczb, np. `[2, 2, 3, 5, 3]`.\n\n**Do wykonania:** Napisz funkcję `licznik(dane)` określającą, ile razy występuje każda wartość. Nie korzystaj z gotowej klasy `Counter`.\n\n**Wynik:** Zwróć słownik, którego kluczami są różne liczby z danych, a wartościami liczby ich wystąpień. Wyświetl go dla podanej listy i dla pustej listy, dla której wynikiem powinno być `{}`.\n\n**Przykład wyjaśniający:** Dla `[4, 1, 4, 4]` wynik to `{4: 3, 1: 1}`. Wpis `4: 3` oznacza „liczba 4 wystąpiła trzy razy”. Nie oznacza trzeciej pozycji listy ani wyniku działania 4 + 3."
     },
     {
      "id": "s007",
@@ -1154,28 +1244,28 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 3: Choć jedna wielokrotność",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: Choć jedna wielokrotność\n\nNapisz dzieli_jakas(p,liczby), kończącą szukanie po pierwszej wielokrotności p. Załóż p>0; pusta lista daje False.\n\n**Wskazówka:** False zwróć dopiero po sprawdzeniu całej listy."
+     "markdown": "## Zadanie 3: Choć jedna wielokrotność\n\n**Dane:** Dodatnia liczba całkowita `p` i lista dodatnich liczb całkowitych.\n\n**Do wykonania:** Napisz funkcję `dzieli_jakas(p, liczby)` rozstrzygającą, czy `p` dzieli bez reszty przynajmniej jedną liczbę z listy. Zakończ przeszukiwanie, gdy odpowiedź jest już przesądzona.\n\n**Wynik:** Zwróć `True`, jeśli znaleziono choć jedną liczbę podzielną przez `p`, i `False`, jeśli takiej liczby nie ma. Dla pustej listy zwróć `False`. Pokaż przypadek pasujący i niepasujący.\n\n**Przykład wyjaśniający:** Dla `p = 4` i listy `[6, 12, 7]` odpowiedź to `True`, bo 12 dzieli się przez 4 bez reszty. Liczby 6 i 7 nie muszą spełniać warunku — pytamy o przynajmniej jedną liczbę, nie o wszystkie."
     },
     {
      "id": "s009",
      "title": "Zadanie 4: Zliczanie wystąpień dzielników",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: Zliczanie wystąpień dzielników\n\nNapisz licz_dzielniki(pierwszy,drugi). Dla [2,2,3,7] i [12,15] wynik to 3, a nie 2 ani 4.\n\n**Wskazówka:** Nie zliczaj par (p,n); zliczaj pasujące wystąpienia p."
+     "markdown": "## Zadanie 4: Zliczanie wystąpień dzielników\n\n**Dane:** Dwie listy dodatnich liczb całkowitych: `pierwszy` i `drugi`.\n\n**Do wykonania:** Napisz funkcję `licz_dzielniki(pierwszy, drugi)`. Policz wystąpienia z pierwszej listy, które dzielą przynajmniej jedną liczbę z drugiej. Powtórzony element pierwszej listy liczy się ponownie, ale kilka trafień dla jednego wystąpienia nie zwiększa jego udziału.\n\n**Wynik:** Zwróć liczbę pasujących elementów pierwszej listy. Nie zwracaj liczby wszystkich pasujących par pomiędzy listami. Wyświetl wynik dla `[2, 2, 3, 7]` i `[12, 15]` i wyjaśnij, co zostało policzone.\n\n**Przykład wyjaśniający:** Dla pierwszej listy `[2, 2, 5]` i drugiej `[6, 10]` wynik wynosi 3. Każda dwójka liczy się raz, mimo że dzieli obie liczby drugiej listy. Piątka też liczy się raz, ponieważ dzieli 10. Wynik nie może przekroczyć długości pierwszej listy."
     },
     {
      "id": "s010",
      "title": "Zadanie 5: Rozkład liczby",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: Rozkład liczby\n\nNapisz rozklad(n) dla n>=2, zwracającą listę czynników pierwszych od najmniejszego. Dla 72: [2,2,2,3,3]. Po pętli uwzględnij pozostały duży czynnik.\n\n**Wskazówka:** Gdy d*d przekracza pozostałą liczbę, reszta >1 musi być pierwsza."
+     "markdown": "## Zadanie 5: Rozkład liczby\n\n**Dane:** Liczba całkowita `n >= 2`.\n\n**Do wykonania:** Napisz funkcję `rozklad(n)` wyznaczającą wszystkie czynniki pierwsze liczby wraz z powtórzeniami. Lista ma być uporządkowana rosnąco.\n\n**Wynik:** Zwróć rosnącą listę liczb pierwszych, których iloczyn odtwarza `n`. Ta sama liczba pierwsza może pojawić się wielokrotnie. Pokaż działanie dla 72 i wybranej liczby pierwszej. Pomnóż otrzymane czynniki, aby uzasadnić odpowiedź.\n\n**Przykład wyjaśniający:** Dla 18 odpowiedź to `[2, 3, 3]`, bo 18 = 2·3·3. Nie wystarczy `[2, 3]`, bo jego iloczyn to 6. Lista `[1, 2, 3, 6, 9, 18]` też nie pasuje — to lista dzielników, a nie rozkład na czynniki pierwsze."
     },
     {
      "id": "s011",
      "title": "Zadanie 6: Ile robotów zbuduje warsztat?",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: Ile robotów zbuduje warsztat?\n\nJeden robot wymaga 4 kół, 2 silników i 1 czujnika. Magazyn ma 14 kół, 5 silników i 9 czujników. Napisz warsztat(zapas,plan), przyjmującą dwa słowniki i zwracającą (maksymalna liczba robotów, słownik pozostałych części). Plan jest niepusty, wszystkie wymagane ilości dodatnie, zapasy nieujemne; brak części w zapasie oznacza zero. Nie zmieniaj wejściowego słownika.\n\n**Wskazówka:** Ogranicza Cię część, której wystarczy na najmniej kompletnych robotów."
+     "markdown": "## Zadanie 6: Ile robotów zbuduje warsztat?\n\n**Dane:** Słowniki `zapas` i `plan`. Plan jednego robota: `{\"kolo\": 4, \"silnik\": 2, \"czujnik\": 1}`. Przykładowy zapas: `{\"kolo\": 14, \"silnik\": 5, \"czujnik\": 9}`.\n\n**Do wykonania:** Napisz funkcję `warsztat(zapas, plan)` ustalającą maksymalną liczbę kompletnych robotów i pozostałe części. Plan jest niepusty, ilości w nim dodatnie, zapasy nieujemne. Brak części w zapasie oznacza zero. Nie zmieniaj argumentów.\n\n**Wynik:** Zwróć parę `(liczba_robotow, slownik_pozostalych_czesci)`: ile całych robotów można zbudować i jaki zapas zostanie po ich zbudowaniu. Zachowaj w zapasie także części nieużywane w planie. Wyświetl wynik dla przykładu i nazwij brakującą do dalszej produkcji część.\n\n**Przykład wyjaśniający:** Jeśli robot wymaga 2 kół i 1 silnika, a mamy 7 kół i 2 silniki, można zbudować 2 roboty. Pozostaną 3 koła i 0 silników. Nie można zbudować trzeciego kompletnego robota, choć zostały koła. Zapasy części zużywają się przy budowie."
     },
     {
      "id": "s012",
@@ -1189,28 +1279,28 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 7: Ograniczony iloczyn",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Ograniczony iloczyn\n\nNapisz mozna(n,pierwsze), sprawdzającą budowę n z dostarczonych wystąpień liczb pierwszych. Dla [2,2,3,5]: 12 i 20 są możliwe, 16 nie.\n\n**Wskazówka:** Jedno wystąpienie w liście daje prawo do jednego dzielenia."
+     "markdown": "## Zadanie 7: Ograniczony iloczyn\n\n**Dane:** Liczba całkowita `n >= 2` oraz lista `pierwsze` zawierająca zapas liczb pierwszych. Każde wystąpienie jest osobnym dostępnym czynnikiem.\n\n**Do wykonania:** Napisz funkcję `mozna(n, pierwsze)` sprawdzającą, czy `n` da się otrzymać jako iloczyn wybranych czynników. Każde wystąpienie można wykorzystać najwyżej raz, część zapasu może pozostać niewykorzystana.\n\n**Wynik:** Zwróć `True`, jeśli liczba jest możliwa do zbudowania z dostępnego zapasu, i `False` w przeciwnym przypadku. Nie trzeba używać wszystkich czynników. Wyświetl odpowiedzi dla 12, 20 i 16 przy zapasie `[2, 2, 3, 5]`.\n\n**Przykład wyjaśniający:** Przy zapasie `[2, 3, 3]` liczbę 18 można otrzymać jako 2·3·3, więc odpowiedź to `True`. Liczby 12 nie można otrzymać, bo potrzeba dwóch dwójek, a dostępna jest tylko jedna. Sam fakt, że występują liczby 2 i 3, nie wystarcza."
     },
     {
      "id": "s014",
-     "title": "Zadanie 8: Dlaczego while może być błędem",
+     "title": "Zadanie 8: Brakujące czynniki pierwsze",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: Dlaczego while może być błędem\n\nNapisz brakujace(n,pierwsze), zwracającą słownik brakujących czynników i liczności. Dla 16 i [2,2,3] wynik to {2:2}; dla 12 to {}.\n\n**Wskazówka:** Bez ograniczenia liczności while n%p==0 zużyłby czynnik dowolnie wiele razy."
+     "markdown": "## Zadanie 8: Brakujące czynniki pierwsze\n\n**Dane:** Liczba `n >= 2` i lista dostępnych czynników pierwszych, z uwzględnieniem powtórzeń.\n\n**Do wykonania:** Napisz funkcję `brakujace(n, pierwsze)` ustalającą, jakie dodatkowe czynniki są potrzebne do zbudowania `n`. Dostępny czynnik wolno wykorzystać tylko tyle razy, ile występuje na liście.\n\n**Wynik:** Zwróć słownik, w którym klucz oznacza brakującą liczbę pierwszą, a wartość — ile jej dodatkowych sztuk potrzeba. Nie wpisuj czynników, których jest wystarczająco dużo. Gdy niczego nie brakuje, zwróć `{}`. Zaprezentuj 16 i 12 dla zapasu `[2, 2, 3]`.\n\n**Przykład wyjaśniający:** Liczba 72 wymaga czynników 2, 2, 2, 3, 3. Jeśli zapas wynosi `[2, 3, 5]`, brakuje dwóch dwójek i jednej trójki, więc wynik to `{2: 2, 3: 1}`. Dostępna piątka nie zastąpi żadnego z brakujących czynników."
     },
     {
      "id": "s015",
      "title": "Zadanie 9: Raport zbiorczy",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 9: Raport zbiorczy\n\nNapisz raport(pierwsze,liczby,k), zwracającą (liczba pasujących dzielników, k-ta największa, lista budowalnych liczb). Dla [2,2,3,5], [12,16,20], k=2: (4,3,[12,20]).\n\nTeraz sam otwórz czynniki-trening.txt: pierwszy wiersz zawiera czynniki, drugi badane liczby. Wczytaj dwie listy i oblicz raport_z_pliku dla k=2. Zapisz trzy części raportu w trzech wierszach wyniki-trening.txt. Nie zastępuj odczytu wpisaniem list do kodu.\n\n**Wskazówka:** Każde wywołanie mozna rozpoczyna od całej badanej liczby."
+     "markdown": "## Zadanie 9: Raport zbiorczy\n\n**Dane:** Plik `czynniki-trening.txt`: pierwszy wiersz to czynniki pierwsze, drugi badane liczby. Liczby w wierszu są rozdzielone spacjami.\n\n**Do wykonania:** Napisz funkcję `raport(pierwsze, liczby, k)` łączącą trzy informacje: ile wystąpień czynników dzieli jakąkolwiek badaną liczbę, jaka jest k-ta największa wartość z listy czynników i które badane liczby można zbudować z zapasu. Dla każdej badanej liczby zapas jest dostępny od nowa.\n\n**Wynik:** Zwróć krotkę `(liczba_pasujacych_czynnikow, kta_wartosc, lista_mozliwych_liczb)`, wykorzystując znaczenia z zadań 4, 1 i 7. Sam odczytaj plik i zapisz wynik dla `k = 2` w `raport_z_pliku`. W `wyniki-trening.txt` zapisz trzy części w osobnych wierszach, a liczby ostatniej części rozdziel spacjami.\n\n**Przykład wyjaśniający:** Dla czynników `[2, 3, 3]`, kandydatów `[6, 18, 4]` i `k = 2` raport to `(3, 3, [6, 18])`. Wszystkie trzy wystąpienia czynników dzielą którąś badaną liczbę. Drugą wartością w rankingu jest 3. Można zbudować 6 i 18, każdą ocenianą z pełnym zapasem od nowa."
     },
     {
      "id": "s016",
      "title": "Zadanie 10: Podium po kilku rundach",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 10: Podium po kilku rundach\n\nLista wyników to [(\"Ada\",14),(\"Jan\",18),(\"Ada\",7),(\"Ola\",21),(\"Ewa\",9)]. Napisz podium(rundy): zsumuj punkty każdej osoby i zwróć pierwsze trzy pary (imię, suma). Więcej punktów oznacza wyższą pozycję, a remis rozstrzyga kolejność alfabetyczna. Jeśli osób jest mniej niż trzy, zwróć wszystkie. Jedna osoba ma mieć tylko jedno miejsce w rankingu.\n\n**Wskazówka:** Najpierw zbierz sumy, dopiero potem sortuj. Klucz (-punkty, imię) łączy dwa porządki."
+     "markdown": "## Zadanie 10: Podium po kilku rundach\n\n**Dane:** Wyniki rund: `[(\"Ada\", 14), (\"Jan\", 18), (\"Ada\", 7), (\"Ola\", 21), (\"Ewa\", 9)]`.\n\n**Do wykonania:** Napisz funkcję `podium(rundy)` wyznaczającą trzy najlepsze osoby według sumy punktów ze wszystkich rund. Remis rozstrzyga rosnąca kolejność alfabetyczna imion. Jedna osoba zajmuje tylko jedno miejsce.\n\n**Wynik:** Zwróć maksymalnie trzy pary `(imie, suma_punktow)`, od pierwszego do trzeciego miejsca. Jeśli osób jest mniej niż trzy, zwróć wszystkie. Każda osoba może wystąpić w wyniku tylko raz, nawet jeśli grała wiele rund.\n\n**Przykład wyjaśniający:** Dla rund `[(\"Jan\", 6), (\"Ada\", 10), (\"Jan\", 4), (\"Ola\", 8)]` wynik to `[(\"Ada\", 10), (\"Jan\", 10), (\"Ola\", 8)]`. Jan ma łącznie 10 punktów, ale przy remisie Ada jest wcześniej alfabetycznie."
     },
     {
      "id": "s017",
@@ -1231,14 +1321,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 11: druga różna",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 11: druga różna\n\nNapisz druga_rozna(liczby). Tym razem powtórzenia należy pominąć. Gdy różnych wartości jest mniej niż 2, zwróć None.\n\n**Wskazówka:** Zmieniony warunek zadania uzasadnia użycie set."
+     "markdown": "## Zadanie 11: druga różna\n\n**Dane:** Lista liczb, w której mogą wystąpić powtórzenia.\n\n**Do wykonania:** Napisz funkcję `druga_rozna(liczby)` znajdującą drugą największą różną wartość. Tym razem wielokrotne wystąpienie tej samej liczby zajmuje jedno miejsce.\n\n**Wynik:** Zwróć jedną liczbę: największą wartość mniejszą od maksimum listy. Jeśli takiej wartości nie ma, zwróć `None`. Dobierz przykład, dla którego odpowiedź różni się od wyniku `kta(liczby, 2)`.\n\n**Przykład wyjaśniający:** Dla `[9, 9, 4, 2]` druga różna wartość to 4, a nie 9. Dla `[7, 7]` wynik to `None`, ponieważ lista ma dwa elementy, ale tylko jedną różną wartość. To inne zasady rankingu niż w zadaniu 1."
     },
     {
      "id": "s020",
      "title": "Zadanie 12: liczby z dostępnych czynników",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 12: liczby z dostępnych czynników\n\nNapisz mozliwe_liczby(pierwsze,granica), zwracającą rosnąco liczby od 2 do granica włącznie, które da się zbudować z dostępnych czynników. Dla każdej liczby korzystaj z całego zapasu od nowa. Wyświetl wynik dla pierwsze=[2,2,3,5] i granica=20.\n\n**Wskazówka:** Przejdź po kandydatach i wykorzystaj wcześniej napisaną funkcję mozna."
+     "markdown": "## Zadanie 12: liczby z dostępnych czynników\n\n**Dane:** Lista czynników pierwszych `pierwsze` oraz całkowita `granica >= 2`.\n\n**Do wykonania:** Napisz funkcję `mozliwe_liczby(pierwsze, granica)` wybierającą liczby od 2 do granicy włącznie, które można otrzymać jako iloczyn dostępnych czynników. Każdą liczbę oceniaj z pełnym zapasem od nowa.\n\n**Wynik:** Zwróć rosnącą listę wszystkich możliwych liczb z przedziału od 2 do `granica`, łącznie z granicą. Każdą wartość wpisz raz. Wyświetl wynik dla `[2, 2, 3, 5]` i granicy 20.\n\n**Przykład wyjaśniający:** Dla zapasu `[2, 3]` i granicy 8 odpowiedź to `[2, 3, 6]`. Można wybrać samą dwójkę, samą trójkę albo ich iloczyn. Nie ma 4, bo brakuje drugiej dwójki. Użycie 2 w jednej odpowiedzi nie odbiera jej możliwości użycia do oceny liczby 6."
     }
    ]
   },
@@ -1250,7 +1340,7 @@ window.PYTHON_COURSE = {
    "notebook": "lekcje/07_sumy_prefiksowe_i_fragmenty/karta_pracy.ipynb",
    "download": "pobierz/07_sumy_prefiksowe_i_fragmenty.zip",
    "assetBase": "lekcje/07_sumy_prefiksowe_i_fragmenty/",
-   "checksum": "4c15b218bfe7dbc72c69daf22703b522fc11aeaaa7c648bbe9adf7e27a4eb9a2",
+   "checksum": "454078863e4fc3fb42bbdf16841c0096b05c765d134a375ec9961d67c0a09a29",
    "sections": [
     {
      "id": "intro",
@@ -1278,7 +1368,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -1292,14 +1382,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 1: Końce fragmentu",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: Końce fragmentu\n\nNapisz opis(a,l,r), zwracającą (fragment, długość, suma), przy 0<=l<=r<=len(a). Uwzględnij pusty fragment.\n\n**Wskazówka:** r nie należy do fragmentu."
+     "markdown": "## Zadanie 1: Końce fragmentu\n\n**Dane:** Lista liczb `a` i granice `0 <= l <= r <= len(a)`. Fragment obejmuje indeksy od `l` włącznie do `r` wyłącznie.\n\n**Do wykonania:** Napisz funkcję `opis(a, l, r)` opisującą wskazany spójny fragment bez zmiany listy. Gdy `l == r`, fragment jest pusty.\n\n**Wynik:** Zwróć krotkę `(lista_elementow_fragmentu, dlugosc, suma)`: wybrane elementy, ich liczbę oraz ich sumę. „Spójny” oznacza, że nie pomijasz żadnego elementu pomiędzy granicami. Pokaż fragment niepusty i pusty.\n\n**Przykład wyjaśniający:** Dla listy `[6, 2, 9, 4]` i granic `l = 1`, `r = 3` bierzemy elementy o indeksach 1 i 2, czyli `[2, 9]`. Wynik to `([2, 9], 2, 11)`. Element o indeksie 3 nie należy do fragmentu. Dla `l = r` odpowiedź to `([], 0, 0)`."
     },
     {
      "id": "s006",
      "title": "Zadanie 2: Ile okien?",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: Ile okien?\n\nNapisz liczba_okien(n,k) dla n>=0, k>=1. Gdy k>n, zwróć 0. Dla n=7,k=3 wynik to 5.\n\n**Wskazówka:** Pierwszy początek to 0, ostatni n-k."
+     "markdown": "## Zadanie 2: Ile okien?\n\n**Dane:** Długość ciągu `n >= 0` i długość okna `k >= 1`. Okno to `k` kolejnych elementów ciągu.\n\n**Do wykonania:** Napisz funkcję `liczba_okien(n, k)` określającą, ile różnych położeń okna mieści się w ciągu. Dwa okna mogą się częściowo pokrywać.\n\n**Wynik:** Zwróć liczbę różnych miejsc, w których można umieścić okno długości `k` bez wychodzenia poza ciąg. Jeśli okno jest dłuższe od ciągu, zwróć 0. Pokaż wynik dla `n = 7`, `k = 3` i wypisz możliwe indeksy początków.\n\n**Przykład wyjaśniający:** W ciągu pięciu elementów A, B, C, D, E okna długości 3 to ABC, BCD i CDE. Są trzy, choć się nakładają. ACD nie jest oknem, bo pomija B. Do obliczenia liczby okien potrzebne są długości, nie wartości elementów."
     },
     {
      "id": "s007",
@@ -1313,28 +1403,28 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 3: Budowa prefiksów",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: Budowa prefiksów\n\nNapisz prefiksy(a), zwracającą listę n+1 sum zaczynającą się od zera. Dla [3,1,8]: [0,3,4,12].\n\n**Wskazówka:** Zerowy prefiks umożliwia fragmenty zaczynające się od 0."
+     "markdown": "## Zadanie 3: Budowa prefiksów\n\n**Dane:** Lista `a` długości `n`. Suma prefiksowa dla pozycji `i` oznacza sumę pierwszych `i` elementów listy.\n\n**Do wykonania:** Napisz funkcję `prefiksy(a)` obliczającą wszystkie sumy prefiksowe, w tym sumę pustego początku.\n\n**Wynik:** Zwróć listę długości `n + 1`. Element o indeksie `i` ma być sumą pierwszych `i` liczb wejściowych. Dlatego na początku musi być 0 — suma jeszcze przed uwzględnieniem pierwszej liczby. Wyświetl wynik dla `[3, 1, 8]`.\n\n**Przykład wyjaśniający:** Dla `[2, 5, 1]` lista prefiksów to `[0, 2, 7, 8]`: suma zera elementów, jednego, dwóch i trzech. Prefiks opisuje początek listy. Odpowiedź nie jest samą sumą wszystkich elementów, lecz zestawem sum kolejnych początków."
     },
     {
      "id": "s009",
      "title": "Zadanie 4: Odpowiadanie na zapytania",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: Odpowiadanie na zapytania\n\nNapisz sumy_fragmentow(a,zapytania). Zbuduj prefiksy tylko raz, a następnie zwróć sumę dla każdej pary (l,r).\n\n**Wskazówka:** Nie wywołuj prefiksy ponownie dla każdego pytania."
+     "markdown": "## Zadanie 4: Odpowiadanie na zapytania\n\n**Dane:** Lista `a` i zapytania `(l, r)` spełniające `0 <= l <= r <= len(a)`. Prawa granica nie należy do fragmentu.\n\n**Do wykonania:** Napisz funkcję `sumy_fragmentow(a, zapytania)`. Przygotuj sumy prefiksowe tylko raz. Każda odpowiedź ma być obliczana w stałej liczbie działań, bez ponownego sumowania elementów fragmentu.\n\n**Wynik:** Zwróć listę, w której każdemu zapytaniu odpowiada jedna suma wybranego fragmentu. Zachowaj kolejność zapytań. Pokaż wyniki dla `[3, 1, 8, 2]` i zapytań `[(0, 4), (1, 3), (2, 2)]`.\n\n**Przykład wyjaśniający:** Dla `[2, 5, 1, 4]` zapytanie `(1, 3)` dotyczy liczb 5 i 1, więc odpowiedź wynosi 6. Zapytanie `(2, 2)` opisuje pusty fragment, którego suma to 0. Wynik dla tych dwóch zapytań ma postać `[6, 0]`, nie listy samych fragmentów."
     },
     {
      "id": "s010",
      "title": "Zadanie 5: Akumulator stacji orbitalnej",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: Akumulator stacji orbitalnej\n\nKolejne zmiany energii to [-4,3,-6,8,-2]. Wartość dodatnia oznacza ładowanie, ujemna zużycie. Napisz minimalny_zapas(zmiany), zwracającą najmniejszy nieujemny zapas początkowy, przy którym energia nigdy nie spadnie poniżej zera. Wykorzystaj sumy prefiksowe. Nie wystarczy, żeby nieujemny był tylko stan końcowy. Dla pustej listy zwróć 0.\n\n**Wskazówka:** Najniższa suma prefiksowa pokazuje największy chwilowy niedobór."
+     "markdown": "## Zadanie 5: Akumulator stacji orbitalnej\n\n**Dane:** Zmiany energii stacji, np. `[-4, 3, -6, 8, -2]`. Wartość dodatnia oznacza ładowanie, ujemna zużycie.\n\n**Do wykonania:** Napisz funkcję `minimalny_zapas(zmiany)`, która znajduje najmniejszą nieujemną energię początkową pozwalającą przejść całą sekwencję bez spadku poniżej zera. Wykorzystaj sumy prefiksowe.\n\n**Wynik:** Zwróć najmniejszy zapas energii potrzebny przed pierwszą zmianą. Energia może spaść do zera, ale ani razu poniżej niego, także przed późniejszym ładowaniem. Dla pustej listy zwróć 0. Uzasadnij, dlaczego zapas mniejszy o 1 nie wystarczy.\n\n**Przykład wyjaśniający:** Dla zmian `[-3, 5, -4]` potrzebny zapas to 3. Energia po kolejnych zmianach wynosi wtedy 0, 5, 1. Start z 2 nie wystarczy, bo już po pierwszym zużyciu dałby -1, mimo że później następuje ładowanie."
     },
     {
      "id": "s011",
      "title": "Zadanie 6: Najlepsze stałe okno",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: Najlepsze stałe okno\n\nNapisz stale_okno(a,k), zwracającą (największa suma, pierwszy indeks początku) dla 1<=k<=len(a). Przy remisie pierwszy. Dla [1,8,9,2,10], k=2: (17,1).\n\n**Wskazówka:** Inicjalizacja maksimum na 0 nie działa dla ujemnych sum."
+     "markdown": "## Zadanie 6: Najlepsze stałe okno\n\n**Dane:** Lista liczb całkowitych `a`, także ujemnych, oraz `1 <= k <= len(a)`.\n\n**Do wykonania:** Napisz funkcję `stale_okno(a, k)` wybierającą spójny fragment dokładnie `k` elementów o największej sumie. Przy remisie wybierz najwcześniejszy początek.\n\n**Wynik:** Zwróć parę `(najwieksza_suma, indeks_poczatku_od_0)`. Wybierasz dokładnie `k` sąsiadujących elementów, nie `k` dowolnych największych liczb. Wyświetl wynik dla `[1, 8, 9, 2, 10]`, `k = 2`, oraz przykładu z samymi liczbami ujemnymi.\n\n**Przykład wyjaśniający:** Dla `[4, 1, 6, 2]` i `k = 2` możliwe sumy to 5, 7 i 8. Najlepszy fragment to `[6, 2]`, zaczynający się na indeksie 2, więc wynik to `(8, 2)`. Nie wolno wybrać 4 i 6, bo nie leżą obok siebie."
     },
     {
      "id": "s012",
@@ -1348,28 +1438,28 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 7: Dokładne porównanie",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Dokładne porównanie\n\nNapisz lepsza(s1,d1,s2,d2), która sprawdza s1/d1 > s2/d2 bez dzielenia. Załóż dodatnie długości. Sprawdź też remis 10/2 i 15/3.\n\n**Wskazówka:** Iloczyny krzyżowe zachowują dokładność int."
+     "markdown": "## Zadanie 7: Dokładne porównanie\n\n**Dane:** Dwie sumy całkowite `s1`, `s2` i dodatnie długości `d1`, `d2`. Średnie wynoszą odpowiednio `s1/d1` i `s2/d2`.\n\n**Do wykonania:** Napisz funkcję `lepsza(s1, d1, s2, d2)` rozstrzygającą, czy pierwsza średnia jest ściśle większa. Nie wykonuj dzielenia ani konwersji do `float`.\n\n**Wynik:** Zwróć `True` tylko wtedy, gdy pierwsza średnia jest większa od drugiej. Równe średnie mają dawać `False`. Pokaż porównanie `17/2` z `18/3` oraz `10/2` z `15/3`, bez używania przybliżeń w funkcji.\n\n**Przykład wyjaśniający:** Pierwszy fragment może mieć sumę 12 i długość 3, a drugi sumę 15 i długość 5. Ich średnie to 4 i 3, więc pierwszy jest lepszy, choć ma mniejszą sumę. Argumenty opisują sumy i długości fragmentów, nie ich gotowe średnie."
     },
     {
      "id": "s014",
      "title": "Zadanie 8: Wszystkie długości od minimum",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: Wszystkie długości od minimum\n\nNapisz najlepszy(a,k), zwracającą (suma, długość, początek), dla 1<=k<=len(a). Użyj prefiksów. Dla [9,1,9] i k=2 wygrywa cały fragment: (19,3,0).\n\n**Wskazówka:** Prawy koniec range musi dopuścić len(a)."
+     "markdown": "## Zadanie 8: Wszystkie długości od minimum\n\n**Dane:** Lista liczb całkowitych `a` i minimalna długość `1 <= k <= len(a)`.\n\n**Do wykonania:** Napisz funkcję `najlepszy(a, k)` wybierającą spójny fragment o największej średniej spośród fragmentów długości co najmniej `k`. Przy remisie wybierz wcześniejszy początek, a przy tym samym początku krótszy fragment. Użyj prefiksów i dokładnego porównywania średnich.\n\n**Wynik:** Zwróć krotkę `(suma, dlugosc, indeks_poczatku_od_0)` opisującą jeden wybrany fragment. Dopuszczalne są długości `k`, `k + 1` i większe, aż do całej listy. Wyświetl wynik dla `[9, 1, 9]`, `k = 2`.\n\n**Przykład wyjaśniający:** Dla `[8, 0, 8]` i `k = 2` oba fragmenty długości 2 mają średnią 4, a cała lista średnią 16/3, czyli większą. Odpowiedź to `(16, 3, 0)`. Najlepszy fragment nie zawsze ma najmniejszą dozwoloną długość. Przy równych średnich zastosuj zasady remisu z polecenia."
     },
     {
      "id": "s015",
      "title": "Zadanie 9: Ostatni fragment i remis",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 9: Ostatni fragment i remis\n\nWyznacz najlepsze fragmenty dla [0,0,9,9], [5,5,5] i [2,4], zawsze z k=2. Dla każdej listy wyświetl sumę, długość i indeks początku. Wyjaśnij wybór fragmentu, zwłaszcza gdy średnie są równe.\n\nSam otwórz fragmenty-trening.txt i wczytaj liczby rozdzielone spacjami do ciag_z_pliku. Dla k=2 zapisz wynik_z_pliku oraz wyniki-trening.txt zawierający sumę, długość i indeks początku. Zachowaj kolejność pliku.\n\n**Wskazówka:** Sprawdź końce pętli i różnicę między > oraz >=."
+     "markdown": "## Zadanie 9: Ostatni fragment i remis\n\n**Dane:** Listy `[0, 0, 9, 9]`, `[5, 5, 5]`, `[2, 4]` oraz plik `fragmenty-trening.txt` z liczbami rozdzielonymi spacjami. W każdym przypadku `k = 2`.\n\n**Do wykonania:** Wyznacz najlepsze fragmenty według reguł poprzedniego zadania. Samodzielnie wczytaj plik do `ciag_z_pliku`. Wyjaśnij wybór dla listy z równymi wartościami i dla listy mającej tylko dwa elementy.\n\n**Wynik:** Dla każdej z trzech list pokaż wybrany fragment oraz jego sumę, długość i indeks początku. Wynik dla pliku zapisz w `wynik_z_pliku`, a jego trzy liczby w jednym wierszu `wyniki-trening.txt`, rozdzielone spacjami.\n\n**Przykład wyjaśniający:** Przy liście `[4, 4, 4]` i `k = 2` wszystkie dopuszczalne fragmenty mają średnią 4. Wygrywa początek o indeksie 0, a spośród fragmentów o tym początku krótszy, czyli `[4, 4]`. Opis to `(8, 2, 0)`, a wiersz pliku miałby postać `8 2 0`."
     },
     {
      "id": "s016",
      "title": "Zadanie 10: Najkrótszy pakiet alarmowy",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 10: Najkrótszy pakiet alarmowy\n\nPakiety mają rozmiary [4,7,3,11,2,9]. Chcesz wysłać co najmniej 20 jednostek danych, wybierając jak najmniej kolejnych pakietów. Napisz pakiet_alarmowy(rozmiary,cel), zwracającą (indeks początku od 0, liczba pakietów, suma rozmiarów). Przy remisie wybierz wcześniejszy początek, a jeśli nie ma odpowiedniego fragmentu, zwróć None. Rozmiary i cel są dodatnie. Użyj prefiksów; wystarczy przegląd par końców.\n\n**Wskazówka:** Tym razem minimalizujesz długość, a nie maksymalizujesz średnią. Warunek sumy decyduje, czy fragment w ogóle pasuje."
+     "markdown": "## Zadanie 10: Najkrótszy pakiet alarmowy\n\n**Dane:** Dodatnie rozmiary kolejnych pakietów i dodatni cel. Przykład: `[4, 7, 3, 11, 2, 9]`, cel 20.\n\n**Do wykonania:** Napisz funkcję `pakiet_alarmowy(rozmiary, cel)` wybierającą jak najmniej kolejnych pakietów o łącznym rozmiarze co najmniej równym celowi. Przy remisie wybierz wcześniejszy początek. Wykorzystaj sumy prefiksowe.\n\n**Wynik:** Zwróć krotkę `(indeks_poczatku_od_0, liczba_pakietow, suma)` opisującą najkrótszy pasujący fragment kolejnych pakietów. Nie wybieraj pakietów z pominięciem tych pomiędzy nimi. Jeśli nawet wszystkie razem nie osiągają celu, zwróć `None`.\n\n**Przykład wyjaśniający:** Dla rozmiarów `[3, 8, 4]` i celu 10 wystarczają dwa pakiety: `[3, 8]` albo `[8, 4]`. Wybieramy wcześniejszy fragment, więc odpowiedź to `(0, 2, 11)`. Żaden pojedynczy pakiet nie osiąga 10, a suma nie musi być dokładnie równa celowi."
     },
     {
      "id": "s017",
@@ -1390,14 +1480,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 11: okno przesuwne",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 11: okno przesuwne\n\nNapisz stale_okno_bez_prefiksow(a,k). Przesuwając okno, odejmuj wychodzący element i dodawaj wchodzący. Porównaj z wcześniejszym algorytmem.\n\n**Wskazówka:** Pamiętasz tylko sumę bieżącego okna, a nie wszystkie prefiksy."
+     "markdown": "## Zadanie 11: okno przesuwne\n\n**Dane:** Lista liczb `a` oraz `1 <= k <= len(a)`. Obowiązują te same zasady wyboru co w `stale_okno`.\n\n**Do wykonania:** Napisz funkcję `stale_okno_bez_prefiksow(a, k)` bez tablicy prefiksów i bez ponownego sumowania całego okna przy każdym przesunięciu. Rozwiązanie ma przeglądać listę jednokrotnie i używać stałej dodatkowej pamięci.\n\n**Wynik:** Zwróć parę `(najwieksza_suma, pierwszy_indeks_poczatku)` tak samo jak w zadaniu 6. Porównaj odpowiedzi obu funkcji dla `[1, 8, 9, 2, 10]`, `k = 2`. Wyjaśnij, dlaczego nowa wersja nie potrzebuje listy sum prefiksowych.\n\n**Przykład wyjaśniający:** Dla `[2, 7, 1]` i `k = 2` obie wersje powinny zwrócić `(9, 0)`. Zmienia się sposób organizacji obliczeń, nie znaczenie odpowiedzi. Stała dodatkowa pamięć oznacza, że liczba dodatkowych przechowywanych wartości nie rośnie wraz z długością wejściowej listy."
     },
     {
      "id": "s020",
      "title": "Zadanie 12: okna o średniej powyżej progu",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 12: okna o średniej powyżej progu\n\nNapisz okna_powyzej(a,k,prog), zliczającą fragmenty długości k o średniej większej niż całkowity prog. Załóż 1<=k<=len(a). Użyj sum prefiksowych i porównania bez dzielenia. Wyświetl wynik dla [1,8,9,2,10], k=2 i prog=6.\n\n**Wskazówka:** Średnia suma/k jest większa od progu dokładnie wtedy, gdy suma > prog*k."
+     "markdown": "## Zadanie 12: okna o średniej powyżej progu\n\n**Dane:** Lista całkowita `a`, długość `1 <= k <= len(a)` oraz całkowity `prog`.\n\n**Do wykonania:** Napisz funkcję `okna_powyzej(a, k, prog)` zliczającą spójne fragmenty dokładnie `k` elementów, których średnia jest ściśle większa od progu. Wykorzystaj prefiksy, bez dzielenia przy porównaniu.\n\n**Wynik:** Zwróć liczbę wszystkich fragmentów długości dokładnie `k`, których średnia przekracza `prog`. Nakładające się fragmenty liczymy osobno. Nie szukasz tutaj jednego najlepszego fragmentu. Wyświetl wynik dla `[1, 8, 9, 2, 10]`, `k = 2`, `prog = 6`.\n\n**Przykład wyjaśniający:** Dla `[2, 6, 6]`, `k = 2` i progu 4 okno `[2, 6]` ma średnią 4 i nie spełnia warunku, a `[6, 6]` ma średnią 6 i go spełnia. Odpowiedź to 1. Średnia równa progowi nie jest jego przekroczeniem."
     }
    ]
   },
@@ -1409,7 +1499,7 @@ window.PYTHON_COURSE = {
    "notebook": "lekcje/08_matura_2024_zadanie_4_liczby/karta_pracy.ipynb",
    "download": "pobierz/08_matura_2024_zadanie_4_liczby.zip",
    "assetBase": "lekcje/08_matura_2024_zadanie_4_liczby/",
-   "checksum": "00772a236fe085fee85bab1f0d1419ad2426811015632fafdc06067128a84ff7",
+   "checksum": "0f3a3754927f3700a3ecefc09bee2655a69cd562e850e532350d3d5d5c1d5a8d",
    "sections": [
     {
      "id": "intro",
@@ -1437,7 +1527,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -1493,14 +1583,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 1: Odczyt i kontrola przykładów",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: Odczyt i kontrola przykładów\n\nNapisz wczytaj(nazwa): sam otwórz plik, odczytaj dwa wiersze i zamień je na dwie listy liczb. Wczytaj liczby_przyklad.txt do pa i pb. Sprawdź długości 200 i 20.\n\n**Wskazówka:** Każdy wiersz ma odrębne znaczenie."
+     "markdown": "## Zadanie 1: Odczyt i kontrola przykładów\n\n**Dane:** Plik `liczby_przyklad.txt` z zadania 4 matury 2024. Pierwszy wiersz zawiera czynniki, drugi liczby do zbadania.\n\n**Do wykonania:** Napisz funkcję `wczytaj(nazwa)` samodzielnie odczytującą oba wiersze do dwóch list liczb całkowitych. Zachowaj kolejność i powtórzenia.\n\n**Wynik:** Zwróć dwie listy i zapisz je w zmiennych `pa` (pierwszy wiersz) oraz `pb` (drugi wiersz). Wyświetl ich długości: odpowiednio 200 i 20 elementów. Na tym etapie nie sortuj liczb i nie usuwaj powtórzeń.\n\n**Przykład wyjaśniający:** Dwa wiersze `2 3 3` i `6 9` powinny dać dwie listy: `[2, 3, 3]` oraz `[6, 9]`. Obie trójki pozostają w pierwszej liście. Każdy wiersz jest osobnym zestawem danych, mimo że liczby w obu zapisano w tym samym formacie."
     },
     {
      "id": "s012",
      "title": "Zadanie 2: 4.1: wystąpienia dzielników",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: 4.1: wystąpienia dzielników\n\nNapisz z41(a,b), zwracającą liczność zgodną z 4.1. Przykład CKE: 199.\n\n**Wskazówka:** any ogranicza zliczanie jednego wystąpienia do jednego trafienia."
+     "markdown": "## Zadanie 2: 4.1: wystąpienia dzielników\n\n**Dane:** Listy `a` i `b` z pierwszego i drugiego wiersza pliku. Obowiązuje zadanie 4.1 CKE.\n\n**Do wykonania:** Napisz funkcję `z41(a, b)` zliczającą wystąpienia liczb z `a`, które dzielą przynajmniej jedną liczbę z `b`. Jedno wystąpienie z `a` może zwiększyć wynik najwyżej o 1.\n\n**Wynik:** Zwróć jedną liczbę: ile elementów listy `a` spełnia warunek podzielności. Nie zwracaj liczby trafień w `b`. Wyświetl odpowiedź dla `pa`, `pb` i porównaj z przykładem w oryginalnej treści zadania.\n\n**Przykład wyjaśniający:** Dla `a = [2, 2, 7]` i `b = [6, 10]` odpowiedź wynosi 2. Obie dwójki liczą się osobno, ale każda tylko raz, choć dzieli i 6, i 10. Siódemka nie dzieli żadnej z tych liczb."
     },
     {
      "id": "s013",
@@ -1514,21 +1604,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 3: 4.2: sto pierwsza",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: 4.2: sto pierwsza\n\nNapisz z42(a). Zwróć element o indeksie 100 z nowej listy uporządkowanej malejąco. Przykład: 5.\n\n**Wskazówka:** Nie zmieniaj a, bo będzie potrzebne do 4.4."
+     "markdown": "## Zadanie 3: 4.2: sto pierwsza\n\n**Dane:** Lista `a` z pierwszego wiersza pliku, zawierająca co najmniej 101 liczb.\n\n**Do wykonania:** Napisz funkcję `z42(a)` znajdującą sto pierwszą liczbę w porządku od największej do najmniejszej. Powtórzenia zajmują oddzielne pozycje. Nie zmieniaj oryginalnej listy.\n\n**Wynik:** Zwróć wartość znajdującą się na 101. miejscu, licząc miejsca od 1. Nie zwracaj indeksu ani całej posortowanej listy. Wyświetl wynik dla `pa`. Lista `pa` po wywołaniu ma nadal mieć pierwotną kolejność, potrzebną w zadaniu o fragmentach.\n\n**Przykład wyjaśniający:** W krótkiej liście `[7, 2, 7, 5]` ranking malejący to 7, 7, 5, 2. Trzecia pozycja to 5, a nie trzecia różna wartość 2. W zadaniu stosujesz te same reguły, lecz wybierasz pozycję 101 w znacznie dłuższej liście."
     },
     {
      "id": "s015",
      "title": "Zadanie 4: 4.3: ograniczona liczność",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: 4.3: ograniczona liczność\n\nNapisz z43(a,b), zwracającą budowalne liczby z b. Każde wystąpienie p w a daje jedno dzielenie. Przykład to [10,12,14,15,18,20,21,25,27,28].\n\n**Wskazówka:** Resetuj reszta dla każdej liczby n."
+     "markdown": "## Zadanie 4: 4.3: ograniczona liczność\n\n**Dane:** Lista czynników pierwszych `a` i lista kandydatów `b`, zgodnie z zadaniem 4.3 CKE.\n\n**Do wykonania:** Napisz funkcję `z43(a, b)` wybierającą liczby z `b`, które da się otrzymać jako iloczyn czynników z `a`. Każde wystąpienie czynnika wolno wykorzystać najwyżej raz dla jednego kandydata. Następny kandydat ma ponownie cały zapas.\n\n**Wynik:** Zwróć wybrane liczby z `b`, zachowując ich kolejność i powtórzenia. Nie zwracaj ich rozkładów na czynniki. Wyświetl odpowiedź dla danych przykładowych i porównaj ją z treścią CKE.\n\n**Przykład wyjaśniający:** Dla zapasu `a = [2, 3, 3]` i kandydatów `b = [6, 18, 12, 6]` wynik to `[6, 18, 6]`. Do 12 brakuje drugiej dwójki. Ocenianie 6 nie zużywa zapasu przeznaczonego do oceny 18 ani drugiego wystąpienia 6."
     },
     {
      "id": "s016",
      "title": "Zadanie 5: 4.4: prefiksy i wszystkie granice",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: 4.4: prefiksy i wszystkie granice\n\nNapisz z44(a,k=50), zwracającą (najlepsza suma,długość,indeks początku). Uwzględnij ostatni element i fragment długości dokładnie k.\n\n**Wskazówka:** Przy równości zachowaj dotychczasowy wynik."
+     "markdown": "## Zadanie 5: 4.4: prefiksy i wszystkie granice\n\n**Dane:** Oryginalna, nieposortowana lista `a` oraz minimalna długość `k`, domyślnie 50; `1 <= k <= len(a)`.\n\n**Do wykonania:** Napisz funkcję `z44(a, k=50)` wybierającą spójny fragment o największej średniej i długości co najmniej `k`. Wykorzystaj prefiksy. Porównuj średnie dokładnie. Przy remisie wybierz wcześniejszy początek, a następnie krótszą długość.\n\n**Wynik:** Zwróć krotkę `(suma_fragmentu, dlugosc, indeks_poczatku_od_0)` opisującą wybrany fragment kolejnych liczb. Wyświetl ją dla `pa`. Nie wybieraj dowolnych największych liczb z całej listy. Indeks służy programowi do odnalezienia fragmentu; arkusz w odpowiedzi wymaga wartości jego pierwszego elementu.\n\n**Przykład wyjaśniający:** Dla `[0, 8, 8, 0]` i `k = 2` najlepszy fragment to `[8, 8]`. Funkcja zwraca `(16, 2, 1)`: sumę 16, długość 2 i indeks początku 1. Pierwszą liczbą fragmentu jest 8, nie 1 — rozróżnij te informacje przy przygotowaniu odpowiedzi maturalnej."
     },
     {
      "id": "s017",
@@ -1542,21 +1632,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 6: Zintegrowane rozwiązanie",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: Zintegrowane rozwiązanie\n\nNapisz rozwiaz(a,b), zwracającą odpowiedzi czterech podpunktów w słowniku. W 4.4 zachowaj (suma,długość,pierwsza liczba). Wywołaj funkcję dla pliku przykładowego i wyświetl każdą odpowiedź z numerem podpunktu.\n\n**Wskazówka:** W kodzie nie trać dokładnej sumy przez przedwczesne zaokrąglenie."
+     "markdown": "## Zadanie 6: Zintegrowane rozwiązanie\n\n**Dane:** Dwie listy odczytane z jednego pliku zadania 4.\n\n**Do wykonania:** Napisz funkcję `rozwiaz(a, b)`, która zwraca komplet czterech odpowiedzi, korzystając z Twoich wcześniejszych funkcji. Nie zmieniaj danych między podpunktami.\n\n**Wynik:** Zwróć słownik z czterema wpisami: `\"4.1\"` — liczba pasujących wystąpień, `\"4.2\"` — wartość na 101. miejscu, `\"4.3\"` — lista możliwych iloczynów, `\"4.4\"` — krotka `(suma, dlugosc, pierwsza_liczba_fragmentu)`. Wyświetl podpisane odpowiedzi dla przykładu.\n\n**Przykład wyjaśniający:** Jeśli pomocnicza funkcja `z44` wskazała fragment `[8, 8]` zaczynający się pod indeksem 1, jej opis to `(16, 2, 1)`. W raporcie 4.4 ma się jednak znaleźć `(16, 2, 8)`: ostatnia liczba to wartość pierwszego elementu fragmentu, nie jego indeks."
     },
     {
      "id": "s019",
      "title": "Zadanie 7: Przejście do pełnego pliku",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Przejście do pełnego pliku\n\nWczytaj liczby.txt, potwierdź 3000 i 20 liczb, wyznacz odpowiedzi w odp. Wypisz również dokładną sumę najlepszego fragmentu.\n\n**Wskazówka:** Przykład sprawdza format, lecz pełny plik może ujawnić inne błędy."
+     "markdown": "## Zadanie 7: Przejście do pełnego pliku\n\n**Dane:** Pełny plik `liczby.txt`: 3000 liczb w pierwszym wierszu i 20 w drugim.\n\n**Do wykonania:** Przygotuj samodzielny odczyt pełnych danych i oblicz odpowiedzi do wszystkich podpunktów. Korzystaj z danych pliku, nie z wartości przykładowych.\n\n**Wynik:** Zapisz komplet czterech wyników w słowniku `odp`, w formacie z zadania 6. Wyświetl odpowiedzi z numerami podpunktów. Dla 4.4 pokaż dokładną sumę i długość wybranego fragmentu — dzięki nim będzie można później przedstawić jego średnią.\n\n**Przykład wyjaśniający:** Jeśli fragment miałby sumę 25 i długość 3, jego średnia to dokładnie 25/3. W danych roboczych zachowaj 25 i 3, a nie wyłącznie zaokrąglone 8,33. Właściwy fragment i pozostałe odpowiedzi muszą wynikać z pełnego pliku `liczby.txt`."
     },
     {
      "id": "s020",
      "title": "Zadanie 8: wyniki4.txt",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: wyniki4.txt\n\nSam otwórz wyniki4.txt do zapisu obok notatnika. Zapisz cztery podpisane odpowiedzi. W 4.4 wypisz średnią do 10 miejsc, długość i pierwszą liczbę. Odczytaj plik ponownie do odczyt i sprawdź jego format.\n\n**Wskazówka:** Zapisywanie odpowiedzi jest osobnym etapem, który też wymaga sprawdzenia."
+     "markdown": "## Zadanie 8: wyniki4.txt\n\n**Dane:** Komplet odpowiedzi `odp` dla pełnych danych.\n\n**Do wykonania:** Przygotuj zapis pliku `wyniki4.txt` w folderze lekcji. Każdy z czterech wierszy rozpocznij numerem podpunktu. W 4.3 rozdziel wybrane liczby spacjami.\n\n**Wynik:** Wiersze 4.1 i 4.2 mają zawierać po jednej odpowiedzi liczbowej, a 4.3 listę wybranych liczb. W 4.4 zapisz średnią z 10 cyframi po kropce, długość i pierwszą liczbę fragmentu. Odczytaj zapisany plik do `odczyt` i wyświetl jego zawartość.\n\n**Przykład wyjaśniający:** Gdyby średnia wynosiła 8, długość fragmentu 2, a jego pierwsza liczba 8, ostatni wiersz miałby postać `4.4. 8.0000000000 2 8`. Nie wpisuj w tym miejscu sumy fragmentu ani indeksu jego początku. To przykład formatu, nie odpowiedź do pełnych danych."
     },
     {
      "id": "s021",
@@ -1577,14 +1667,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 9: położenie najlepszego fragmentu",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 9: położenie najlepszego fragmentu\n\nUżyj z44 do wyznaczenia najlepszego fragmentu dla [10,10,0,0], [0,0,10,10] oraz [5,5,5], zawsze z k=2. Wyświetl jego elementy, sumę, długość i indeks początku. Wyjaśnij, dlaczego w ostatniej liście wybieramy pierwszy fragment.\n\n**Wskazówka:** Elementy fragmentu odczytasz wycinkiem od początku do początku powiększonego o długość."
+     "markdown": "## Zadanie 9: położenie najlepszego fragmentu\n\n**Dane:** Listy `[10, 10, 0, 0]`, `[0, 0, 10, 10]`, `[5, 5, 5]` i minimalna długość 2.\n\n**Do wykonania:** Użyj własnej `z44` do wskazania najlepszego fragmentu każdej listy. Zwróć uwagę na fragment zaczynający się na początku, kończący na końcu i przypadek równych średnich.\n\n**Wynik:** Dla każdej listy wyświetl elementy wybranego fragmentu, jego sumę, długość i indeks początku. Zastosuj reguły z zadania 5: wcześniejszy początek, a potem krótszy fragment. Uzasadnij wybór w przypadku równych średnich.\n\n**Przykład wyjaśniający:** Dla dodatkowej listy `[7, 7, 7, 7]` każdy fragment ma taką samą średnią. Przy minimalnej długości 2 wybieramy pierwsze dwie siódemki, nie całą listę i nie ostatnią parę. Suma to 14, długość 2, indeks początku 0."
     },
     {
      "id": "s024",
      "title": "Zadanie 10: dokładny zapis średniej",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 10: dokładny zapis średniej\n\nDla pełnych danych utwórz srednia_dokladna jako Fraction(suma,dlugosc). Wyświetl średnią jako dokładny ułamek oraz jako zapis dziesiętny do 10 miejsc po przecinku. Wyjaśnij różnicę między tymi zapisami.\n\n**Wskazówka:** Fraction przechowuje dokładny ułamek, a nie przybliżenie float."
+     "markdown": "## Zadanie 10: dokładny zapis średniej\n\n**Dane:** Dokładna suma i długość fragmentu wybranego dla pełnych danych zadania 4.4.\n\n**Do wykonania:** Przedstaw tę samą średnią za pomocą `Fraction` z modułu `fractions` oraz w zapisie dziesiętnym z 10 cyframi po kropce.\n\n**Wynik:** W `srednia_dokladna` zapisz ułamek utworzony z całkowitej sumy i długości. Wyświetl go oraz zapis dziesiętny tej samej średniej. Wyjaśnij, dlaczego dziesięć cyfr po kropce nie zawsze pozwala zapisać wartość dokładnie.\n\n**Przykład wyjaśniający:** Jeśli suma wynosi 10, a długość 3, dokładny wynik to 10/3. Zapis `3.3333333333` jest tylko przybliżeniem tego ułamka. Nie twórz dokładnego ułamka z wcześniej zaokrąglonej liczby — potrzebne są pierwotna suma i długość."
     }
    ]
   },
@@ -1596,7 +1686,7 @@ window.PYTHON_COURSE = {
    "notebook": "lekcje/09_napisy_system_trojkowy_i_siatki/karta_pracy.ipynb",
    "download": "pobierz/09_napisy_system_trojkowy_i_siatki.zip",
    "assetBase": "lekcje/09_napisy_system_trojkowy_i_siatki/",
-   "checksum": "bf8258e3d4ef19826113ad52da0deebffd370bae2dae93e238432c9f902312ab",
+   "checksum": "02b432880ac3e8be28e7a2dc5cb78c5b2fe1281c9d00ac38d78fb8016787943c",
    "sections": [
     {
      "id": "intro",
@@ -1624,7 +1714,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -1638,14 +1728,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 1: Mapowanie symboli",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: Mapowanie symboli\n\nNapisz cyfry(s), zamieniającą napis z alfabetu o,+,* na listę wartości. Dla '+o*+': [1,0,2,1].\n\n**Wskazówka:** Nie porównuj kodów znaków z ich wartościami."
+     "markdown": "## Zadanie 1: Mapowanie symboli\n\n**Dane:** Napis z symboli `o`, `+`, `*`, oznaczających odpowiednio cyfry 0, 1, 2.\n\n**Do wykonania:** Napisz funkcję `cyfry(s)` zastępującą każdy symbol jego wartością liczbową. Zachowaj długość i kolejność zapisu.\n\n**Wynik:** Zwróć listę wartości 0, 1, 2, po jednej liczbie na każdy symbol wejścia. Na tym etapie nie obliczaj jeszcze wartości całej liczby w systemie trójkowym. Wyświetl wynik dla `\"+o*+\"`.\n\n**Przykład wyjaśniający:** Napis `\"*o+\"` daje listę `[2, 0, 1]`. Symbol `\"o\"` jest literą, którą w naszym zapisie umownie odczytujemy jako cyfrę zero. Wynikiem nie jest napis `\"201\"` ani liczba dziesiętna 201."
     },
     {
      "id": "s006",
      "title": "Zadanie 2: Palindrom i ostatni znak",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: Palindrom i ostatni znak\n\nNapisz palindrom(s) porównującą symetryczne indeksy. Sprawdź 'o++o', 'o++*' oraz jednoznakowy napis. Dlaczego pominięcie ostatniego znaku zmienia wynik?\n\n**Wskazówka:** Prawy indeks dla i=0 to -1, a nie -2."
+     "markdown": "## Zadanie 2: Palindrom i ostatni znak\n\n**Dane:** Napis z symboli `o`, `+`, `*`.\n\n**Do wykonania:** Napisz funkcję `palindrom(s)` rozstrzygającą, czy napis jest palindromem. Wykorzystaj indeksowanie, bez tworzenia odwróconego napisu. Pusty i jednoznakowy napis uznaj za palindromy.\n\n**Wynik:** Zwróć `True`, gdy symbole odczytane od lewej i od prawej tworzą identyczny napis, albo `False`, gdy tak nie jest. Zaprezentuj wyniki dla `\"o++o\"`, `\"o++*\"` i `\"o\"`. Nie przeliczaj symboli na liczbę.\n\n**Przykład wyjaśniający:** `\"*o*\"` jest palindromem, a `\"*o+\"` nie, bo pierwszy i ostatni symbol się różnią. Badamy cały napis, włącznie z początkowymi symbolami `o`. Ich usunięcie mogłoby zmienić odpowiedź."
     },
     {
      "id": "s007",
@@ -1659,28 +1749,28 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 3: Zapis symboliczny na liczbę",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: Zapis symboliczny na liczbę\n\nNapisz dekoduj(s) metodą Hornera. Dla '+o*' wynik 11, dla 'oo+o*' również 11. Nie pomijaj ostatniego symbolu.\n\n**Wskazówka:** Przechodź po wszystkich znakach napisu, bez skracania długości."
+     "markdown": "## Zadanie 3: Zapis symboliczny na liczbę\n\n**Dane:** Zapis liczby w systemie trójkowym, w którym `o = 0`, `+ = 1`, `* = 2`. Dopuszczamy zera wiodące.\n\n**Do wykonania:** Napisz funkcję `dekoduj(s)` obliczającą wartość zapisu metodą Hornera. Uwzględnij wszystkie symbole.\n\n**Wynik:** Zwróć wartość liczby jako `int` w zwykłej reprezentacji Pythona. Początkowe symbole `o` to zera wiodące, które nie zwiększają wartości. Wyświetl wyniki dla `\"+o*\"` i `\"oo+o*\"` i porównaj je.\n\n**Przykład wyjaśniający:** Napis `\"*+o\"` odpowiada cyfrom 210 w systemie trójkowym. Jego wartość wynosi `2·9 + 1·3 + 0 = 21`. Wynik funkcji to 21, a nie 210 ani suma wartości symboli 3."
     },
     {
      "id": "s009",
      "title": "Zadanie 4: Liczba na zapis symboliczny",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: Liczba na zapis symboliczny\n\nNapisz koduj(n), n>=0. Dla 0: 'o', 5: '+*', 26: '***'. Wyświetl zapisy symboliczne liczb 0, 5, 26 i 100.\n\n**Wskazówka:** Nie ograniczaj długości wyniku do długości napisów wejściowych."
+     "markdown": "## Zadanie 4: Liczba na zapis symboliczny\n\n**Dane:** Nieujemna liczba całkowita `n` oraz symbole cyfr trójkowych: `o`, `+`, `*`.\n\n**Do wykonania:** Napisz funkcję `koduj(n)` tworzącą zapis symboliczny bez zer wiodących. Zero zapisujemy jako pojedyncze `\"o\"`. Nie ograniczaj długości wyniku.\n\n**Wynik:** Zwróć napis złożony wyłącznie z symboli `o`, `+`, `*`, który przedstawia wartość `n` w systemie trójkowym. Wyświetl zapisy liczb 0, 5, 26, 100 i ręcznie odczytaj wartość jednego z otrzymanych napisów.\n\n**Przykład wyjaśniający:** Liczba dziesiętna 7 ma zapis trójkowy 21, więc jej zapis symboliczny to `\"*+\"`. Nie zwracaj `\"21\"`, bo wymagamy symboli. Nie dopisuj `o` z lewej: `\"o*+\"` przedstawiałoby tę samą wartość, ale nie najkrótszy zapis."
     },
     {
      "id": "s010",
      "title": "Zadanie 5: Maksimum z właściwym kluczem",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: Maksimum z właściwym kluczem\n\nNapisz najwiekszy(napisy), zwracającą parę (wartość,oryginalny napis). W razie remisu wybierz pierwszy. Załóż listę niepustą.\n\n**Wskazówka:** key pozwala porównywać wartość, zachowując oryginalny napis."
+     "markdown": "## Zadanie 5: Maksimum z właściwym kluczem\n\n**Dane:** Niepusta lista zapisów symbolicznych liczb. Napisy mogą mieć różne długości i zera wiodące.\n\n**Do wykonania:** Napisz funkcję `najwiekszy(napisy)` wybierającą zapis o największej wartości liczbowej. Przy równości wartości wybierz pierwszy zapis z listy i zachowaj jego oryginalną postać.\n\n**Wynik:** Zwróć parę `(wartosc, oryginalny_napis)`: największą wartość dziesiętną i dokładny napis, który ją przedstawiał. Nie usuwaj z wybranego napisu zer wiodących. Dobierz przykład pokazujący różnicę między porządkiem tekstów a wartości liczb.\n\n**Przykład wyjaśniający:** W liście `[\"*\", \"+o\", \"o+o\"]` wartości to odpowiednio 2, 3 i 3. Wynik to `(3, \"+o\")`, bo pierwszy zapis wartości 3 pojawia się na drugim miejscu. Najdłuższy napis nie musi być odpowiedzią."
     },
     {
      "id": "s011",
      "title": "Zadanie 6: Licznik na obcej planecie",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: Licznik na obcej planecie\n\nWyświetlacz używa cyfr o,+,* o wartościach 0,1,2. Napisz licznik_planety(start,ile), zwracającą ile kolejnych zapisów liczb, zaczynając od wartości zapisu start. Zwiększaj wartość o 1; wyniki nie mają zer wiodących. Wykorzystaj własne koduj i dekoduj. Wyświetl cztery stany od \"**\" i wyjaśnij, dlaczego po nim licznik potrzebuje trzech znaków. Dla ile=0 zwróć pustą listę.\n\n**Wskazówka:** Oddziel wartość liczby od wyglądu napisu na wyświetlaczu."
+     "markdown": "## Zadanie 6: Licznik na obcej planecie\n\n**Dane:** Początkowy zapis symboliczny `start` i nieujemna liczba stanów `ile`. Symbole `o`, `+`, `*` oznaczają cyfry trójkowe.\n\n**Do wykonania:** Napisz funkcję `licznik_planety(start, ile)` opisującą licznik zwiększający wartość o 1. Pierwszy stan ma odpowiadać wartości `start`. Każdy wynik zapisuj bez zer wiodących. Możesz użyć własnych funkcji kodowania.\n\n**Wynik:** Zwróć listę dokładnie `ile` kolejnych stanów licznika, uwzględniając stan początkowy. Każdy stan jest zapisem liczby większej o 1 od poprzedniej. Dla `ile = 0` zwróć `[]`. Wyświetl cztery stany od `\"**\"`.\n\n**Przykład wyjaśniający:** Dla `start = \"+*\"` i `ile = 3` otrzymujemy `[\"+*\", \"*o\", \"*+\"]`, czyli wartości 5, 6 i 7. Nie wykonujemy trzech zwiększeń po wypisaniu początku — lista ma zawierać trzy stany łącznie."
     },
     {
      "id": "s012",
@@ -1694,28 +1784,28 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 7: Jeden blok 3×3",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Jeden blok 3×3\n\nNapisz jednolity(wiersze,r,c), sprawdzającą dziewięć pól bloku o podanym lewym górnym rogu. Załóż, że blok mieści się w siatce.\n\n**Wskazówka:** Zwróć True dopiero po przejściu wszystkich dziewięciu pól."
+     "markdown": "## Zadanie 7: Jeden blok 3×3\n\n**Dane:** Prostokątna siatka zapisana jako lista jednakowo długich napisów oraz indeksy `r`, `c` lewego górnego pola bloku 3×3. Blok mieści się w siatce.\n\n**Do wykonania:** Napisz funkcję `jednolity(wiersze, r, c)` rozstrzygającą, czy wszystkie dziewięć pól bloku zawiera ten sam symbol. Indeksy argumentów liczymy od 0.\n\n**Wynik:** Zwróć `True`, jeśli wszystkie dziewięć znaków wskazanego bloku jest identycznych, albo `False`, jeśli choć jeden się różni. Badamy tylko blok zaczynający się w `(r, c)`, nie całą siatkę. Przygotuj dwa własne przykłady.\n\n**Przykład wyjaśniający:** Dla wierszy `[\"ooo+\", \"ooo*\", \"ooo+\"]` blok o lewym górnym rogu `(0, 0)` jest jednolity: obejmuje trzy pierwsze znaki każdego wiersza. Różne znaki w ostatniej kolumnie nie należą do tego bloku i nie zmieniają odpowiedzi."
     },
     {
      "id": "s014",
      "title": "Zadanie 8: Wszystkie środki",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: Wszystkie środki\n\nNapisz kwadraty(wiersze) dla prostokątnej siatki, zwracającą środki w numeracji od 1. Dla trzech wierszy 'oooo' wynik to [(2,2),(2,3)]. Dla za małej siatki zwróć [].\n\n**Wskazówka:** Nie przeskakuj o trzy kolumny po znalezieniu kwadratu."
+     "markdown": "## Zadanie 8: Wszystkie środki\n\n**Dane:** Prostokątna siatka symboli zapisana jako lista napisów.\n\n**Do wykonania:** Napisz funkcję `kwadraty(wiersze)` wyszukującą wszystkie jednolite bloki 3×3. Nakładające się bloki są osobnymi wynikami. Pusta lub zbyt mała siatka daje pustą listę.\n\n**Wynik:** Zwróć listę współrzędnych środkowych pól znalezionych bloków: `(numer_wiersza, numer_kolumny)`, licząc oba numery od 1. Uporządkuj ją od góry do dołu, a w jednym wierszu od lewej do prawej. Wyświetl wynik dla trzech wierszy `\"oooo\"`.\n\n**Przykład wyjaśniający:** W planszy z trzech wierszy `\"+++++\"` mieszczą się trzy jednolite bloki 3×3. Ich środki to `(2, 2)`, `(2, 3)`, `(2, 4)`. Bloki częściowo się pokrywają, ale każdy ma inny środek i jest osobnym wynikiem."
     },
     {
      "id": "s015",
      "title": "Zadanie 9: Małe zadanie łączące",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 9: Małe zadanie łączące\n\nSam otwórz symbole-trening.txt i wczytaj jego wiersze do napisy, bez zakończeń wierszy. Używając własnych funkcji, zbuduj raport: palindromy, środki kwadratów, maksimum i suma w obu zapisach. Następnie sam zapisz te cztery części w wyniki-trening.txt. Nie przepisuj zawartości pliku do kodu.\n\n**Wskazówka:** To te same rodzaje wyników, które złożysz na kolejnej karcie."
+     "markdown": "## Zadanie 9: Małe zadanie łączące\n\n**Dane:** Plik `symbole-trening.txt`. Wiersze są jednocześnie zapisami liczb i wierszami prostokątnej siatki.\n\n**Do wykonania:** Samodzielnie odczytaj napisy i przygotuj raport obejmujący: listę palindromów, środki jednolitych bloków 3×3, największą liczbę i sumę wszystkich liczb. Zachowaj powtórzenia danych.\n\n**Wynik:** Zapisz słownik `raport`: `palindromy` to lista pasujących napisów, `kwadraty` to lista środków, `maksimum` to para `(wartosc, oryginalny_napis)`, a `suma` to para `(wartosc_sumy, jej_zapis_symboliczny)`. Zapisz te cztery podpisane części w `wyniki-trening.txt`.\n\n**Przykład wyjaśniający:** Te same wiersze interpretujemy na dwa sposoby: jako osobne liczby oraz razem jako planszę. Dla wierszy `[\"+++\", \"+++\", \"+++\"]` każda liczba wynosi 13, więc suma to 39, a na planszy jest jeden blok o środku `(2, 2)`. Powtórzone wiersze nadal liczą się do sumy."
     },
     {
      "id": "s016",
      "title": "Zadanie 10: Obrócona mapa pikselowa",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 10: Obrócona mapa pikselowa\n\nMapa jest prostokątną listą napisów z symbolami o,+,*. Napisz obroc_mape(wiersze), obracającą ją o 90 stopni zgodnie z ruchem wskazówek zegara. Zwróć nową listę napisów, nie zmieniaj wejścia. Wyświetl obrót [\"oo+\",\"*+o\"], po jednym wierszu mapy. Dla pustej listy zwróć []; w niepustej mapie wszystkie wiersze mają tę samą dodatnią długość.\n\n**Wskazówka:** Pierwsza kolumna starej mapy, czytana od dołu, staje się pierwszym wierszem nowej."
+     "markdown": "## Zadanie 10: Obrócona mapa pikselowa\n\n**Dane:** Prostokątna mapa z symboli `o`, `+`, `*`, np. `[\"oo+\", \"*+o\"]`. W niepustej mapie wszystkie wiersze mają tę samą dodatnią długość.\n\n**Do wykonania:** Napisz funkcję `obroc_mape(wiersze)` obracającą mapę o 90 stopni zgodnie z ruchem wskazówek zegara. Nie zmieniaj mapy wejściowej.\n\n**Wynik:** Zwróć nową listę napisów opisującą obróconą mapę. Jeśli oryginał ma 2 wiersze i 3 kolumny, wynik ma mieć 3 wiersze i 2 kolumny. Dla pustej listy zwróć `[]`. Wyświetl wynik wierszami i porównaj ze szkicem.\n\n**Przykład wyjaśniający:** Dla mapy `[\"o+\", \"**\"]` obrót zgodnie z ruchem zegara daje `[\"*o\", \"*+\"]`. Symbol z lewego górnego rogu trafia do prawego górnego. Nie chodzi o odbicie lustrzane ani o samo odwrócenie kolejności wierszy."
     },
     {
      "id": "s017",
@@ -1736,33 +1826,33 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 11: inne systemy",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 11: inne systemy\n\nNapisz wartosc(s,p) metodą Hornera dla alfabetu 0123456789ABCDEF i 2<=p<=16, bez int(s,p). Gdy cyfra nie pasuje do podstawy, zwróć None. Wyświetl wartości zapisów 1011 w podstawie 2, FF w podstawie 16 i 17 w podstawie 8.\n\n**Wskazówka:** Ten sam Horner działa dla dowolnej podstawy."
+     "markdown": "## Zadanie 11: inne systemy\n\n**Dane:** Niepusty napis z alfabetu `0123456789ABCDEF` oraz podstawa `2 <= p <= 16`.\n\n**Do wykonania:** Napisz funkcję `wartosc(s, p)` wyznaczającą wartość zapisu metodą Hornera, bez `int(s, p)`. Jeśli wartość którejkolwiek cyfry nie jest dozwolona w danej podstawie, zwróć `None`.\n\n**Wynik:** Zwróć wartość jako liczbę całkowitą lub `None`, jeśli zapis zawiera cyfrę niemożliwą w danej podstawie. Litery A–F oznaczają wartości 10–15. Wyświetl wyniki dla `\"1011\"` w podstawie 2, `\"FF\"` w 16, `\"17\"` w 8 oraz `\"19\"` w 8.\n\n**Przykład wyjaśniający:** Napis `\"12\"` przy podstawie 3 oznacza wartość 5, ale przy podstawie 2 jest niepoprawny, ponieważ system dwójkowy nie ma cyfry 2. Sam fakt, że znak należy do ogólnego alfabetu cyfr, nie oznacza, że wolno go użyć w każdej podstawie."
     },
     {
      "id": "s020",
      "title": "Zadanie 12: zero wiodące",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 12: zero wiodące\n\nNapisz kanoniczny(s) przez dekodowanie i ponowne kodowanie. 'ooo+o' ma dać '+o', 'ooo' ma dać 'o'. Wyjaśnij, dlaczego nie odtwarzasz całego oryginału.\n\n**Wskazówka:** Wartość liczby nie przechowuje informacji o zerach wiodących."
+     "markdown": "## Zadanie 12: zero wiodące\n\n**Dane:** Niepusty zapis symboliczny liczby, który może zawierać zera wiodące.\n\n**Do wykonania:** Napisz funkcję `kanoniczny(s)` tworzącą najkrótszy zapis tej samej wartości. Wykorzystaj własne funkcje dekodowania i kodowania. Zero ma być zapisane jednym symbolem `\"o\"`.\n\n**Wynik:** Zwróć najkrótszy napis przedstawiający tę samą liczbę. Nie usuwaj zer wewnątrz liczby ani na jej końcu. Dla samego zera zostaw dokładnie jedno `o`. Wyświetl wyniki dla `\"ooo+o\"` i `\"ooo\"`.\n\n**Przykład wyjaśniający:** `\"oo*o\"` ma być zamienione na `\"*o\"`. Dwa pierwsze `o` są zerami wiodącymi, ale ostatnie `o` ma znaczenie: `\"*o\"` oznacza 6, a `\"*\"` oznacza 2. „Kanoniczny” znaczy tutaj najkrótszy zapis bez zbędnych zer na początku."
     }
    ]
   },
   {
    "number": 10,
    "kind": "lesson",
-   "title": "Matura 2025: Zapis symboliczny krok po kroku",
+   "title": "Matura 2025: Zapis symboliczny",
    "sourceFile": "10_matura_2025_zadanie_2_zapis_symboliczny/karta_pracy.ipynb",
    "notebook": "lekcje/10_matura_2025_zadanie_2_zapis_symboliczny/karta_pracy.ipynb",
    "download": "pobierz/10_matura_2025_zadanie_2_zapis_symboliczny.zip",
    "assetBase": "lekcje/10_matura_2025_zadanie_2_zapis_symboliczny/",
-   "checksum": "6d1f8c5453a78d430aefcbeda33b667d28a3de4bcf527360caf18d52796fb3aa",
+   "checksum": "1b56beac6f47230d7101ebd16019722b46e801316c96652b1ed17f4bd6fd0aab",
    "sections": [
     {
      "id": "intro",
      "title": "Cel i sposób pracy",
      "kind": "intro",
      "context": "",
-     "markdown": "# Karta pracy 10. Matura 2025: Zapis symboliczny krok po kroku\n\n**Kurs:** Python — programowanie do matury rozszerzonej z informatyki\n\n**Prowadzący:** por. Jakub GRĄTKIEWICZ · jakub.gratkiewicz@wat.edu.pl\n\n**Cel:** Pełne rozwiązanie podpunktów 2.1–2.4, z kontrolą indeksów, powtórzeń i zapisu wyniku.\n\nZnasz podstawy Pythona. Przypominamy potrzebne narzędzia i stosujemy je w coraz bardziej złożonych zadaniach.\n\nOtwórz ten notatnik w folderze bieżącej lekcji. W zadaniu plikowym samodzielnie napisz otwarcie pliku, odczyt, konwersję, obliczenia i zapis odpowiedzi. Nie ma wspólnej komórki wczytującej dane ani gotowych list z plików zadaniowych.\n\nZadania 1–8 wykonujemy na lekcji, zadania 9–10 samodzielnie. Niedokończone zadania uzupełnij przed następnym spotkaniem.\n\nW pustych komórkach roboczych wpisz własny kod. Wyświetl wyniki obliczeń i przygotuj się do wyjaśnienia swojego rozwiązania.\n\nPrzed oddaniem zrestartuj jądro, uruchom własne komórki od początku i zapisz notatnik oraz wymagane pliki wynikowe."
+     "markdown": "# Karta pracy 10. Matura 2025: Zapis symboliczny\n\n**Kurs:** Python — programowanie do matury rozszerzonej z informatyki\n\n**Prowadzący:** por. Jakub GRĄTKIEWICZ · jakub.gratkiewicz@wat.edu.pl\n\n**Cel:** Pełne rozwiązanie podpunktów 2.1–2.4, z kontrolą indeksów, powtórzeń i zapisu wyniku.\n\nZnasz podstawy Pythona. Przypominamy potrzebne narzędzia i stosujemy je w coraz bardziej złożonych zadaniach.\n\nOtwórz ten notatnik w folderze bieżącej lekcji. W zadaniu plikowym samodzielnie napisz otwarcie pliku, odczyt, konwersję, obliczenia i zapis odpowiedzi. Nie ma wspólnej komórki wczytującej dane ani gotowych list z plików zadaniowych.\n\nZadania 1–8 wykonujemy na lekcji, zadania 9–10 samodzielnie. Niedokończone zadania uzupełnij przed następnym spotkaniem.\n\nW pustych komórkach roboczych wpisz własny kod. Wyświetl wyniki obliczeń i przygotuj się do wyjaśnienia swojego rozwiązania.\n\nPrzed oddaniem zrestartuj jądro, uruchom własne komórki od początku i zapisz notatnik oraz wymagane pliki wynikowe."
     },
     {
      "id": "s001",
@@ -1783,7 +1873,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -1846,14 +1936,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 1: Odczyt przykładów",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: Odczyt przykładów\n\nNapisz wczytaj(nazwa). Sam otwórz symbole_przyklad.txt, usuń tylko zakończenia wierszy i zwróć listę napisów. Sprawdź długość 12 i alfabet o,+,* każdego rekordu. Zapisz listę w napisy_p.\n\n**Wskazówka:** Nie usuwaj ostatniego symbolu przez s[:-1]."
+     "markdown": "## Zadanie 1: Odczyt przykładów\n\n**Dane:** Plik `symbole_przyklad.txt` z zadania 2 matury 2025. Rekord ma 12 symboli z alfabetu `o`, `+`, `*`.\n\n**Do wykonania:** Napisz funkcję `wczytaj(nazwa)` samodzielnie odczytującą plik. Usuń wyłącznie zakończenia wierszy. Program powinien rozpoznawać rekordy o niewłaściwej długości lub niedozwolonym symbolu.\n\n**Wynik:** Zwróć listę napisów i zapisz ją w `napisy_p`. Każdy element ma odpowiadać jednemu wierszowi pliku. Wyświetl liczbę odczytanych wierszy i informację o poprawności formatu. Jeśli znajdziesz błędny wiersz, przerwij odczyt z błędem — nie pomijaj go i nie przedstawiaj pozostałych danych jako kompletnego pliku.\n\n**Przykład wyjaśniający:** Wiersz `oooooooooooo` jest poprawny: ma 12 dozwolonych znaków. Wiersz `ooooo` jest za krótki, a `ooooooooooox` zawiera niedozwolone x. Zachowaj wszystkie symbole `o` — także początkowe, bo są częścią danych do badania palindromów i kwadratów."
     },
     {
      "id": "s013",
      "title": "Zadanie 2: 2.1: palindromy",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: 2.1: palindromy\n\nNapisz z21(napisy), zachowującą kolejność i powtórzenia. Porównaj z odpowiedzią CKE dla pliku przykładowego.\n\n**Wskazówka:** Pętla po liście pozwala zachować kolejność pliku."
+     "markdown": "## Zadanie 2: 2.1: palindromy\n\n**Dane:** Lista zapisów symbolicznych oraz treść zadania 2.1 CKE.\n\n**Do wykonania:** Napisz funkcję `z21(napisy)` wybierającą wszystkie zapisy będące palindromami. Zachowaj kolejność i powtarzające się wystąpienia.\n\n**Wynik:** Zwróć listę pełnych napisów, które są palindromami, nie ich numery ani samą liczbę wystąpień. Wyświetl ją dla `napisy_p` i porównaj z odpowiedzią przykładową w oryginalnej treści zadania.\n\n**Przykład wyjaśniający:** Na krótszych danych `[\"*o*\", \"+o*\", \"*o*\"]` wynik to `[\"*o*\", \"*o*\"]`. Dwa identyczne wiersze to dwa wystąpienia i oba zostają w odpowiedzi. W pliku maturalnym obowiązuje ta sama zasada, tylko napisy mają po 12 znaków."
     },
     {
      "id": "s014",
@@ -1867,21 +1957,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 3: 2.2: funkcja i przykład ręczny",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: 2.2: funkcja i przykład ręczny\n\nNapisz z22(wiersze). Uruchom na sześciu wierszach z treści CKE. Wynik: [(3,5),(3,6),(4,11)]. Następnie na pliku przykładowym: [(6,3)].\n\n**Wskazówka:** Dwa pierwsze kwadraty nakładają się."
+     "markdown": "## Zadanie 3: 2.2: funkcja i przykład ręczny\n\n**Dane:** Siatka symboli z zadania 2.2. Współrzędne w odpowiedzi oznaczają numer wiersza i kolumny, liczone od 1.\n\n**Do wykonania:** Napisz funkcję `z22(wiersze)` znajdującą środki wszystkich jednolitych kwadratów 3×3. Uwzględnij także kwadraty nakładające się na siebie.\n\n**Wynik:** Zwróć listę par `(numer_wiersza_srodka, numer_kolumny_srodka)`, licząc od 1. Uporządkuj odpowiedzi od góry do dołu, a w tym samym wierszu od lewej do prawej. Wyświetl wyniki dla siatki z treści CKE oraz pliku przykładowego.\n\n**Przykład wyjaśniający:** Jeśli jednolity blok zajmuje wiersze 2–4 i kolumny 5–7, jego środek ma współrzędne `(3, 6)`. Do odpowiedzi nie wpisujemy `(2, 5)`, bo to lewy górny róg. Wszystkie dziewięć pól bloku musi mieć identyczny symbol."
     },
     {
      "id": "s016",
      "title": "Zadanie 4: 2.3: Horner i maksimum",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: 2.3: Horner i maksimum\n\nNapisz dekoduj(s) i z23(napisy), która zwraca parę (wartość,napis). Sprawdź (519789,'***+o*ooo++o').\n\n**Wskazówka:** Przejdź po wszystkich dwunastu symbolach."
+     "markdown": "## Zadanie 4: 2.3: Horner i maksimum\n\n**Dane:** Niepusta lista zapisów symbolicznych, z wartościami cyfr `o = 0`, `+ = 1`, `* = 2` w systemie trójkowym.\n\n**Do wykonania:** Napisz funkcję `dekoduj(s)` metodą Hornera oraz `z23(napisy)` wybierającą największą wartość. Zachowaj oryginalny napis, a przy remisie pierwszy zapis.\n\n**Wynik:** Zwróć parę `(wartosc_dziesietna, oryginalny_zapis)` dla największej liczby. Zapis ma pozostać dokładnie taki jak w danych, także z początkowymi `o`. Wyświetl odpowiedź dla przykładu i porównaj z zadaniem 2.3 CKE.\n\n**Przykład wyjaśniający:** Dla krótkich zapisów `[\"o*\", \"+o\", \"*o\"]` wartości wynoszą 2, 3 i 6. Największa jest ostatnia, więc wynik to `(6, \"*o\")`. Nie wybieramy największego napisu według kolejności znaków ani nie sumujemy wartości."
     },
     {
      "id": "s017",
      "title": "Zadanie 5: 2.4: suma i zapis odwrotny",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: 2.4: suma i zapis odwrotny\n\nNapisz koduj(n) i z24(napisy), zwracającą (suma,zakodowana suma). Sprawdź oba wyniki z przykładu CKE.\n\n**Wskazówka:** Zakodowana suma może mieć więcej niż 12 znaków."
+     "markdown": "## Zadanie 5: 2.4: suma i zapis odwrotny\n\n**Dane:** Lista zapisów symbolicznych liczb.\n\n**Do wykonania:** Napisz funkcję `koduj(n)` dla nieujemnych liczb całkowitych oraz `z24(napisy)` obliczającą sumę wszystkich wartości. Suma ma mieć poprawny zapis symboliczny bez zer wiodących, niezależnie od jego długości. Zero zapisujemy jako `\"o\"`.\n\n**Wynik:** Zwróć parę `(suma_dziesietna, zapis_symboliczny_sumy)`. Druga część ma przedstawiać tę samą sumę w systemie trójkowym z symbolami, a nie być połączeniem napisów wejściowych. Wyświetl obie części i porównaj z odpowiedzią przykładową CKE.\n\n**Przykład wyjaśniający:** Napisy `\"*\"` i `\"+\"` oznaczają 2 i 1. Ich suma wynosi 3 i ma zapis `\"+o\"`, więc odpowiedź to `(3, \"+o\")`. Sklejenie tekstów dałoby `\"*+\"`, czyli wartość 7, a nie żądaną sumę."
     },
     {
      "id": "s018",
@@ -1895,21 +1985,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 6: Jeden interfejs raportu",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: Jeden interfejs raportu\n\nNapisz rozwiaz(napisy), zwracającą słownik '2.1'–'2.4'. Wywołaj ją dla pliku przykładowego i wyświetl odpowiedzi z numerami podpunktów.\n\n**Wskazówka:** Nie kopiuj ponownie kodu czterech algorytmów; wywołaj funkcje."
+     "markdown": "## Zadanie 6: Jeden interfejs raportu\n\n**Dane:** Lista napisów z jednego pliku zadania 2.\n\n**Do wykonania:** Napisz funkcję `rozwiaz(napisy)` zwracającą komplet odpowiedzi 2.1–2.4. Wykorzystaj własne funkcje obliczające poszczególne części.\n\n**Wynik:** Zwróć słownik z czterema wpisami: `\"2.1\"` — lista palindromów, `\"2.2\"` — lista środków kwadratów, `\"2.3\"` — para `(najwieksza_wartosc, oryginalny_zapis)`, `\"2.4\"` — para `(suma, zapis_sumy)`. Wyświetl każdą część z jej numerem dla `napisy_p`.\n\n**Przykład wyjaśniający:** Raport ma grupować różne rodzaje odpowiedzi, nie zmieniać ich formatu na jedną listę liczb. Jeśli znaleziono dwa kwadraty, pod kluczem `\"2.2\"` mają być ich dwie pary współrzędnych, a nie sama liczba 2. Liczbę kwadratów można podać dodatkowo przy wyświetlaniu."
     },
     {
      "id": "s020",
      "title": "Zadanie 7: Pełne dane",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Pełne dane\n\nOdczytaj symbole.txt, wyświetl liczbę napisów i zapisz raport w odp. Wypisz odpowiedzi wszystkich podpunktów i wyjaśnij znaczenie wyników.\n\n**Wskazówka:** Nie wpisuj oczekiwanych odpowiedzi zamiast obliczeń."
+     "markdown": "## Zadanie 7: Pełne dane\n\n**Dane:** Pełny plik `symbole.txt`, zawierający 2000 rekordów.\n\n**Do wykonania:** Samodzielnie odczytaj pełne dane i oblicz wszystkie odpowiedzi. Zachowaj zarówno wartości liczbowe, jak i wymagane zapisy symboliczne.\n\n**Wynik:** Zapisz cztery odpowiedzi w słowniku `odp`, w formacie z zadania 6. Wyświetl je z numerami podpunktów. Pokaż też liczbę wczytanych napisów, aby potwierdzić, że użyto pełnego pliku, a nie przykładu.\n\n**Przykład wyjaśniający:** Wynik 2.3 opisuje jedną największą liczbę, natomiast 2.4 sumę wartości ze wszystkich 2000 wierszy. Powtarzające się wiersze trzeba uwzględnić w sumie ponownie. Odpowiedzi dla `symbole_przyklad.txt` nie są odpowiedziami dla `symbole.txt`."
     },
     {
      "id": "s021",
      "title": "Zadanie 8: wyniki2.txt",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: wyniki2.txt\n\nSam otwórz wyniki2.txt do zapisu obok notatnika. Palindromy zapisz po jednym wierszu. Dla 2.2 podaj najpierw liczbę kwadratów, potem pary środków. Zapisz też maksimum i sumę w obu zapisach. Odczytaj plik do odczyt_wyniku i sprawdź zawartość.\n\n**Wskazówka:** Numer części oddziela znaczenie kolejnych wierszy."
+     "markdown": "## Zadanie 8: wyniki2.txt\n\n**Dane:** Komplet obliczonych odpowiedzi `odp` dla pełnego pliku.\n\n**Do wykonania:** Przygotuj kod zapisujący `wyniki2.txt` w folderze lekcji. Rozdziel odpowiedzi numerami podpunktów, aby było wiadomo, czego dotyczą.\n\n**Wynik:** Pod `2.1.` zapisz palindromy, każdy w osobnym wierszu. Przy `2.2.` podaj liczbę kwadratów, a dalej ich środki, po parze na wiersz. Wiersze `2.3.` i `2.4.` mają zawierać wartość dziesiętną i zapis symboliczny. Odczytaj plik do `odczyt_wyniku` i wyświetl go.\n\n**Przykład wyjaśniający:** Jeśli przykładowy wynik 2.3 miałby postać `(6, \"*o\")`, wiersz odpowiedzi brzmiałby `2.3. 6 *o`. Nie zapisuj całego pythonowego słownika ze znakami `{}`. Plik powinien być czytelny także dla osoby, która nie uruchamia Twojego notatnika."
     },
     {
      "id": "s022",
@@ -1930,14 +2020,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 9: zapis cyframi trójkowymi",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 9: zapis cyframi trójkowymi\n\nNapisz zapis_trojkowy(s), zamieniającą symbole o,+,* odpowiednio na cyfry 0,1,2 za pomocą str.maketrans i translate. Wyświetl otrzymany napis dla '+o*' i 'oo+o*'. Następnie odczytaj ich wartości przez int(zapis,3) i wyjaśnij znaczenie zer wiodących.\n\n**Wskazówka:** str.maketrans(\"o+*\", \"012\") tworzy mapowanie znaków, które wykorzystuje metoda translate."
+     "markdown": "## Zadanie 9: zapis cyframi trójkowymi\n\n**Dane:** Zapisy symboliczne `\"+o*\"` i `\"oo+o*\"`. Symbole `o`, `+`, `*` odpowiadają cyfrom `0`, `1`, `2`.\n\n**Do wykonania:** Napisz funkcję `zapis_trojkowy(s)` zamieniającą symbole na znaki cyfr, z użyciem `str.maketrans` i `translate`. Zachowaj zera wiodące. Wyznacz również wartość otrzymanego zapisu za pomocą `int` z podstawą 3.\n\n**Wynik:** Funkcja `zapis_trojkowy` ma zwracać napis ze znakami `0`, `1`, `2`, zachowując długość wejścia. Osobno wyznacz wartość liczbową tego zapisu. Wyświetl oryginał, zapis cyframi i wartość dziesiętną dla obu podanych przykładów.\n\n**Przykład wyjaśniający:** `\"o*+\"` ma zostać przetłumaczone na napis `\"021\"`. Ten napis, odczytany w systemie trójkowym, ma wartość dziesiętną 7. Pierwsze dwa zapisy są tekstem, trzeci liczbą. Początkowe zero pozostaje w tekście, ale nie zmienia wartości."
     },
     {
      "id": "s025",
      "title": "Zadanie 10: plansza samych zer",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 10: plansza samych zer\n\nPrzygotuj planszę z pięciu wierszy po pięć znaków o. Ile bloków 3×3 zawiera? Zapisz ich środki w srodki i wyświetl je wraz z liczbą bloków. Wskaż pierwszy i ostatni środek.\n\n**Wskazówka:** Liczba bloków wynosi (h-2)*(w-2)."
+     "markdown": "## Zadanie 10: plansza samych zer\n\n**Dane:** Plansza z pięciu wierszy, każdy zawiera pięć znaków `o`.\n\n**Do wykonania:** Wyznacz wszystkie jednolite bloki 3×3. Zanim uruchomisz własny program, oszacuj ich liczbę na rysunku, uwzględniając nakładanie się bloków.\n\n**Wynik:** Zapisz współrzędne wszystkich środków w liście `srodki`, licząc wiersze i kolumny od 1. Wyświetl tę listę oraz jej długość. Wskaż pierwszy i ostatni środek w kolejności od góry do dołu i od lewej do prawej.\n\n**Przykład wyjaśniający:** Na mniejszej planszy 3×4 wypełnionej jednym symbolem istnieją dwa bloki 3×3: zaczynający się w pierwszej kolumnie i zaczynający się w drugiej. Nie wybieramy tylko rozłącznych bloków. Dla planszy 5×5 samodzielnie uwzględnij wszystkie przesunięcia."
     }
    ]
   },
@@ -1949,7 +2039,7 @@ window.PYTHON_COURSE = {
    "notebook": "lekcje/11_nwd_ruch_i_geometria/karta_pracy.ipynb",
    "download": "pobierz/11_nwd_ruch_i_geometria.zip",
    "assetBase": "lekcje/11_nwd_ruch_i_geometria/",
-   "checksum": "c581448e32a5c7aa9381d40a06b47321acb6b1860fafecd7f81f6c9fe84f5cb1",
+   "checksum": "622b983ea547765dcc33621f4d86bc22d6bcd38493d0b411fb5ab6f85fefb41a",
    "sections": [
     {
      "id": "intro",
@@ -1977,7 +2067,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -1991,21 +2081,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 1: Jeden ruch",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: Jeden ruch\n\nNapisz przesun(punkt,ruch), zwracającą nowy punkt. Dla (3,2) i (2,-5): (5,-3).\n\n**Wskazówka:** Dodaj odpowiadające sobie współrzędne."
+     "markdown": "## Zadanie 1: Jeden ruch\n\n**Dane:** Punkt `(x, y)` i ruch `(dx, dy)`, oba z całkowitymi współrzędnymi.\n\n**Do wykonania:** Napisz funkcję `przesun(punkt, ruch)` określającą położenie po wykonaniu ruchu.\n\n**Wynik:** Zwróć parę `(nowe_x, nowe_y)` opisującą miejsce po ruchu. Dodatnie `dx` przesuwa w prawo, dodatnie `dy` w górę, a wartości ujemne w przeciwnych kierunkach. Wyświetl wynik dla punktu `(3, 2)` i ruchu `(2, -5)`.\n\n**Przykład wyjaśniający:** Punkt `(4, 1)` po ruchu `(-2, 3)` znajdzie się w `(2, 4)`: dwie jednostki w lewo i trzy w górę. Ruch `(-2, 3)` nie jest nowym położeniem — opisuje zmianę względem miejsca, w którym obiekt już był."
     },
     {
      "id": "s006",
      "title": "Zadanie 2: Cała trasa",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: Cała trasa\n\nNapisz trasa(ruchy) zwracającą punkty po ruchach od startu (0,0). Nie dodawaj startu do listy. Puste dane dają [].\n\n**Wskazówka:** Każdy krok zaczyna się w końcu poprzedniego."
+     "markdown": "## Zadanie 2: Cała trasa\n\n**Dane:** Lista kolejnych przesunięć. Obiekt rozpoczyna ruch w `(0, 0)`.\n\n**Do wykonania:** Napisz funkcję `trasa(ruchy)` wyznaczającą położenie po każdym przesunięciu. Punktu startowego nie dodawaj osobno do wyniku.\n\n**Wynik:** Zwróć listę kolejnych osiągniętych punktów, po jednym na każdy ruch. Nie dopisuj osobno `(0, 0)`, więc długość wyniku ma być równa liczbie ruchów. Dla pustych danych zwróć `[]`. Pokaż trasę dla `[(3, 2), (2, 4), (5, -6)]`.\n\n**Przykład wyjaśniający:** Dla ruchów `[(2, 1), (3, -1)]` trasa to `[(2, 1), (5, 0)]`. Drugi ruch wykonujemy z miejsca osiągniętego po pierwszym, a nie ponownie od początku układu. Dlatego drugim punktem nie jest `(3, -1)`."
     },
     {
      "id": "s007",
      "title": "Zadanie 3: Łazik i rozkazy F, L, R",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: Łazik i rozkazy F, L, R\n\nŁazik startuje w (0,0), zwrócony na północ. F przesuwa go o jedno pole do przodu, L obraca w lewo, R w prawo, zawsze o 90 stopni. Północ zwiększa y, wschód zwiększa x. Napisz lazik(komendy), zwracającą (x,y,kierunek), gdzie kierunek to N,E,S lub W. Obrót nie zmienia położenia. Wyświetl wynik dla \"FFRFFLF\". Dane zawierają tylko F,L,R; pusty napis pozostawia łazik w pozycji startowej.\n\n**Wskazówka:** Pamiętaj osobno położenie i kierunek. Indeks kierunku może krążyć po czterech wartościach dzięki % 4."
+     "markdown": "## Zadanie 3: Łazik i rozkazy F, L, R\n\n**Dane:** Łazik startuje w `(0, 0)`, skierowany na północ. `F` oznacza ruch o jedno pole naprzód, `L` obrót w lewo, `R` w prawo o 90°. Północ zwiększa `y`, wschód zwiększa `x`.\n\n**Do wykonania:** Napisz funkcję `lazik(komendy)` symulującą podany ciąg poleceń z alfabetu F, L, R. Obrót nie zmienia położenia. Pusty napis pozostawia stan początkowy.\n\n**Wynik:** Zwróć krotkę `(x, y, kierunek)` opisującą stan po wszystkich poleceniach. Kierunki to `N` — północ, `E` — wschód, `S` — południe, `W` — zachód. Wyświetl wynik dla `\"FFRFFLF\"` i porównaj ze szkicem.\n\n**Przykład wyjaśniający:** Dla komend `\"RF\"` łazik najpierw obraca się z północy na wschód, a następnie jedzie o jedno pole. Wynik to `(1, 0, \"E\")`. Samo `\"R\"` dałoby `(0, 0, \"E\")`, ponieważ obrót nie przesuwa łazika."
     },
     {
      "id": "s008",
@@ -2019,21 +2109,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 4: Ścisłe wnętrze",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: Ścisłe wnętrze\n\nNapisz wewnatrz(punkt,bok=5000), zwracającą informację, czy 0<x<bok i 0<y<bok. Wyświetl wyniki dla (1,1), (0,1), (5000,1), (1,0) i (1,5000). Wyjaśnij, dlaczego punkty na brzegu nie należą do wnętrza.\n\n**Wskazówka:** Brzeg nie jest wnętrzem."
+     "markdown": "## Zadanie 4: Ścisłe wnętrze\n\n**Dane:** Punkt o całkowitych współrzędnych i kwadrat o wierzchołkach `(0, 0)`, `(bok, 0)`, `(bok, bok)`, `(0, bok)`, dla `bok > 0`.\n\n**Do wykonania:** Napisz funkcję `wewnatrz(punkt, bok=5000)` rozstrzygającą, czy punkt leży we wnętrzu kwadratu. Punkty na jego krawędziach i wierzchołkach nie należą do wnętrza.\n\n**Wynik:** Zwróć `True` wyłącznie dla punktu znajdującego się w środku obszaru, bez dotykania jego granicy. Zwróć `False` dla krawędzi, wierzchołków i punktów poza kwadratem. Wyświetl wyniki dla podanych pięciu punktów przy boku 5000.\n\n**Przykład wyjaśniający:** W kwadracie o boku 4 punkt `(1, 3)` jest wewnątrz, `(4, 2)` leży na prawej krawędzi, a `(5, 2)` poza kwadratem. Tylko pierwszy daje `True`. Granica obszaru jest celowo wyłączona z zliczania."
     },
     {
      "id": "s010",
      "title": "Zadanie 5: NWD dla ruchu w dół",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: NWD dla ruchu w dół\n\nNapisz nwd(a,b) oraz ile_nwd(ruchy), zliczającą pary z NWD>1. Dla [(12,-18),(7,0),(5,3)] wynik to 2.\n\n**Wskazówka:** Zero w drugiej współrzędnej nie oznacza automatycznie NWD=0."
+     "markdown": "## Zadanie 5: NWD dla ruchu w dół\n\n**Dane:** Lista przesunięć z całkowitymi współrzędnymi, które mogą być ujemne lub równe zeru.\n\n**Do wykonania:** Napisz własne `nwd(a, b)` oraz `ile_nwd(ruchy)`. Policz przesunięcia, dla których NWD wartości bezwzględnych współrzędnych jest większe od 1. Przyjmij `NWD(0, 0) = 0`.\n\n**Wynik:** Zwróć liczbę ruchów, dla których obie składowe mają wspólny dzielnik większy od 1. Badamy `dx` i `dy` jednego ruchu, nie współrzędne punktu osiągniętego po całej trasie. Pokaż wynik dla `[(12, -18), (7, 0), (5, 3)]`.\n\n**Przykład wyjaśniający:** Ruch `(8, -12)` spełnia warunek, ponieważ NWD(8, 12) = 4. Ruch `(3, 2)` go nie spełnia, bo NWD wynosi 1. Dla `(6, 0)` NWD wynosi 6, więc ten ruch również liczymy. Znak minus nie zmienia wartości NWD."
     },
     {
      "id": "s011",
      "title": "Zadanie 6: Sprawdzenie trójki",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: Sprawdzenie trójki\n\nNapisz jest_srodkiem(a,m,c), wymagającą trzech różnych punktów i dokładnej relacji środka. Dla (0,0),(1,1),(3,3) wynik musi być False.\n\n**Wskazówka:** Unikaj zaokrąglania połowy nieparzystej sumy."
+     "markdown": "## Zadanie 6: Sprawdzenie trójki\n\n**Dane:** Trzy punkty `a`, `m`, `c` o całkowitych współrzędnych.\n\n**Do wykonania:** Napisz funkcję `jest_srodkiem(a, m, c)`, która zwraca prawdę wyłącznie wtedy, gdy punkty są parami różne, a `m` jest dokładnym środkiem odcinka `ac`. Nie stosuj zaokrąglania.\n\n**Wynik:** Zwróć `True`, jeśli punkt `m` leży dokładnie w połowie odcinka łączącego `a` z `c`, a wszystkie trzy punkty są różne. W innym przypadku zwróć `False`. Pokaż wyniki dla obu podanych trójek i uzasadnij drugą odpowiedź.\n\n**Przykład wyjaśniający:** Dla końców `(0, 2)` i `(4, 6)` środkiem jest `(2, 4)`. Punkt `(1, 3)` wprawdzie leży na tym odcinku, ale nie w połowie, więc nie spełnia warunku. Sama współliniowość trzech punktów nie wystarcza."
     },
     {
      "id": "s012",
@@ -2047,28 +2137,28 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 7: Dokładny kandydat na środek",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Dokładny kandydat na środek\n\nNapisz srodek_calkowity(a,c), zwracającą krotkę, jeśli obie współrzędne środka są całkowite, albo None.\n\n**Wskazówka:** Sprawdź parzystość obu sum przed //2."
+     "markdown": "## Zadanie 7: Dokładny kandydat na środek\n\n**Dane:** Dwa punkty `a` i `c` o całkowitych współrzędnych.\n\n**Do wykonania:** Napisz funkcję `srodek_calkowity(a, c)` wyznaczającą środek odcinka tylko wtedy, gdy obie jego współrzędne są całkowite. Nie zastępuj niecałkowitego środka punktem zaokrąglonym.\n\n**Wynik:** Zwróć parę całkowitych współrzędnych środka, jeśli taki punkt istnieje. Jeśli choć jedna współrzędna rzeczywistego środka nie jest całkowita, zwróć `None`. Nie sprawdzasz tutaj, czy środek należy do jakiejś listy punktów.\n\n**Przykład wyjaśniający:** Odcinek od `(0, 0)` do `(4, 2)` ma środek `(2, 1)`, więc zwracamy tę parę. Dla końców `(0, 0)` i `(3, 2)` środek to `(1.5, 1)` i odpowiedzią jest `None`, a nie zaokrąglone `(1, 1)`."
     },
     {
      "id": "s014",
      "title": "Zadanie 8: Wyszukiwanie par i zbiór",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: Wyszukiwanie par i zbiór\n\nNapisz trojki(punkty) dla różnych punktów o rosnącym x. Zwróć wszystkie (A,M,C), nie kończąc po pierwszym wyniku. Sprawdź także punkty niebędące sąsiednimi na liście.\n\n**Wskazówka:** Sprawdzenie wszystkich wyników pozwala zweryfikować gwarancję unikalności."
+     "markdown": "## Zadanie 8: Wyszukiwanie par i zbiór\n\n**Dane:** Lista różnych punktów uporządkowana według ściśle rosnącej współrzędnej `x`.\n\n**Do wykonania:** Napisz funkcję `trojki(punkty)` wyszukującą wszystkie trójki `(A, M, C)`, w których `M` jest środkiem odcinka `AC`. Końce porządkuj tak, aby `Ax < Cx`. Uwzględnij punkty niesąsiadujące na liście.\n\n**Wynik:** Zwróć listę trójek punktów `(A, M, C)`, bez powtórnego wypisywania tej samej trójki z odwróconymi końcami. Każdy z trzech punktów musi występować w danych. Zastosuj rozwiązanie o oczekiwanym koszcie O(n²), korzystając ze zbioru punktów.\n\n**Przykład wyjaśniający:** Dla punktów `[(0, 0), (1, 5), (2, 2), (4, 4)]` pasuje trójka `((0, 0), (2, 2), (4, 4))`. Jej punkty nie są trzema kolejnymi elementami listy. Samo istnienie geometrycznego środka nie wystarcza — ten środek musi być jednym z podanych punktów."
     },
     {
      "id": "s015",
      "title": "Zadanie 9: Raport trasy",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 9: Raport trasy\n\nNapisz raport(ruchy,bok), zwracającą (liczba par z NWD>1, liczba punktów wewnątrz, trójki). Dla trzech ruchów (2,2) i boku 10 wynik to (3,3,[((2,2),(4,4),(6,6))]).\n\nSam otwórz ruchy-trening.txt i wczytaj pary przesunięć do ruchy_z_pliku. Oblicz raport_z_pliku dla boku 10 i zapisz trzy części raportu w trzech wierszach wyniki-trening.txt. Plik zawiera przesunięcia, nie gotowe punkty.\n\n**Wskazówka:** Nie pomyl listy ruchów z listą punktów."
+     "markdown": "## Zadanie 9: Raport trasy\n\n**Dane:** Plik `ruchy-trening.txt` z parami przesunięć, po jednej parze w wierszu. Start `(0, 0)`, bok kwadratu 10.\n\n**Do wykonania:** Napisz funkcję `raport(ruchy, bok)` określającą: liczbę ruchów spełniających warunek NWD > 1, liczbę punktów trasy we wnętrzu kwadratu i wszystkie trójki ze środkiem odcinka. Przygotuj samodzielny odczyt do `ruchy_z_pliku`.\n\n**Wynik:** Zwróć krotkę `(liczba_ruchow_z_nwd_wiekszym_od_1, liczba_punktow_wewnatrz, lista_trojek)`. Wynik dla pliku i boku 10 zapisz w `raport_z_pliku`, a trzy części w trzech wierszach `wyniki-trening.txt`. W ostatnim wierszu możesz zapisać listę trójek w czytelnej notacji Pythona.\n\n**Przykład wyjaśniający:** Ruchy `[(2, 2), (2, 2), (2, 2)]` prowadzą do trzech różnych punktów `(2, 2)`, `(4, 4)`, `(6, 6)`. Do NWD używamy powtarzającej się pary ruchu, lecz do badania wnętrza kwadratu i środka odcinka używamy osiągniętych punktów. Nie są to te same dane."
     },
     {
      "id": "s016",
      "title": "Zadanie 10: Kurier najdalej od bazy",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 10: Kurier najdalej od bazy\n\nKurier porusza się po ulicach równoległych do osi. Po ruchach [(3,0),(0,4),(-5,0),(0,-5)] szuka miejsca, z którego powrót do (0,0) byłby najdłuższy. Długość najkrótszego powrotu po ulicach wynosi abs(x)+abs(y). Napisz najdalej_od_bazy(ruchy), zwracającą (numer ruchu od 1, punkt, długość powrotu). Przy remisie wybierz wcześniejszy ruch; dla pustej listy zwróć None. Ruchy mogą mieć ujemne współrzędne.\n\n**Wskazówka:** Analizuj punkty po ruchach, nie same wektory przesunięć. Kierunek ruchu nie decyduje o odległości od bazy."
+     "markdown": "## Zadanie 10: Kurier najdalej od bazy\n\n**Dane:** Ruchy kuriera, np. `[(3, 0), (0, 4), (-5, 0), (0, -5)]`. Start to `(0, 0)`. Długość najkrótszego powrotu po ulicach równoległych do osi wynosi `abs(x) + abs(y)`.\n\n**Do wykonania:** Napisz funkcję `najdalej_od_bazy(ruchy)` wskazującą położenie po ruchu, z którego powrót jest najdłuższy. Przy remisie wybierz wcześniejszy ruch.\n\n**Wynik:** Zwróć krotkę `(numer_ruchu_od_1, punkt, dlugosc_powrotu)` dla miejsca wymagającego najdłuższego powrotu. Numer wskazuje, po którym ruchu kurier tam dotarł. Nie chodzi o sumę drogi przebytej od początku. Dla pustej listy zwróć `None`.\n\n**Przykład wyjaśniający:** Dla ruchów `[(2, 0), (0, 3), (-1, 0)]` odległości powrotu wynoszą kolejno 2, 5 i 4. Wynik to `(2, (2, 3), 5)`. Najtrudniej wrócić po drugim ruchu, mimo że trasa kuriera później trwa dalej."
     },
     {
      "id": "s017",
@@ -2089,14 +2179,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 11: odległość od startu",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 11: odległość od startu\n\nNapisz najdalszy(punkty), zwracającą pierwszy punkt najdalszy od (0,0). Porównuj kwadraty odległości, bez pierwiastków. Załóż niepustą listę.\n\n**Wskazówka:** Pierwiastek zachowuje porządek, więc nie trzeba go obliczać."
+     "markdown": "## Zadanie 11: odległość od startu\n\n**Dane:** Niepusta lista punktów o całkowitych współrzędnych.\n\n**Do wykonania:** Napisz funkcję `najdalszy(punkty)` wybierającą punkt najdalszy od `(0, 0)` w zwykłej odległości geometrycznej. Przy remisie wybierz pierwszy. Porównuj bez obliczania pierwiastków.\n\n**Wynik:** Zwróć wybrany punkt w postaci `(x, y)`, nie jego indeks ani odległość. Chodzi o odległość w linii prostej od początku układu, a nie sumę drogi wzdłuż osi. Pokaż własny przykład i wyjaśnij tę różnicę.\n\n**Przykład wyjaśniający:** Punkt `(3, 4)` leży w odległości 5 od `(0, 0)`, a `(0, 6)` w odległości 6, więc z tej pary wybieramy `(0, 6)`. Gdyby mierzyć powrót po ulicach, odległości wynosiłyby 7 i 6 — kolejność byłaby inna."
     },
     {
      "id": "s020",
      "title": "Zadanie 12: odtwórz ruchy",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 12: odtwórz ruchy\n\nNapisz ruchy_z_punktow(punkty), odtwarzającą przesunięcia od startu (0,0). Wyświetl wektory ruchu dla punktów [(3,2),(5,6),(10,0)]. Wyjaśnij, skąd bierze się ujemna druga współrzędna ostatniego ruchu.\n\n**Wskazówka:** Odejmij poprzednie położenie od bieżącego."
+     "markdown": "## Zadanie 12: odtwórz ruchy\n\n**Dane:** Punkty po kolejnych ruchach: `[(3, 2), (5, 6), (10, 0)]`. Obiekt wystartował z `(0, 0)`.\n\n**Do wykonania:** Napisz funkcję `ruchy_z_punktow(punkty)` odtwarzającą kolejne przesunięcia. Funkcja ma również obsłużyć pustą listę.\n\n**Wynik:** Zwróć listę par `(dx, dy)`, po jednej na każde dojście do kolejnego punktu. Pierwszy ruch rozpoczyna się w `(0, 0)`. Dla pustej listy zwróć `[]`. Wyświetl wynik i porównaj trasę odtworzoną z ruchów z punktami wejściowymi.\n\n**Przykład wyjaśniający:** Dla punktów `[(2, 1), (5, 0)]` ruchy to `[(2, 1), (3, -1)]`. Drugie położenie wymaga przesunięcia o 3 w prawo i 1 w dół względem pierwszego. Sam punkt `(5, 0)` nie opisuje drugiego ruchu."
     }
    ]
   },
@@ -2108,7 +2198,7 @@ window.PYTHON_COURSE = {
    "notebook": "lekcje/12_matura_2025_zadanie_3_dron/karta_pracy.ipynb",
    "download": "pobierz/12_matura_2025_zadanie_3_dron.zip",
    "assetBase": "lekcje/12_matura_2025_zadanie_3_dron/",
-   "checksum": "7fc42337d5bd1a903da5f5037c88e3513ef308a8986769b1f8b9a42b805c9c52",
+   "checksum": "e14bf4352da75639cf1429c7f58e28dcc3f5dcabf66e38125934d83eca8987f6",
    "sections": [
     {
      "id": "intro",
@@ -2136,7 +2226,7 @@ window.PYTHON_COURSE = {
      "title": "2. Treść dydaktyczna i zadania na lekcji",
      "kind": "theory",
      "context": "",
-     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nPrzypomnij potrzebne narzędzia, przeczytaj kontrakt funkcji i sam napisz rozwiązanie. W zadaniach z plikiem pamiętaj również o odczycie danych i wymaganym zapisie wyniku."
+     "markdown": "## 2. Treść dydaktyczna i zadania na lekcji\n\nKażde polecenie określa dane, problem do rozwiązania i wymagany wynik. Przykład wyjaśniający pokazuje, jak rozumieć wymagania i format odpowiedzi. W zadaniu plikowym oblicz właściwy wynik z podanego pliku, nie z małego przykładu w opisie. Samodzielnie zaplanuj sposób rozwiązania i napisz kod. Funkcja ma zwracać wynik; wyświetl go w miejscu jej wywołania, jeśli wymaga tego polecenie. W zadaniach plikowych sam napisz także otwarcie, odczyt i zapis pliku. Przygotuj się do wyjaśnienia swoich decyzji."
     },
     {
      "id": "s004",
@@ -2178,14 +2268,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 1: Odczyt i warunki danych",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 1: Odczyt i warunki danych\n\nNapisz wczytaj(nazwa): sam otwórz dron_przyklad.txt i wczytaj pary do ruchy_p. W każdym wierszu wymagaj dwóch liczb i dodatniego dx. Sprawdź 10 rekordów. Nie korzystaj z danych przygotowanych w innej karcie.\n\n**Wskazówka:** Waliduj rekord, zanim rozpakujesz dwa pola."
+     "markdown": "## Zadanie 1: Odczyt i warunki danych\n\n**Dane:** Plik `dron_przyklad.txt`: w każdym wierszu dwie liczby całkowite `dx dy`, przy czym `dx > 0`.\n\n**Do wykonania:** Napisz funkcję `wczytaj(nazwa)` samodzielnie odczytującą pary przesunięć. Program ma rozpoznawać niewłaściwą liczbę pól i niedodatnie `dx`. Nie korzystaj z danych przygotowanych w innej karcie.\n\n**Wynik:** Zwróć listę par liczb całkowitych i zapisz ją w `ruchy_p`. Wyświetl jej długość; przykład CKE zawiera 10 ruchów. Jeśli wiersz ma niewłaściwą liczbę wartości albo `dx <= 0`, przerwij odczyt z informacją o błędnym wierszu, zamiast go pomijać.\n\n**Przykład wyjaśniający:** Wiersz `20 -5` oznacza ruch o 20 w prawo i 5 w dół; ma dać parę `(20, -5)`. Wiersz `0 5` jest niepoprawny w tym zadaniu, bo dron ma w każdym ruchu przesuwać się w prawo. Ujemne `dy` jest natomiast dozwolone."
     },
     {
      "id": "s010",
      "title": "Zadanie 2: 3.1: NWD i zliczanie",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 2: 3.1: NWD i zliczanie\n\nNapisz nwd(a,b) i z31(ruchy), zliczającą przesunięcia z NWD wartości bezwzględnych >1. Przykład CKE: 6.\n\n**Wskazówka:** Przed pętlą Euklidesa normalizuj znaki."
+     "markdown": "## Zadanie 2: 3.1: NWD i zliczanie\n\n**Dane:** Lista przesunięć `(dx, dy)` oraz warunek zadania 3.1 matury 2025.\n\n**Do wykonania:** Napisz własne `nwd(a, b)` i `z31(ruchy)`. Policz przesunięcia, dla których NWD wartości bezwzględnych obu współrzędnych przekracza 1. Przy zerowym `dy` obowiązuje NWD opisane w arkuszu.\n\n**Wynik:** Zwróć liczbę ruchów spełniających warunek. Dla każdego ruchu rozpatruj jego `dx` oraz `dy`, a nie położenie drona po tym ruchu. Wyświetl odpowiedź dla `ruchy_p`, porównaj z przykładem CKE i wyjaśnij rolę znaków współrzędnych.\n\n**Przykład wyjaśniający:** Dla ruchów `[(6, -9), (5, 2), (4, 0)]` odpowiedź wynosi 2. Pierwszy ma NWD równe 3, drugi 1, a trzeci 4. NWD liczby i zera jest wartością bezwzględną tej liczby, więc poziomy ruch też może spełniać warunek."
     },
     {
      "id": "s011",
@@ -2199,21 +2289,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 3: Punkty po kolejnych ruchach",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 3: Punkty po kolejnych ruchach\n\nNapisz trasa(ruchy), bez dodatkowego punktu startowego. Potwierdź dwa pierwsze punkty przykładu i koniec (20000,0).\n\n**Wskazówka:** Dopisz punkt po aktualizacji obu współrzędnych."
+     "markdown": "## Zadanie 3: Punkty po kolejnych ruchach\n\n**Dane:** Kolejne przesunięcia drona. Lot rozpoczyna się w `(0, 0)`.\n\n**Do wykonania:** Napisz funkcję `trasa(ruchy)` wyznaczającą punkty osiągnięte po kolejnych ruchach. Nie dodawaj punktu startowego jako osobnego elementu.\n\n**Wynik:** Zwróć listę położeń drona, po jednym punkcie na każdy ruch. Każdy ruch odbywa się z miejsca osiągniętego wcześniej. Dla danych przykładowych wyświetl dwa pierwsze punkty i ostatni; porównaj ostatni z miejscem lądowania `(20000, 0)`.\n\n**Przykład wyjaśniający:** Ruchy `[(4, 3), (2, -1)]` dają punkty `[(4, 3), (6, 2)]`. Drugie przesunięcie dodaje się do dotychczasowego położenia. Początku `(0, 0)` nie wpisujemy osobno do listy punktów badanych w następnych podpunktach."
     },
     {
      "id": "s013",
      "title": "Zadanie 4: 3.2 a: wnętrze kwadratu",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 4: 3.2 a: wnętrze kwadratu\n\nNapisz z32a(punkty), zliczającą punkty w ścisłym wnętrzu kwadratu 0<x<5000 i 0<y<5000. Dla przykładu ma zwrócić 2. Wyjaśnij, dlaczego nie zliczamy punktów na krawędziach.\n\n**Wskazówka:** Użycie <= zmieniłoby odpowiedź."
+     "markdown": "## Zadanie 4: 3.2 a: wnętrze kwadratu\n\n**Dane:** Punkty trasy po ruchach i kwadrat o wierzchołkach `(0, 0)`, `(0, 5000)`, `(5000, 5000)`, `(5000, 0)`.\n\n**Do wykonania:** Napisz funkcję `z32a(punkty)` zliczającą punkty położone ściśle we wnętrzu kwadratu. Nie uwzględniaj krawędzi ani wierzchołków.\n\n**Wynik:** Zwróć liczbę zapisanych punktów trasy, które leżą we wnętrzu kwadratu. Nie obliczaj długości lotu w tym obszarze ani liczby przecięć jego granicy. Wyświetl wynik dla trasy przykładowej i porównaj z odpowiedzią CKE.\n\n**Przykład wyjaśniający:** Dla punktów `[(100, 200), (5000, 200), (5100, 100)]` liczymy tylko pierwszy. Drugi jest na krawędzi, trzeci poza obszarem. Nawet jeśli odcinek lotu przebiega przez kwadrat, nie dodaje to punktów, których nie ma na liście położeń po ruchach."
     },
     {
      "id": "s014",
      "title": "Zadanie 5: 3.2 b: wszystkie kandydatury",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 5: 3.2 b: wszystkie kandydatury\n\nNapisz z32b(punkty), zwracającą listę trójek (A,M,C) dla końców uporządkowanych po x. Potwierdź dokładnie jedną trójkę w przykładzie.\n\n**Wskazówka:** Nie kończ przed sprawdzeniem, że rozwiązań jest dokładnie tyle, ile gwarantuje treść."
+     "markdown": "## Zadanie 5: 3.2 b: wszystkie kandydatury\n\n**Dane:** Lista punktów trasy drona, o rosnących współrzędnych `x`. Treść zadania 3.2 b gwarantuje jedną szukaną trójkę.\n\n**Do wykonania:** Napisz funkcję `z32b(punkty)` znajdującą wszystkie trójki różnych punktów `(A, M, C)`, w których `M` jest dokładnym środkiem `AC`. Końce uporządkuj według rosnącego `x`. Nie ograniczaj się do sąsiednich punktów.\n\n**Wynik:** Zwróć listę znalezionych trójek `(A, M, C)`, gdzie każda litera oznacza parę współrzędnych istniejącego punktu trasy. Dla danych maturalnych lista ma zawierać jedną trójkę. Wyświetl wynik dla przykładu i porównaj z arkuszem. Oczekiwany koszt wyszukiwania: O(n²).\n\n**Przykład wyjaśniający:** Z punktów `[(1, 1), (2, 8), (3, 3), (5, 5)]` pasuje trójka `((1, 1), (3, 3), (5, 5))`. Punkt `(3, 3)` leży dokładnie w połowie między końcami, choć wybrane punkty nie zajmują trzech kolejnych miejsc na liście."
     },
     {
      "id": "s015",
@@ -2227,21 +2317,21 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 6: Całe zadanie na przykładzie",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 6: Całe zadanie na przykładzie\n\nNapisz rozwiaz(ruchy), zwracającą (wynik 3.1, wynik 3.2 a, jedyna trójka). Sprawdź jedyność trójki i końcowy punkt trasy.\n\n**Wskazówka:** Rozróżnij listę możliwych rozwiązań i jedną trójkę do oddania."
+     "markdown": "## Zadanie 6: Całe zadanie na przykładzie\n\n**Dane:** Lista ruchów zgodna z wymaganiami zadania maturalnego.\n\n**Do wykonania:** Napisz funkcję `rozwiaz(ruchy)` łączącą odpowiedzi do 3.1, 3.2 a i 3.2 b. Rozwiązanie ma rozpoznawać brak dokładnie jednej trójki oraz nieprawidłowy punkt końcowy lotu, zamiast bezwarunkowo wybierać dowolny wynik.\n\n**Wynik:** Dla poprawnych danych zwróć krotkę `(wynik_31, wynik_32a, jedyna_trojka)`: liczbę ruchów z NWD > 1, liczbę punktów wewnątrz kwadratu i trójkę `(A, M, C)`. Przy niezgodności danych przerwij obliczenia z informacją o problemie. Wyświetl podpisany wynik dla pliku przykładowego.\n\n**Przykład wyjaśniający:** Jeśli wyszukiwanie zwróci pustą listę albo dwie trójki, nie można uznać zadania za poprawnie zakończone przez wybranie dowolnego elementu. Podobnie końcowy punkt `(20000, 1)` nie jest wymaganym lądowaniem `(20000, 0)`. W obu sytuacjach program ma zasygnalizować problem."
     },
     {
      "id": "s017",
      "title": "Zadanie 7: Pełne dane i kontrola relacji",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 7: Pełne dane i kontrola relacji\n\nWczytaj dron.txt, potwierdź 100 ruchów, uruchom rozwiaz i zapisz w odp. Niezależnie sprawdź obie równości dla zwróconej trójki.\n\n**Wskazówka:** Znalezione punkty muszą pochodzić z trasy, a nie z listy przesunięć."
+     "markdown": "## Zadanie 7: Pełne dane i kontrola relacji\n\n**Dane:** Pełny plik `dron.txt`, zawierający 100 przesunięć.\n\n**Do wykonania:** Samodzielnie wczytaj plik i oblicz komplet odpowiedzi w `odp`. Dla znalezionych punktów A, M, C uzasadnij niezależnie, że M jest środkiem odcinka, sprawdzając obie współrzędne.\n\n**Wynik:** W `odp` zapisz wynik w formacie z zadania 6 i wyświetl trzy podpisane odpowiedzi. Dla znalezionej trójki pokaż na liczbach, że środkowy punkt jest środkiem w obu współrzędnych. Wskaż również, że A, M i C występują na obliczonej trasie.\n\n**Przykład wyjaśniający:** Dla przykładowych punktów A = `(2, 4)` i C = `(8, 10)` środkiem jest M = `(5, 7)`. Uzasadnienie powinno dotyczyć zarówno współrzędnej x, jak i y. Zgodność tylko jednej współrzędnej nie wystarcza do potwierdzenia środka odcinka."
     },
     {
      "id": "s018",
      "title": "Zadanie 8: wyniki3.txt i komplet oddania",
      "kind": "exercise",
      "context": "",
-     "markdown": "## Zadanie 8: wyniki3.txt i komplet oddania\n\nSam zapisz wyniki3.txt obok notatnika. Podpisz odpowiedzi 3.1, 3.2 a i 3.2 b. Odczytaj plik ponownie do odczyt_wyniku. Uruchom własny notatnik od początku i omów koszt O(n²) wyszukiwania.\n\n**Wskazówka:** Zachowaj kolejność A,M,C, żeby łatwo zweryfikować środek."
+     "markdown": "## Zadanie 8: wyniki3.txt i komplet oddania\n\n**Dane:** Komplet odpowiedzi `odp` dla pełnego pliku.\n\n**Do wykonania:** Przygotuj zapis `wyniki3.txt` i ponowny odczyt jego zawartości. Zapisz notatnik tak, aby po restarcie jądra można było uruchomić rozwiązanie od początku.\n\n**Wynik:** Zapisz trzy podpisane części: `3.1.` z liczbą ruchów, `3.2. a)` z liczbą punktów oraz `3.2. b)` ze współrzędnymi A, M, C w tej kolejności. Ponownie odczytaną treść zapisz w `odczyt_wyniku` i wyświetl. Przygotuj ustne wyjaśnienie kosztu wyszukiwania trójki.\n\n**Przykład wyjaśniający:** Zapis punktu `(2, 4)` oznacza współrzędne, a nie indeks 2 i wartość 4. W ostatniej części raportu trzeba podać trzy takie pary, np. `A=(2, 4), M=(5, 7), C=(8, 10)`, z własnymi obliczonymi wartościami. Sama liczba znalezionych trójek nie odpowiada na pytanie arkusza."
     },
     {
      "id": "s019",
@@ -2262,14 +2352,14 @@ window.PYTHON_COURSE = {
      "title": "Zadanie 9: wyszukiwanie trzema pętlami",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 9: wyszukiwanie trzema pętlami\n\nNapisz trojki_wolno(punkty), przeglądającą wszystkie i<j<k i zwracającą trójki z punktem środkowym. Dla rosnącego x środkowym punktem może być tylko j. Wyświetl znalezione trójki dla punktów z pliku przykładowego i wyjaśnij, dlaczego koszt obliczeń wynosi O(n³).\n\n**Wskazówka:** Każda z trzech zagnieżdżonych pętli wybiera inny punkt trójki."
+     "markdown": "## Zadanie 9: wyszukiwanie trzema pętlami\n\n**Dane:** Lista punktów uporządkowana według ściśle rosnącego `x`.\n\n**Do wykonania:** Napisz alternatywne `trojki_wolno(punkty)`, które rozpatruje wszystkie trójki indeksów `i < j < k` i wybiera te, w których drugi punkt jest środkiem odcinka między pozostałymi. Zastosuj trzy pętle.\n\n**Wynik:** Zwróć listę trójek punktów w tym samym formacie co `z32b`. Dla trasy przykładowej obie funkcje mają wskazać te same trójki; kolejność całej listy nie jest istotna. Wyjaśnij, dlaczego trzy niezależne wybory indeksu zwiększają koszt do O(n³).\n\n**Przykład wyjaśniający:** Warunek `i < j < k` oznacza wybór trzech różnych miejsc we właściwej kolejności, ale niekoniecznie sąsiednich. Z listy pięciu punktów można rozpatrzyć np. indeksy 0, 2 i 4. Nie chodzi wyłącznie o okna `(0, 1, 2)`, `(1, 2, 3)` itd."
     },
     {
      "id": "s022",
      "title": "Zadanie 10: poprawność fizyczna trasy",
      "kind": "homework",
      "context": "",
-     "markdown": "## Zadanie 10: poprawność fizyczna trasy\n\nNapisz poprawny_lot(ruchy), sprawdzającą dodatnie dx, końcowy punkt (20000,0) i dodatnią wysokość wszystkich punktów poza lądowaniem. Puste dane dają False.\n\n**Wskazówka:** Warunek dotyczy też danych wejściowych, nie tylko wyniku zadania."
+     "markdown": "## Zadanie 10: poprawność fizyczna trasy\n\n**Dane:** Lista przesunięć drona. Poprawny lot zaczyna się w `(0, 0)`, kończy w `(20000, 0)`, każdy ruch ma dodatnie `dx`, a wszystkie punkty po ruchach poza lądowaniem mają dodatnie `y`.\n\n**Do wykonania:** Napisz funkcję `poprawny_lot(ruchy)` sprawdzającą jednocześnie wszystkie podane wymagania. Pustą listę uznaj za niepoprawny lot.\n\n**Wynik:** Zwróć `True` tylko wtedy, gdy wszystkie warunki lotu są spełnione jednocześnie; w przeciwnym razie `False`. Pokaż wynik dla danych przykładowych oraz krótkiego przypadku, w którym naruszysz jedną regułę. Nazwij tę regułę.\n\n**Przykład wyjaśniający:** Ruchy `[(10000, 2), (10000, -2)]` spełniają wymagania: po pierwszym ruchu dron jest nad osią, po drugim ląduje w `(20000, 0)`. Ruchy `[(10000, 0), (10000, 0)]` kończą się w tym samym miejscu, lecz pierwszy punkt już leży na osi, więc lot jest niepoprawny."
     }
    ]
   }
