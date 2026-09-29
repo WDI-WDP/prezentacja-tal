@@ -8,7 +8,7 @@ Między lekcją 0 a lekcją 1 znajduje się **Konfiguracja środowiska**: ten sa
 
 Bezpośredni adres bloku po otwarciu strony to `#/konfiguracja/0`. W spisie lekcji oznaczono go jako **CFG**. Tekst instrukcji znajduje się także w [content/konfiguracja-srodowiska.md](content/konfiguracja-srodowiska.md). Strona pokazuje polecenia, ale ich nie wykonuje.
 
-Po konfiguracji znajduje się rozdział **Aktualizacja zadań w repozytorium**, oznaczony **GIT**, pod adresem `#/aktualizacja-zadan/0`. Opisuje zabezpieczenie rozwiązań, synchronizację własnego forka z [WDI-WDP/tal-repo-na-zadania](https://github.com/WDI-WDP/tal-repo-na-zadania) przez **Sync fork** albo `fetch` i `merge`, aktualizację kopii na komputerze oraz konflikty w notatnikach. Treść: [content/aktualizacja-zadan.md](content/aktualizacja-zadan.md).
+Po konfiguracji znajduje się rozdział **Aktualizacja zadań w repozytorium**, oznaczony **GIT**, pod adresem `#/aktualizacja-zadan/0`. Jeden slajd instrukcji opisuje aktualizację własnego forka przez **Sync fork → Update branch** na GitHub, a następnie pobranie zmian na komputer poleceniem `git pull`. Treść: [content/aktualizacja-zadan.md](content/aktualizacja-zadan.md).
 
 Strzałki ←/→ prowadzą kolejno przez lekcję 0, konfigurację, aktualizację zadań i lekcję 1; ↑/↓ zmieniają elementy bloku. Dodatkowe rozdziały nie zmieniają numeracji kart.
 

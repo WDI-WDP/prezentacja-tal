@@ -6,9 +6,9 @@ window.PYTHON_COURSE = {
   "teacher": "por. Jakub GRĄTKIEWICZ",
   "email": "jakub.gratkiewicz@wat.edu.pl",
   "lessonCount": 12,
-  "sectionCount": 309,
+  "sectionCount": 300,
   "setupCount": 2,
-  "setupSectionCount": 27,
+  "setupSectionCount": 18,
   "taskCount": 144,
   "classTaskCount": 120,
   "homeworkTaskCount": 24
@@ -227,77 +227,14 @@ window.PYTHON_COURSE = {
    "title": "Aktualizacja zadań w repozytorium",
    "sourceFile": "content/aktualizacja-zadan.md",
    "assetBase": "",
-   "checksum": "944953f3a91ae3bad58354b5b889bde4d2b6966e9a258d26def75042683af4f4",
+   "checksum": "17bb5ec5088d72a2a631001c3ca0eabec49048cdd96ee7299203e336ef43992b",
    "sections": [
     {
      "id": "setup-01",
-     "title": "Oryginał, własny fork i kopia na komputerze",
+     "title": "Sync fork na GitHub, potem git pull",
      "kind": "setup",
      "context": "",
-     "markdown": "Prowadzący publikuje nowe lub poprawione zadania w [WDI-WDP/tal-repo-na-zadania](https://github.com/WDI-WDP/tal-repo-na-zadania). Repozytorium korzysta z gałęzi **main**.\n\n| Miejsce | Co zawiera? | Nazwa w poleceniach Git |\n|---|---|---|\n| Repozytorium WDI-WDP | Oryginalne materiały prowadzącego | `upstream`, po dodaniu tego adresu |\n| Twój fork na GitHub | Materiały i Twoje zapisane rozwiązania | `origin`, jeśli sklonowałeś własny fork |\n| Folder na komputerze | Pliki, które otwierasz i zmieniasz w Jupyter | Lokalna kopia repozytorium |\n\nAktualizacja ma **dołączyć zmiany prowadzącego do Twojej pracy**. Nie wymaga tworzenia nowego forka ani ponownego klonowania.\n\nSamo `git pull` z własnego `origin` nie pobierze nowych zadań z WDI-WDP, jeśli Twój fork nie zawiera jeszcze tych zmian. Potrzebne jest także połączenie historii z oryginałem, czyli **merge**."
-    },
-    {
-     "id": "setup-02",
-     "title": "Zabezpieczenie własnych rozwiązań",
-     "kind": "setup",
-     "context": "",
-     "markdown": "Przed synchronizacją zapisz otwarte notatniki i zamknij je w Jupyter, aby otwarty edytor nie zapisał później starej wersji. Ważne rozwiązania możesz dodatkowo skopiować do folderu poza repozytorium.\n\nW PowerShell przejdź do istniejącej lokalnej kopii swojego forka. Przykładowa ścieżka:\n\n```powershell\ncd C:\\Repo\\tal-repo-na-zadania\ngit remote -v\ngit branch --show-current\ngit status\n```\n\nSprawdź, czy **origin prowadzi do Twojego konta**, np. `git@github.com:TWOJ-LOGIN/tal-repo-na-zadania.git`, a nie do WDI-WDP. Jeśli sklonowałeś oryginał lub pracujesz na innej gałęzi niż `main`, ustal z prowadzącym, którą kopię i gałąź należy aktualizować.\n\nJeżeli masz własne zmiany, przejrzyj listę, a następnie zapisz je w commicie i wyślij do swojego forka:\n\n```powershell\ngit add .\ngit commit -m \"Zapis rozwiazan przed aktualizacja zadan\"\ngit push origin main\ngit status\n```\n\nTen przykład zakłada pracę na `main`. Nie dodawaj haseł, kluczy ani przypadkowych plików. Jeśli nie ma zmian, pomiń `add` i `commit`. Przed scalaniem stan powinien być czysty, a własne commity zapisane na GitHub. Przy błędzie zatrzymaj się, zamiast wykonywać kolejne polecenia."
-    },
-    {
-     "id": "setup-03",
-     "title": "Wariant A: Sync fork na GitHub",
-     "kind": "setup",
-     "context": "",
-     "markdown": "1. Zaloguj się na GitHub i otwórz **swój fork**, czyli `TWOJ-LOGIN/tal-repo-na-zadania`. Sprawdź właściciela nad listą plików.\n2. Wybierz gałąź **main**. Informacja pod nazwą repozytorium powinna wskazywać, że fork pochodzi z WDI-WDP.\n3. Kliknij **Sync fork** nad listą plików.\n4. Przeczytaj informację o zmianach i wybierz **Update branch**.\n5. Po zakończeniu sprawdź nowe zadania lub ostatnie commity w swoim forku.\n\nKomunikat, że gałąź jest aktualna, oznacza, że nie ma nowych zmian do pobrania. Nie trzeba tworzyć pustego commita.\n\n**Nie wybieraj opcji odrzucania własnych commitów**, np. **Discard commits**, aby wymusić zgodność. Jeśli GitHub zgłasza konflikt lub proponuje pull request do jego rozwiązania, przerwij prostą synchronizację i skorzystaj z pomocy prowadzącego.\n\nTen krok aktualizuje fork **na GitHub**, ale jeszcze nie folder na komputerze.\n\nPomoc: [synchronizacja forka w przeglądarce](https://docs.github.com/en/pull-requests/how-tos/work-with-forks/syncing-a-fork)."
-    },
-    {
-     "id": "setup-04",
-     "title": "Wariant A: pobranie zmian na komputer",
-     "kind": "setup",
-     "context": "",
-     "markdown": "Po udanym **Sync fork → Update branch**, w lokalnym folderze własnego forka wykonaj:\n\n```powershell\ngit status\ngit switch main\ngit pull --ff-only origin main\ngit status\n```\n\nRozpocznij przy czystym stanie pracy. `git switch main` wybiera gałąź, którą aktualizujesz. `git pull --ff-only origin main` pobiera jej aktualną wersję z Twojego forka i dopuszcza tylko aktualizację bez tworzenia dodatkowego scalenia lokalnych, rozbieżnych historii.\n\nJeśli polecenie zgłosi, że **fast-forward nie jest możliwy**, lokalna gałąź i fork mają rozbieżne commity. Nie oznacza to, że należy skasować własne pliki. Pokaż prowadzącemu komunikat i `git status`.\n\nOtwórz kartę ponownie z dysku w Jupyter. Sprawdź, czy widzisz nowe polecenia i czy pozostały Twoje rozwiązania. Samo odświeżenie strony forka nie zmienia lokalnego notatnika.\n\nPomoc: [git pull i opcja ff-only](https://git-scm.com/docs/git-pull)."
-    },
-    {
-     "id": "setup-05",
-     "title": "Wariant B: jednorazowe dodanie upstream",
-     "kind": "setup",
-     "context": "",
-     "markdown": "Ten wariant wykonuje synchronizację poleceniami Git. Jest alternatywą dla przycisku **Sync fork**, nie obowiązkowym drugim sposobem aktualizacji.\n\nW lokalnej kopii własnego forka sprawdź adresy:\n\n```powershell\ngit remote -v\n```\n\nJeśli nie ma nazwy `upstream`, dodaj oryginalne repozytorium prowadzącego:\n\n```powershell\ngit remote add upstream https://github.com/WDI-WDP/tal-repo-na-zadania.git\ngit remote -v\n```\n\n**origin** ma nadal wskazywać Twój fork, a **upstream** repozytorium WDI-WDP. Dodanie adresu nie kopiuje plików ani nie wykonuje scalenia.\n\nTę konfigurację robisz raz dla danej lokalnej kopii. Jeśli `upstream` już istnieje, sprawdź adres zamiast dodawać go ponownie. Przy błędnym adresie skonsultuj zmianę; nie zastępuj przypadkowo `origin` oryginalnym repozytorium.\n\nPomoc: [konfiguracja upstream dla forka](https://docs.github.com/en/pull-requests/how-tos/work-with-forks/configuring-a-remote-repository-for-a-fork), [git remote](https://git-scm.com/docs/git-remote)."
-    },
-    {
-     "id": "setup-06",
-     "title": "Wariant B: pobranie nowych commitów",
-     "kind": "setup",
-     "context": "",
-     "markdown": "Zapisz własną pracę zgodnie z wcześniejszym slajdem. Przy czystym stanie i prawidłowych adresach wykonaj:\n\n```powershell\ngit switch main\ngit pull --ff-only origin main\ngit fetch upstream\ngit log --oneline HEAD..upstream/main\n```\n\nPo każdym poleceniu sprawdź wynik. Jeśli pojawi się błąd, nie przechodź dalej automatycznie.\n\n`git fetch upstream` pobiera informacje i commity z repozytorium prowadzącego. **Nie zmienia jeszcze Twoich plików roboczych.** Lokalna nazwa `upstream/main` wskazuje pobraną wersję gałęzi prowadzącego.\n\nOstatnie polecenie pokazuje commity z `upstream/main`, których nie ma w bieżącej gałęzi. Przejrzyj ich opisy. Brak wpisów oznacza, że te zmiany są już uwzględnione.\n\nPomoc: [pobieranie commitów przez git fetch](https://git-scm.com/docs/git-fetch)."
-    },
-    {
-     "id": "setup-07",
-     "title": "Wariant B: scalenie i wysłanie do forka",
-     "kind": "setup",
-     "context": "",
-     "markdown": "Jeśli pobieranie zakończyło się poprawnie, dołącz zmiany do lokalnej gałęzi `main`:\n\n```powershell\ngit merge --no-edit upstream/main\ngit status\n```\n\n`merge` łączy zmiany prowadzącego z Twoją historią. Może wykonać prostą aktualizację **fast-forward** albo utworzyć commit scalający. `--no-edit` akceptuje domyślny opis tego commita. Ta opcja **nie rozwiązuje konfliktów** i nie wybiera za Ciebie wersji plików.\n\nJeśli scalenie zakończyło się poprawnie, przejrzyj zaktualizowane karty. Dopiero wtedy wyślij wynik do własnego forka:\n\n```powershell\ngit push origin main\ngit status\n```\n\nOtwórz swój fork na GitHub i sprawdź pliki oraz ostatni commit. **Nie wykonuj `git push upstream main`**: rozwiązania i połączone zmiany wysyłasz do swojego repozytorium, nie do repozytorium prowadzącego.\n\nPomoc: [scalanie zmian przez git merge](https://git-scm.com/docs/git-merge)."
-    },
-    {
-     "id": "setup-08",
-     "title": "Konflikt w karcie Jupyter",
-     "kind": "setup",
-     "context": "",
-     "markdown": "Konflikt może wystąpić, gdy prowadzący zmieni treść karty, a Ty uzupełnisz ten sam notatnik. Git nie zawsze potrafi automatycznie połączyć obie wersje pliku `.ipynb`.\n\n1. Zatrzymaj się po komunikacie **CONFLICT**. Nie wykonuj `push` i nie uruchamiaj nierozwiązanego notatnika.\n2. Sprawdź `git status` i pokaż prowadzącemu nazwy konfliktujących plików.\n3. Podczas łączenia trzeba zachować nowe polecenia **i** Twój kod. Nie wybieraj bez sprawdzenia całej wersji „naszej” lub „ich”. Plik `.ipynb` ma strukturę JSON, dlatego przypadkowe usuwanie fragmentów może go uszkodzić.\n\nJeśli chcesz wycofać niedokończone scalenie rozpoczęte przy czystym stanie, a nie wprowadziłeś jeszcze poprawek rozwiązywania konfliktu:\n\n```powershell\ngit merge --abort\ngit status\n```\n\nJeżeli zacząłeś już ręcznie poprawiać konflikt, najpierw zachowaj tę pracę i poproś o pomoc. `--abort` wycofuje bieżącą próbę scalenia, nie jest sposobem na usunięcie pojedynczego błędu w kodzie.\n\nNie używaj `reset --hard`, wymuszonego `push` ani usuwania repozytorium jako sposobu aktualizacji. Nie musisz tracić rozwiązań, aby otrzymać nowe zadania.\n\nPomoc: [konflikty i przerwanie scalenia](https://git-scm.com/docs/git-merge)."
-    },
-    {
-     "id": "setup-09",
-     "title": "Podsumowanie dwóch sposobów aktualizacji",
-     "kind": "setup",
-     "context": "",
-     "markdown": "| Etap | Wariant A: GitHub i PowerShell | Wariant B: PowerShell |\n|---|---|---|\n| Własna praca | Zapisane notatniki, commit, push do własnego forka | Tak samo |\n| Zmiany prowadzącego | Na swoim forku: **Sync fork → Update branch** | `git fetch upstream`, potem `git merge --no-edit upstream/main` |\n| Kopia lokalna | `git pull --ff-only origin main` | Aktualizuje się podczas udanego merge |\n| Kopia na GitHub | Aktualizuje się podczas Sync fork | `git push origin main` po udanym merge |\n\nW obu wariantach sprawdzasz stan przed rozpoczęciem i po zakończeniu. Wariant B wymaga wcześniejszego dodania `upstream` i uzgodnienia lokalnej gałęzi z `origin/main`.\n\n**Nie klonuj repozytorium ponownie przed każdą lekcją.** Aktualizuj istniejącą kopię, otwórz kartę z dysku i sprawdź, czy masz aktualne zadania oraz dotychczasowe rozwiązania."
-    },
-    {
-     "id": "setup-10",
-     "title": "Zadanie: aktualna karta we własnym forku",
-     "kind": "setup",
-     "context": "",
-     "markdown": "Zaktualizuj swojego forka na podstawie [repozytorium WDI-WDP](https://github.com/WDI-WDP/tal-repo-na-zadania) jednym z opisanych sposobów.\n\n- Pokaż, że `origin` wskazuje Twoje konto, a nie repozytorium prowadzącego.\n- Znajdź aktualną kartę w swoim forku na GitHub oraz w folderze na komputerze.\n- Otwórz ją w Jupyter i upewnij się, że Twoje dotychczasowe rozwiązania pozostały dostępne.\n- Wyjaśnij, dlaczego samo `fetch` nie aktualizuje otwartego notatnika i czym różni się pobranie commitów od ich scalenia.\n\nJeżeli nie ma nowych zmian, pokaż informację o aktualności i `git status`. Nie twórz sztucznej zmiany tylko po to, by powstał commit. W razie konfliktu pokaż komunikat prowadzącemu zamiast wymuszać aktualizację."
+     "markdown": "Przed aktualizacją zapisz notatniki, zrób commit własnych zmian i wyślij je do swojego forka.\n\n1. Zaloguj się na GitHub i otwórz **swój fork**: `TWOJ-LOGIN/tal-repo-na-zadania`, nie repozytorium prowadzącego.\n2. Wybierz gałąź **main**.\n3. Nad listą plików kliknij **Sync fork**.\n4. Kliknij **Update branch** i poczekaj na zakończenie aktualizacji. Jeśli GitHub informuje, że fork jest aktualny, nie ma nowych zmian do dołączenia.\n5. Na komputerze otwórz terminal w folderze swojego sklonowanego forka, na gałęzi **main**, i wykonaj:\n\n```powershell\ngit pull\n```\n\n**Pamiętaj:** Sync fork aktualizuje repozytorium na GitHub. Dopiero `git pull` pobiera te zmiany do folderu na komputerze. Po pobraniu otwórz zaktualizowaną kartę ponownie w Jupyter.\n\nJeśli pojawi się konflikt, poproś prowadzącego o pomoc — nie odrzucaj własnych zmian.\n\nPomoc: [Sync fork — instrukcja GitHub](https://docs.github.com/en/pull-requests/how-tos/work-with-forks/syncing-a-fork)."
     }
    ]
   },
